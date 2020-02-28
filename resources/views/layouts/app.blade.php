@@ -13,11 +13,11 @@
 </head>
 <body class="bg-gray-100 antialiased">
     <div id="app">
-        @include('layouts.partials.header')
+        <layout-header></layout-header>
         <div class="mx-5">
             @yield('content')
         </div>
-        @include('layouts.partials.footer')
+        <layout-footer></layout-footer>
     </div>
 
     <!-- Scripts -->
