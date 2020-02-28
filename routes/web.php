@@ -1,5 +1,9 @@
 <?php
 
+use App\Category;
+use App\Product;
+use App\Rewrite;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,6 +15,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('{any}', function ($url) {
+    if ($rewrite = Rewrite::firstWhere('request_path', $url)) {
+        if ($rewrite->entity_type == 'category') {
+            if ($category = Category::find($rewrite->entity_id)) {
+                return view('category', compact('category'));
+            }
+        }
+
+        if ($rewrite->entity_type == 'product') {
+            if ($product = Product::find($rewrite->entity_id)) {
+                return view('product', compact('product'));
+            }
+        }
+    }
+    abort(404);
+})->where('any', '.*');
