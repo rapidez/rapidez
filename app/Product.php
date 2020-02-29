@@ -43,7 +43,8 @@ class Product extends Model
                         'catalog_product_entity_varchar AS '.$attributeCode,
                         function ($join) use ($builder, $attributeId, $attributeCode) {
                             $join->on($attributeCode.'.entity_id', '=', $builder->getQuery()->from.'.entity_id')
-                                 ->where($attributeCode.'.attribute_id', $attributeId);
+                                 ->where($attributeCode.'.attribute_id', $attributeId)
+                                 ->where($attributeCode.'.store_id', config('shop.store'));
                         }
                     );
             }

@@ -12,6 +12,7 @@
         "cviebrock/laravel-elasticsearch": "^4.1",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^6.2",
+        "laravel/horizon": "^3.7",
         "laravel/tinker": "^2.0"
     },
     "require-dev": {

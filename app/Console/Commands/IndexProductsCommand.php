@@ -23,7 +23,7 @@ class IndexProductsCommand extends Command
      */
     protected $description = 'Index the products in Elasticsearch';
 
-    protected int $chunkSize = 100;
+    protected int $chunkSize = 1000;
 
     /**
      * Create a new command instance.
@@ -47,10 +47,8 @@ class IndexProductsCommand extends Command
             config()->set('shop.store', $store->store_id);
             $productQuery = Product::where('visibility', 4);
 
-            if (config('queue.default') == 'sync') {
-                $bar = $this->output->createProgressBar($productQuery->count());
-                $bar->start();
-            }
+            $bar = $this->output->createProgressBar($productQuery->count());
+            $bar->start();
 
             $productQuery->chunk($this->chunkSize, function ($products) use ($store, $bar) {
                 foreach ($products as $product) {
@@ -61,15 +59,12 @@ class IndexProductsCommand extends Command
                     IndexProductJob::dispatch($data);
                 }
 
-                if (config('queue.default') == 'sync') {
-                    $bar->advance(100);
-                }
+                $bar->advance($this->chunkSize);
             });
 
-            if (config('queue.default') == 'sync') {
-                $bar->finish();
-            }
-            $this->info("\nDone!");
+            $bar->finish();
+            $this->line('');
         }
+        $this->info('Done!');
     }
 }
