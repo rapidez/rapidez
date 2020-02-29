@@ -10,4 +10,18 @@ return [
     |
     */
     'store' => 1,
+
+    'index' => [
+        'attributes' => [
+            'entity_id'         => 'id',
+            'sku'               => 'sku',
+            'type_id'           => 'type',
+            'name'              => 'name',
+            'description'       => 'description',
+            'color_value'       => 'color',
+            'main_group_value'  => 'main_group',
+            'thumbnail'         => 'image',
+            'price'             => 'price',
+        ],
+    ],
 ];

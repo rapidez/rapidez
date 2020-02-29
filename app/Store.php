@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class Store extends Model
@@ -19,4 +20,18 @@ class Store extends Model
      * @var string
      */
     protected $primaryKey = 'store_id';
+
+    /**
+     * The "booting" method of the model.
+     *
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope('without-admin-store', function (Builder $builder) {
+            $builder->where('code', '<>', 'admin');
+        });
+    }
 }
