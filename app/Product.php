@@ -15,16 +15,6 @@ class Product extends Model
     protected $primaryKey = 'entity_id';
 
     /**
-     * Additional attributes to load.
-     *
-     * @var array
-     */
-    protected static $additionalAttributes = [
-        84 => 'meta_title',
-        86 => 'meta_description',
-    ];
-
-    /**
      * The "booting" method of the model.
      *
      * @return void
@@ -33,20 +23,28 @@ class Product extends Model
     {
         parent::boot();
 
-        $additionalAttributes = static::$additionalAttributes;
-        static::addGlobalScope('attributes', function (Builder $builder) use ($additionalAttributes) {
-            $builder->select($builder->getQuery()->from.'.*');
-            foreach ($additionalAttributes as $attributeId => $attributeCode) {
-                $builder
-                    ->addSelect($attributeCode.'.value AS '.$attributeCode)
-                    ->leftJoin(
-                        'catalog_product_entity_varchar AS '.$attributeCode,
-                        function ($join) use ($builder, $attributeId, $attributeCode) {
-                            $join->on($attributeCode.'.entity_id', '=', $builder->getQuery()->from.'.entity_id')
-                                 ->where($attributeCode.'.attribute_id', $attributeId)
-                                 ->where($attributeCode.'.store_id', config('shop.store'));
-                        }
-                    );
+        static::addGlobalScope('attributes', function (Builder $builder) {
+            $attributes = Attribute::whereIn('attribute_code', config('shop.product.attributes'))->get();
+            foreach ($attributes as $attribute) {
+                if ($attribute->flat) {
+                    // The attributes which are always present in the flat tables.
+                    if (in_array($attribute->code, ['name', 'description', 'sku', 'price'])) {
+                        $builder->addSelect($attribute->code.' AS '.$attribute->code);
+                    } else {
+                        $builder->addSelect($attribute->code.'_value AS '.$attribute->code);
+                    }
+                } else {
+                    $builder
+                        ->addSelect($attribute->code.'.value AS '.$attribute->code)
+                        ->leftJoin(
+                            'catalog_product_entity_'.$attribute->type.' AS '.$attribute->code,
+                            function ($join) use ($builder, $attribute) {
+                                $join->on($attribute->code.'.entity_id', '=', $builder->getQuery()->from.'.entity_id')
+                                     ->where($attribute->code.'.attribute_id', $attribute->id)
+                                     ->where($attribute->code.'.store_id', config('shop.store'));
+                            }
+                        );
+                }
             }
         });
     }

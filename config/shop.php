@@ -1,17 +1,10 @@
 <?php
 return [
-    /*
-    |--------------------------------------------------------------------------
-    | Store
-    |--------------------------------------------------------------------------
-    |
-    | The default store if it could not be detected. See the
-    | DetermineAndSetShop middleware.
-    |
-    */
+    // Default store, see middleware: DetermineAndSetShop
     'store' => 1,
 
     'index' => [
+        // The attributes which should be indexed in ElasticSearch.
         'attributes' => [
             'entity_id'         => 'id',
             'sku'               => 'sku',
@@ -23,5 +16,20 @@ return [
             'thumbnail'         => 'image',
             'price'             => 'price',
         ],
+    ],
+
+    'product' => [
+        // The attributes that should be available when getting a product.
+        'attributes' => [
+            'name',
+            'description',
+            'sku',
+            'price',
+            'color',
+            'manufacturer',
+            'shoe_type',
+            'meta_title',
+            'meta_description',
+        ]
     ],
 ];
