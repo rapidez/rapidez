@@ -15,7 +15,7 @@ use App\Rewrite;
 |
 */
 
-Route::get('{any}', function ($url) {
+Route::get('{any?}', function ($url = null) {
     if ($rewrite = Rewrite::firstWhere('request_path', $url)) {
         if ($rewrite->entity_type == 'category') {
             if ($category = Category::find($rewrite->entity_id)) {
