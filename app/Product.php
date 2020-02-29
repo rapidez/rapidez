@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Cache;
 
 class Product extends Model
 {
@@ -24,8 +26,14 @@ class Product extends Model
         parent::boot();
 
         static::addGlobalScope('attributes', function (Builder $builder) {
-            $attributes = Attribute::whereIn('attribute_code', config('shop.product.attributes'))->get();
+            $attributes = Arr::where(Cache::rememberForever('attributes', function () {
+                return Attribute::all()->toArray();
+            }), function ($attribute) {
+                return in_array($attribute['code'], config('shop.product.attributes'));
+            });
+
             foreach ($attributes as $attribute) {
+                $attribute = (object)$attribute;
                 if ($attribute->flat) {
                     // The attributes which are always present in the flat tables.
                     if (in_array($attribute->code, ['name', 'description', 'sku', 'price'])) {
