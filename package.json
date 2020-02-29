@@ -10,6 +10,7 @@
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "devDependencies": {
+        "@appbaseio/reactivesearch-vue": "^1.0.0",
         "@tailwindcss/custom-forms": "^0.2",
         "axios": "^0.19",
         "cross-env": "^7.0",

@@ -52,7 +52,7 @@ class IndexProductsCommand extends Command
 
             $productQuery->chunk($this->chunkSize, function ($products) use ($store, $bar) {
                 foreach ($products as $product) {
-                    $data = ['store' => $store->code];
+                    $data = ['store' => $store->store_id];
                     foreach (config('shop.index.attributes') as $attribute => $key) {
                         $data[$key] = $product->$attribute;
                     }

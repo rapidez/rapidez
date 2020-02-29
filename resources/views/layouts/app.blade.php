@@ -11,7 +11,7 @@
 
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
-<body class="bg-gray-100 antialiased">
+<body class="bg-white antialiased">
     <div id="app">
         <layout-header></layout-header>
         <div class="mx-5">

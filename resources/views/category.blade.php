@@ -6,4 +6,6 @@
 @section('content')
     <h1 class="font-bold text-3xl">{{ $category->name }}</h1>
     {!! $category->description !!}
+
+    <products store="{{ config('shop.store') }}"></products>
 @endsection
