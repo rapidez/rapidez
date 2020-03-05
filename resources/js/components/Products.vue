@@ -13,6 +13,7 @@
                         title="Main group"
                         selectAllLabel="All groups"
                         :react="{and: ['Maingroup', 'Colors']}"
+                        URLParams
                     />
 
                     <multi-list
@@ -22,6 +23,7 @@
                         title="Color"
                         selectAllLabel="All colors"
                         :react="{and: ['Maingroup', 'Colors']}"
+                        URLParams
                     />
                 </div>
                 <div class="w-4/5">
