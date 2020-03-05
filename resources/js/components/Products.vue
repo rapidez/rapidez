@@ -35,6 +35,7 @@
                         :from="0"
                         :size="32"
                         :react="{and: ['Maingroup', 'Colors']}"
+                        URLParams
                     >
                         <div class="flex w-1/2 sm:w-1/3 md:w-1/4 px-1 my-1" slot="renderItem" slot-scope="{ item }">
                             <a :href="'/'+item.url_key" class="block w-full bg-gray-100" key="item._id">
