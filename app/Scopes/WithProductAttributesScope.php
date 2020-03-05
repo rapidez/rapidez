@@ -6,8 +6,6 @@ use App\Attribute;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Scope;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Cache;
 
 class WithProductAttributesScope implements Scope
 {
@@ -20,9 +18,7 @@ class WithProductAttributesScope implements Scope
      */
     public function apply(Builder $builder, Model $model)
     {
-        $attributes = Arr::where(Cache::rememberForever('attributes', function () {
-            return Attribute::all()->toArray();
-        }), function ($attribute) {
+        $attributes = Attribute::getCachedWhere(function ($attribute) {
             return array_key_exists($attribute['code'], config('shop.attributes'));
         });
 
