@@ -53,8 +53,10 @@ class IndexProductsCommand extends Command
             $productQuery->chunk($this->chunkSize, function ($products) use ($store, $bar) {
                 foreach ($products as $product) {
                     $data = ['store' => $store->store_id];
-                    foreach (config('shop.index.attributes') as $attribute => $key) {
-                        $data[$key] = $product->$attribute;
+                    foreach (config('shop.attributes') as $attribute => $index) {
+                        if ($index) {
+                            $data[$attribute] = $product->$attribute;
+                        }
                     }
                     IndexProductJob::dispatch($data);
                 }

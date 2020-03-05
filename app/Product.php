@@ -29,14 +29,16 @@ class Product extends Model
             $attributes = Arr::where(Cache::rememberForever('attributes', function () {
                 return Attribute::all()->toArray();
             }), function ($attribute) {
-                return in_array($attribute['code'], config('shop.product.attributes'));
+                return array_key_exists($attribute['code'], config('shop.attributes'));
             });
+
+            $builder->select($builder->getQuery()->from.'.entity_id AS id');
 
             foreach ($attributes as $attribute) {
                 $attribute = (object)$attribute;
                 if ($attribute->flat) {
                     // The attributes which are always present in the flat tables.
-                    if (in_array($attribute->code, ['name', 'description', 'sku', 'price'])) {
+                    if (in_array($attribute->code, ['name', 'description', 'sku', 'price', 'image'])) {
                         $builder->addSelect($attribute->code.' AS '.$attribute->code);
                     } else {
                         $builder->addSelect($attribute->code.'_value AS '.$attribute->code);
