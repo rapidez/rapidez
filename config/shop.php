@@ -23,6 +23,7 @@ return [
         'sku'               => true,
         'price'             => true,
         'image'             => true,
+        'url_key'           => true,
         'color'             => true,
         'manufacturer'      => true,
         'main_group'        => true,
