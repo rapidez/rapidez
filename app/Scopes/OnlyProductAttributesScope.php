@@ -25,7 +25,12 @@ class OnlyProductAttributesScope implements Scope
                     backend_type AS type,
                     frontend_input AS input,
                     is_filterable AS filter,
-                    GREATEST(is_searchable, is_visible_on_front, is_used_for_promo_rules, attribute_code IN ("image")) AS flat
+                    GREATEST(
+                        is_searchable,
+                        is_visible_on_front,
+                        is_used_for_promo_rules,
+                        attribute_code IN ("'.implode('","', config('shop.default_flat_attributes')).'")
+                    ) AS flat
                 ')
                 ->join('catalog_eav_attribute', 'eav_attribute.attribute_id', '=', 'catalog_eav_attribute.attribute_id')
                 ->join('eav_attribute_label', function ($join) {
