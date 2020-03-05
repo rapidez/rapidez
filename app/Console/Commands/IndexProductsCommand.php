@@ -5,6 +5,8 @@ namespace App\Console\Commands;
 use App\Jobs\IndexProductJob;
 use App\Product;
 use App\Store;
+use Cviebrock\LaravelElasticsearch\Manager as Elasticsearch;
+use Elasticsearch\Common\Exceptions\Missing404Exception;
 use Illuminate\Console\Command;
 
 class IndexProductsCommand extends Command
@@ -25,14 +27,18 @@ class IndexProductsCommand extends Command
 
     protected int $chunkSize = 1000;
 
+    protected Elasticsearch $elasticsearch;
+
     /**
      * Create a new command instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Elasticsearch $elasticsearch)
     {
         parent::__construct();
+
+        $this->elasticsearch = $elasticsearch;
     }
 
     /**
@@ -45,6 +51,9 @@ class IndexProductsCommand extends Command
         foreach (Store::all() as $store) {
             $this->line('Store: '.$store->name);
             config()->set('shop.store', $store->store_id);
+
+            $this->createIndexIfNeeded('products_' . $store->store_id);
+
             $productQuery = Product::where('visibility', 4);
 
             $bar = $this->output->createProgressBar($productQuery->count());
@@ -68,5 +77,25 @@ class IndexProductsCommand extends Command
             $this->line('');
         }
         $this->info('Done!');
+    }
+
+    public function createIndexIfNeeded(string $index): void
+    {
+        try {
+            $this->elasticsearch->cat()->indices(['index' => $index]);
+        } catch (Missing404Exception $e) {
+            $this->elasticsearch->indices()->create([
+                'index' => $index,
+                'body'  => [
+                    'mappings' => [
+                        'properties' => [
+                            'price' => [
+                                'type' => 'double',
+                            ]
+                        ]
+                    ]
+                ]
+            ]);
+        }
     }
 }
