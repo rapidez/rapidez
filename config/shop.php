@@ -13,7 +13,7 @@ return [
         'description',
         'sku',
         'price',
-        'image',
+        'small_image',
         'url_key',
     ],
 
@@ -25,7 +25,7 @@ return [
         'description'       => true,
         'sku'               => true,
         'price'             => true,
-        'image'             => true,
+        'small_image'       => true,
         'url_key'           => true,
         'color'             => true,
         'manufacturer'      => true,
