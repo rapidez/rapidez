@@ -2,8 +2,11 @@
 
 namespace App;
 
-use App\Scopes\WithProductAttributesScope;
+use App\Category;
+use App\CategoryProduct;
+use App\Scopes\WithCategoryScope;
 use Illuminate\Database\Eloquent\Model;
+use App\Scopes\WithProductAttributesScope;
 
 class Product extends Model
 {

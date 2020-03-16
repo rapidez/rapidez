@@ -14,6 +14,7 @@
                             :dataField="filter.code"
                             class="filter"
                             :title="filter.name"
+                            :react="{and: reactiveFilters}"
                             URLParams
                             :showFilter="false"
                         />
@@ -38,11 +39,12 @@
                         :from="0"
                         :size="32"
                         :react="{and: reactiveFilters}"
+                        :defaultQuery="categoryQuery"
                         URLParams
                     >
                         <div class="flex w-1/2 sm:w-1/3 md:w-1/4 px-1 my-1" slot="renderItem" slot-scope="{ item }">
                             <a :href="'/'+item.url_key" class="block w-full bg-gray-100" key="item._id">
-                                <img :src="mediaUrl+'/catalog/product/' + item.small_image" class="object-contain h-48 w-full mb-3" />
+                                <img :src="mediaUrl+'/catalog/product' + item.thumbnail" class="object-contain h-48 w-full mb-3" />
                                 <div class="px-2">
                                     <strong class="block hyphens">{{ item.name }}</strong>
                                     <div class="">&euro;{{ item.price }}</div>
@@ -58,9 +60,21 @@
 
 <script>
     export default {
-        props: ['store', 'mediaUrl'],
+        props: ['store', 'mediaUrl', 'category'],
 
         data: () => ({ filters: [] }),
+
+        methods: {
+            categoryQuery() {
+                return {
+                    "query": {
+                        "terms": {
+                            "category_ids": [ this.$props.category ]
+                        }
+                    }
+                }
+            }
+        },
 
         mounted() {
             var me = this;
