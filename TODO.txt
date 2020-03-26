@@ -1,0 +1,10 @@
+- Header search => RAKI
+- Brand description when filtering POP => ROY
+- POP CMS blocks => ROY
+
+- Sizes filter POP => RAKI
+- Color filter POP => RAKI
+- Variant collections + sizes hover POP
+- Content pages
+- PDP
+- Vue Router / Turbolinks
