@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\Scopes\WithCategoryUrlScope;
 use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model

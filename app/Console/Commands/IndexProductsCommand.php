@@ -54,28 +54,19 @@ class IndexProductsCommand extends Command
 
             $this->createIndexIfNeeded('products_' . $store->store_id);
 
-            $productQuery = Product::where('catalog_product_flat_'.$store->store_id.'.visibility', 4);
-            // count on the groupby (category index) query returns multiple rows
-            // So we first get the resuls then the count
-            // Is there any performance impact here @roy?
+            $productQuery = Product::where('visibility', 4);
 
-            $bar = $this->output->createProgressBar($productQuery->get()->count());
+            $bar = $this->output->createProgressBar($productQuery->count());
             $bar->start();
 
             $productQuery->chunk($this->chunkSize, function ($products) use ($store, $bar) {
                 foreach ($products as $product) {
-
                     $data = ['store' => $store->store_id];
                     foreach (config('shop.attributes') as $attribute => $index) {
                         if ($index) {
-                            if ($attribute == 'category_ids') {
-                                $data[$attribute] = json_encode(explode(',', $product->$attribute));
-                            } else {
-                                $data[$attribute] = $product->$attribute;
-                            }
+                            $data[$attribute] = $product->$attribute;
                         }
                     }
-
                     IndexProductJob::dispatch($data);
                 }
 
