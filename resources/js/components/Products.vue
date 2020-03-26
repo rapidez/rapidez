@@ -81,15 +81,19 @@
         },
 
         mounted() {
-            var me = this;
-            // TODO: Cache this in session storage
-            // so it only fires once per visit.
+            if (sessionStorage.getItem('attributes')) {
+                this.attributes = JSON.parse(sessionStorage.getItem('attributes'))
+                this.loaded = true
+                return;
+            }
+
             axios.get('/api/attributes')
-                 .then(function (response) {
-                    me.attributes = response.data
-                    me.loaded = true
+                 .then((response) => {
+                    this.attributes = response.data
+                    sessionStorage.setItem('attributes', JSON.stringify(this.attributes))
+                    this.loaded = true
                  })
-                 .catch(function (error) {
+                 .catch((error) => {
                     alert('Something went wrong')
                  })
         },
