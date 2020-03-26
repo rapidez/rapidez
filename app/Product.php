@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Scopes\WithProductAttributesScope;
+use App\Scopes\WithProductCategoryIdsScope;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
@@ -24,6 +25,7 @@ class Product extends Model
         parent::boot();
 
         static::addGlobalScope(new WithProductAttributesScope);
+        static::addGlobalScope(new WithProductCategoryIdsScope);
     }
 
     /**

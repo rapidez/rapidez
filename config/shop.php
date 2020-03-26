@@ -34,5 +34,8 @@ return [
         'shoe_type'         => true,
         'meta_title'        => false,
         'meta_description'  => false,
+
+        // Custom attributes which are available by default.
+        'category_ids'      => true,
     ],
 ];

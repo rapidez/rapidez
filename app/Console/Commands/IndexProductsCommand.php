@@ -64,7 +64,9 @@ class IndexProductsCommand extends Command
                     $data = ['store' => $store->store_id];
                     foreach (config('shop.attributes') as $attribute => $index) {
                         if ($index) {
-                            $data[$attribute] = $product->$attribute;
+                            $data[$attribute] = $attribute == 'category_ids'
+                                ? explode(',', $product->$attribute)
+                                : $product->$attribute;
                         }
                     }
                     IndexProductJob::dispatch($data);

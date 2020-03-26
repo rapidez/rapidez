@@ -38,6 +38,7 @@
                         :from="0"
                         :size="32"
                         :react="{and: reactiveFilters}"
+                        :defaultQuery="categoryQuery"
                         URLParams
                     >
                         <div class="flex w-1/2 sm:w-1/3 md:w-1/4 px-1 my-1" slot="renderItem" slot-scope="{ item }">
@@ -58,9 +59,21 @@
 
 <script>
     export default {
-        props: ['store', 'mediaUrl'],
+        props: ['store', 'mediaUrl', 'category'],
 
         data: () => ({ filters: [] }),
+
+        methods: {
+            categoryQuery() {
+                return {
+                    "query": {
+                        "terms": {
+                            "category_ids": [ this.category ]
+                        }
+                    }
+                }
+            }
+        },
 
         mounted() {
             var me = this;
