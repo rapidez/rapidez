@@ -40,7 +40,6 @@
                         :size="32"
                         :react="{and: reactiveFilters}"
                         :defaultQuery="categoryQuery"
-                        :sortOptions="reactiveSorting"
                         URLParams
                     >
                         <div class="flex w-1/2 sm:w-1/3 md:w-1/4 px-1 my-1" slot="renderItem" slot-scope="{ item }">
@@ -63,13 +62,10 @@
     export default {
         props: ['store', 'mediaUrl', 'category'],
 
-        data: () => ({
-            filters: []
-        }),
+        data: () => ({ filters: [] }),
 
         methods: {
             categoryQuery() {
-                // direct query with DSL
                 return {
                     "query": {
                         "terms": {
@@ -85,12 +81,12 @@
             // TODO: Cache this in session storage
             // so it only fires once per visit.
             axios.get('/api/filters')
-                .then(function (response) {
+                 .then(function (response) {
                     me.filters = response.data
-                })
-                .catch(function (error) {
+                 })
+                 .catch(function (error) {
                     alert('Something went wrong')
-                })
+                 })
         },
 
         computed: {
@@ -100,33 +96,7 @@
                     reactiveFilters.push('filter_' + this.filters[filterId]['code'])
                 })
                 return reactiveFilters;
-            },
-            reactiveSorting: function () {
-                var sortingTypes = ['asc', 'desc'],
-                    reactiveSorting = [{
-                      label: "Name desc",
-                      dataField: "name.keyword",
-                      sortBy: "desc"
-                    },{
-                      label: "Name asc",
-                      dataField: "name.keyword",
-                      sortBy: "asc"
-                    }];
-
-                Object.keys(this.filters).forEach(filterId => {
-                    if (this.filters[filterId].sorting) {
-                        sortingTypes.forEach(sortingType => {
-                            reactiveSorting.push({
-                                label: this.filters[filterId].name + ' ' + sortingType,
-                                dataField: this.filters[filterId]['code'],
-                                sortBy: sortingType
-                            });
-                        });
-                    }
-                });
-
-                return reactiveSorting;
             }
-        },
+        }
     }
 </script>

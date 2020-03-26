@@ -21,7 +21,6 @@ class OnlyProductAttributesScope implements Scope
                 ->selectRaw('
                     eav_attribute.attribute_id AS id,
                     IFNULL(value, eav_attribute.attribute_code) AS name,
-                    used_for_sort_by AS sorting,
                     attribute_code AS code,
                     backend_type AS type,
                     frontend_input AS input,

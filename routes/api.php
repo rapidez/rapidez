@@ -15,11 +15,7 @@ use Illuminate\Http\Request;
 */
 
 Route::get('filters', function () {
-    return $attributes = array_filter(Attribute::all()->toArray(), function($attribute) {
+    return Attribute::getCachedWhere(function ($attribute) {
         return $attribute['filter'];
     });
-    // some weird caching shizzle how to fix this? @ROY :D ?
-    // return Attribute::getCachedWhere(function ($attribute) {
-    //     return $attribute['filter'];
-    // });
 });
