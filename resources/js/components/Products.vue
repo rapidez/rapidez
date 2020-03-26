@@ -3,6 +3,7 @@
         <reactive-base
             :app="'products_' + store"
             url="http://localhost:9200"
+            v-if="loaded"
         >
             <selected-filters />
             <div class="flex">
@@ -39,6 +40,7 @@
                         :size="32"
                         :react="{and: reactiveFilters}"
                         :defaultQuery="categoryQuery"
+                        :sortOptions="sortOptions"
                         URLParams
                     >
                         <div class="flex w-1/2 sm:w-1/3 md:w-1/4 px-1 my-1" slot="renderItem" slot-scope="{ item }">
@@ -61,7 +63,10 @@
     export default {
         props: ['store', 'mediaUrl', 'category'],
 
-        data: () => ({ filters: [] }),
+        data: () => ({
+            loaded: false,
+            attributes: [],
+        }),
 
         methods: {
             categoryQuery() {
@@ -79,9 +84,10 @@
             var me = this;
             // TODO: Cache this in session storage
             // so it only fires once per visit.
-            axios.get('/api/filters')
+            axios.get('/api/attributes')
                  .then(function (response) {
-                    me.filters = response.data
+                    me.attributes = response.data
+                    me.loaded = true
                  })
                  .catch(function (error) {
                     alert('Something went wrong')
@@ -89,12 +95,31 @@
         },
 
         computed: {
-            reactiveFilters: function () {
-                var reactiveFilters = [];
-                Object.keys(this.filters).forEach(filterId => {
-                    reactiveFilters.push('filter_' + this.filters[filterId]['code'])
+            filters: function () {
+                return _.filter(this.attributes, function (attribute) {
+                    return attribute.filter;
                 })
-                return reactiveFilters;
+            },
+            sortings: function () {
+                return _.filter(this.attributes, function (attribute) {
+                    return attribute.sorting;
+                })
+            },
+            reactiveFilters: function () {
+                return _.map(this.filters, function (filter) {
+                    return 'filter_' + filter.code;
+                })
+            },
+            sortOptions: function () {
+                return _.flatMap(this.sortings, function (sorting) {
+                    return _.map(['asc', 'desc'], function (direction) {
+                        return {
+                            label: sorting.name + ' ' + direction,
+                            dataField: sorting.code + (sorting.code != 'price' ? '.keyword' : ''),
+                            sortBy: direction
+                        }
+                    })
+                })
             }
         }
     }

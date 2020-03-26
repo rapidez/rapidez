@@ -14,8 +14,8 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('filters', function () {
+Route::get('attributes', function () {
     return Attribute::getCachedWhere(function ($attribute) {
-        return $attribute['filter'];
+        return $attribute['filter'] || $attribute['sorting'];
     });
 });
