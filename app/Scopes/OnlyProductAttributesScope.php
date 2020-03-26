@@ -20,7 +20,7 @@ class OnlyProductAttributesScope implements Scope
         $builder
                 ->selectRaw('
                     eav_attribute.attribute_id AS id,
-                    IFNULL(value, eav_attribute.attribute_code) AS name,
+                    value AS name,
                     attribute_code AS code,
                     backend_type AS type,
                     frontend_input AS input,
@@ -28,12 +28,12 @@ class OnlyProductAttributesScope implements Scope
                     GREATEST(
                         is_searchable,
                         is_visible_on_front,
-                        used_in_product_listing,
+                        is_used_for_promo_rules,
                         attribute_code IN ("'.implode('","', config('shop.default_flat_attributes')).'")
                     ) AS flat
                 ')
                 ->join('catalog_eav_attribute', 'eav_attribute.attribute_id', '=', 'catalog_eav_attribute.attribute_id')
-                ->leftJoin('eav_attribute_label', function ($join) {
+                ->join('eav_attribute_label', function ($join) {
                     $join->on('eav_attribute.attribute_id', '=', 'eav_attribute_label.attribute_id')
                          ->where('store_id', config('shop.store'));
                 })

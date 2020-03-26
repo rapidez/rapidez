@@ -2,7 +2,6 @@
 
 namespace App\Scopes;
 
-use Illuminate\Support\Facades\Cache;
 use App\Attribute;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -19,20 +18,9 @@ class WithProductAttributesScope implements Scope
      */
     public function apply(Builder $builder, Model $model)
     {
-        // So i was debuggin this, and this doesn't work with small image.
-        // Lets have a look together next week Roy :)
-
-        $attributes = array_filter(Attribute::all()->toArray(), function($attribute) {
+        $attributes = Attribute::getCachedWhere(function ($attribute) {
             return array_key_exists($attribute['code'], config('shop.attributes'));
         });
-
-        // $attributes = Attribute::getCachedWhere(function ($attribute) {
-        //     dump($attribute['code']);
-        //     if ($attribute['code'] == 'small_image') {
-        //         dd($attribute);
-        //     }
-        //     return array_key_exists($attribute['code'], config('shop.attributes'));
-        // });
 
         $builder->select($builder->getQuery()->from.'.entity_id AS id');
 
