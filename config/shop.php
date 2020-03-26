@@ -34,8 +34,11 @@ return [
         'shoe_type'         => true,
         'meta_title'        => false,
         'meta_description'  => false,
-
-        // Custom attributes which are available by default.
-        'category_ids'      => true,
     ],
+
+    // Custom attributes which are available by default
+    // with a boolean if it should be indexed in ES.
+    'custom_attributes' => [
+        'category_ids'      => true,
+    ]
 ];

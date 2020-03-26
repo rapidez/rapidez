@@ -38,6 +38,7 @@ class Attribute extends Model
 
     public static function getCachedWhere(callable $callback): array
     {
+        // To bypass cache use the "array" cache driver.
         return Arr::where(Cache::rememberForever('attributes', function () {
             return self::all()->toArray();
         }), function ($attribute) use ($callback) {
