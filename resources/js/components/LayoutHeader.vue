@@ -26,7 +26,7 @@
                     <ul class="flex flex-wrap" v-if="isOpen">
                         <li
                             class="flex w-1/2 sm:w-1/3 md:w-1/4 px-1 my-1"
-                            v-for="suggestion in (suggestions || [])"
+                            v-for="suggestion in uniqueifyResults(suggestions || [])"
                             v-bind="getItemProps({ item: suggestion })"
                             v-on="getItemEvents({ item: suggestion })"
                             :key="suggestion.label">
@@ -64,6 +64,14 @@
         props: ['store', 'category', 'mediaUrl'],
 
         methods: {
+            uniqueifyResults: (suggestions) => {
+                var uniqueIds = [];
+                return _.filter(suggestions, function (item) {
+                    let present = !uniqueIds.includes(item.source.id)
+                    uniqueIds.push(item.source.id);
+                    return present;
+                })
+            },
             getCustomHighlight: (props) => ({
                 highlight: {
                     pre_tags: ['<mark>'],
