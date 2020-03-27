@@ -13,7 +13,12 @@
 </head>
 <body class="bg-white antialiased">
     <div id="app">
-        <layout-header></layout-header>
+        <layout-header
+            store="{{ config('shop.store') }}"
+            category="{{ $category->entity_id }}"
+            media-url="{{ config('shop.media_url') }}"
+        >
+        </layout-header>
         <div class="mx-5">
             @yield('content')
         </div>
