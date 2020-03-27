@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div :style="baseStyles">
         <reactive-base
             :app="'products_' + store"
             url="http://localhost:9200"
@@ -41,6 +41,7 @@
                         :react="{and: reactiveFilters}"
                         :defaultQuery="categoryQuery"
                         :sortOptions="sortOptions"
+                        @queryChange="onChange"
                         URLParams
                     >
                         <div class="flex w-1/2 sm:w-1/3 md:w-1/4 px-1 my-1" slot="renderItem" slot-scope="{ item }">
@@ -66,21 +67,16 @@
         data: () => ({
             loaded: false,
             attributes: [],
+            baseStyles: {},
         }),
 
-        methods: {
-            categoryQuery() {
-                return {
-                    "query": {
-                        "terms": {
-                            "category_ids": [ this.category ]
-                        }
-                    }
+        mounted() {
+            if (sessionStorage.getItem('height')) {
+                this.baseStyles = {
+                    minHeight: sessionStorage.getItem('height') + 'px'
                 }
             }
-        },
 
-        mounted() {
             if (sessionStorage.getItem('attributes')) {
                 this.attributes = JSON.parse(sessionStorage.getItem('attributes'))
                 this.loaded = true
@@ -96,6 +92,21 @@
                  .catch((error) => {
                     alert('Something went wrong')
                  })
+        },
+
+        methods: {
+            categoryQuery() {
+                return {
+                    "query": {
+                        "terms": {
+                            "category_ids": [ this.category ]
+                        }
+                    }
+                }
+            },
+            onChange() {
+                sessionStorage.setItem('height', this.$el.clientHeight)
+            }
         },
 
         computed: {
