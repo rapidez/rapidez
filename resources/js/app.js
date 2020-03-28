@@ -10,11 +10,8 @@ window.Vue = require('vue');
 
 import ReactiveSearch from '@appbaseio/reactivesearch-vue';
 Vue.use(ReactiveSearch);
-Vue.prototype.$log = console.log;
-
- Vue.filter('price', function (value) {
-    return parseFloat(value).toFixed(2);
-});
+Vue.prototype.config = window.config;
+require('./filters');
 
 /**
  * The following block of code may be used to automatically register your

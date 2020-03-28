@@ -4,11 +4,7 @@
             Logo
         </div>
         <div class="w-1/3">
-            <autocomplete
-                :store="store"
-                :category="category"
-                :media-url="mediaUrl">
-            </autocomplete>
+            <autocomplete></autocomplete>
         </div>
         <div class="w-1/3">
             Meuk
@@ -18,6 +14,6 @@
 
 <script>
     export default {
-        props: ['store', 'category', 'mediaUrl']
+        //
     };
 </script>

@@ -3,8 +3,19 @@ return [
     // Default store, see middleware: DetermineAndSetShop
     'store' => 1,
 
+    // Elasticsearch url.
+    'es_url' => env('ES_URL', 'http://localhost:9200'),
+
     // Media url.
     'media_url' => env('MEDIA_URL', 'https://media.running.shop'),
+
+    // The variables which should be exposed to the frontend.
+    'exposed' => [
+        'store',
+        'es_url',
+        'media_url',
+        'searchable',
+    ],
 
     // The attributes which are by default present in the flat tables.
     // Custom attributes do not have to be listed here.
@@ -40,5 +51,12 @@ return [
     // with a boolean if it should be indexed in ES.
     'custom_attributes' => [
         'category_ids'      => true,
-    ]
+    ],
+
+    // The searchable attributes.
+    'searchable' => [
+        'name',
+        'description',
+        'manufacturer',
+    ],
 ];

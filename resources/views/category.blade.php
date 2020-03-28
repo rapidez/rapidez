@@ -10,11 +10,7 @@
         {!! str_replace('<ul>', '<ul class="flex">', $block->content) !!}
     @endif
 
-    <products
-        store="{{ config('shop.store') }}"
-        category="{{ $category->entity_id }}"
-        media-url="{{ config('shop.media_url') }}"
-    ></products>
+    <products></products>
 
     {!! str_replace('<h2>', '<h2 class="font-bold text-2xl">', $category->description) !!}
 @endsection

@@ -13,12 +13,7 @@
 </head>
 <body class="bg-white antialiased">
     <div id="app">
-        <layout-header
-            store="{{ config('shop.store') }}"
-            category="{{ $category->entity_id }}"
-            media-url="{{ config('shop.media_url') }}"
-        >
-        </layout-header>
+        <layout-header></layout-header>
         <div class="mx-5">
             @yield('content')
         </div>
@@ -26,6 +21,9 @@
     </div>
 
     <!-- Scripts -->
+    <script>
+        window.config = @json(array_merge(Arr::only(config('shop'), config('shop.exposed')), $jsVars ?? []))
+    </script>
     <script src="{{ mix('js/app.js') }}"></script>
     @stack('scripts')
 </body>

@@ -19,7 +19,8 @@ Route::get('{any?}', function ($url = null) {
     if ($rewrite = Rewrite::firstWhere('request_path', $url)) {
         if ($rewrite->entity_type == 'category') {
             if ($category = Category::find($rewrite->entity_id)) {
-                return view('category', compact('category'));
+                $jsVars['category'] = $category->entity_id;
+                return view('category', compact('category', 'jsVars'));
             }
         }
 

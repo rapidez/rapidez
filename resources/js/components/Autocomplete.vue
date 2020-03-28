@@ -1,11 +1,11 @@
 <template>
     <reactive-base
-        :app="'products_' + store"
-        url="http://localhost:9200">
+        :app="'products_' + config.store"
+        :url="config.es_url">
 
         <data-search
             componentId="SearchSensor"
-            :dataField="['name', 'description', 'manufacturer']"
+            :dataField="config.searchable"
             highlight
             :customHighlight="getCustomHighlight"
             :debounce="100"
@@ -27,9 +27,8 @@
                             v-bind="getItemProps({ item: suggestion })"
                             v-on="getItemEvents({ item: suggestion })"
                             :key="suggestion._id">
-                            {{ $log(suggestion) }}
                             <a :href="'/'+suggestion.source.url_key" class="block w-full bg-gray-100" key="suggestion._id">
-                                <img :src="mediaUrl+'/catalog/product/' + suggestion.source.thumbnail" class="object-contain h-48 w-full mb-3" />
+                                <img :src="config.media_url+'/catalog/product/' + suggestion.source.thumbnail" class="object-contain h-48 w-full mb-3" />
                                 <div class="px-2">
                                     <strong class="block hyphens">{{ suggestion.source.name }}</strong>
                                     <span class="brand">{{ suggestion.source.manufacturer }}</span>
@@ -46,17 +45,7 @@
 </template>
 
 <script>
-    Vue.filter('truncate', function (value, limit) {
-        if (value.length > limit) {
-            value = value.substring(0, (limit - 3)) + '...';
-        }
-
-        return value
-    });
-
     export default {
-        props: ['store', 'category', 'mediaUrl'],
-
         methods: {
             uniqueifyResults: (suggestions) => {
                 var uniqueIds = [];
@@ -77,17 +66,6 @@
                     number_of_fragments: 0,
                 }
             }),
-            // parseSuggestion: (suggestion) => ({
-            //     label: suggestion.label,
-            //     value: suggestion.source.name,
-            //     url: suggestion.source.url_key,
-            //     description: suggestion.source.description,
-            //     thumbnail: suggestion.source.thumbnail,
-            //     name: suggestion.source.name,
-            //     price: suggestion.source.price,
-            //     manufacturer: suggestion.source.manufacturer,
-            //     source: suggestion.source,
-            // }),
         }
     };
 </script>
