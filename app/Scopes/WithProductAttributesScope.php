@@ -29,7 +29,7 @@ class WithProductAttributesScope implements Scope
             if ($attribute->flat) {
                 // The attributes which are always present in the flat tables.
                 if (in_array($attribute->code, config('shop.default_flat_attributes'))) {
-                    $builder->addSelect($attribute->code.' AS '.$attribute->code);
+                    $builder->addSelect($builder->getQuery()->from.'.'.$attribute->code.' AS '.$attribute->code);
                 } else {
                     $builder->addSelect($attribute->code.'_value AS '.$attribute->code);
                 }

@@ -40,5 +40,10 @@ return [
     // with a boolean if it should be indexed in ES.
     'custom_attributes' => [
         'category_ids'      => true,
+    ],
+
+    // Enabled extensions.
+    'extensions' => [
+        \Extensions\Variants\VariantExtension::class,
     ]
 ];

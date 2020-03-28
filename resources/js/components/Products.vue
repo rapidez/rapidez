@@ -51,6 +51,13 @@
                                     <strong class="block hyphens">{{ item.name }}</strong>
                                     <div class="">&euro;{{ item.price }}</div>
                                 </div>
+                                <div v-if="item.variants">
+                                    <ul class="flex">
+                                        <li v-for="variant in item.variants" class="h-16 w-16">
+                                            <img :src="mediaUrl+'/catalog/product' + variant.image" class="object-contain h-16 w-full" />
+                                        </li>
+                                    </ul>
+                                </div>
                             </a>
                         </div>
                     </reactive-list>

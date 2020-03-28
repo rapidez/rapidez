@@ -8,6 +8,7 @@ use App\Store;
 use Cviebrock\LaravelElasticsearch\Manager as Elasticsearch;
 use Elasticsearch\Common\Exceptions\Missing404Exception;
 use Illuminate\Console\Command;
+use TorMorten\Eventy\Facades\Eventy;
 
 class IndexProductsCommand extends Command
 {
@@ -56,6 +57,11 @@ class IndexProductsCommand extends Command
 
             $productQuery = Product::where('visibility', 4);
 
+            $scopes = Eventy::filter('index.product.scopes') ?? [];
+            foreach ($scopes as $scope) {
+                $productQuery->withGlobalScope($scope, new $scope);
+            }
+
             $bar = $this->output->createProgressBar($productQuery->count());
             $bar->start();
 
@@ -69,6 +75,7 @@ class IndexProductsCommand extends Command
                                 : $product->$attribute;
                         }
                     }
+                    $data = Eventy::filter('index.product.data', $data, $product);
                     IndexProductJob::dispatch($data);
                 }
 

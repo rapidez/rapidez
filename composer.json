@@ -13,7 +13,8 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^6.2",
         "laravel/horizon": "^3.7",
-        "laravel/tinker": "^2.0"
+        "laravel/tinker": "^2.0",
+        "tormjens/eventy": "^0.5.9"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",
@@ -36,7 +37,8 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "app/",
+            "Extensions\\": "extensions/"
         }
     },
     "autoload-dev": {
