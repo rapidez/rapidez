@@ -1,6 +1,7 @@
 <?php
 
 use App\Category;
+use App\Page;
 use App\Product;
 use App\Rewrite;
 
@@ -29,5 +30,10 @@ Route::get('{any?}', function ($url = null) {
             }
         }
     }
+
+    if ($page = Page::firstWhere('identifier', $url ?: 'home')) {
+        return view('page', compact('page'));
+    }
+
     abort(404);
 })->where('any', '.*');

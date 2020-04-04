@@ -7,7 +7,7 @@ use App\Scopes\IsActiveScope;
 use App\Traits\HasContentAttributeWithVariables;
 use Illuminate\Database\Eloquent\Model;
 
-class Block extends Model
+class Page extends Model
 {
     use HasContentAttributeWithVariables;
 
@@ -16,14 +16,14 @@ class Block extends Model
      *
      * @var string
      */
-    protected $table = 'cms_block';
+    protected $table = 'cms_page';
 
     /**
      * The primary key for the model.
      *
      * @var string
      */
-    protected $primaryKey = 'block_id';
+    protected $primaryKey = 'page_id';
 
     /**
      * The "booting" method of the model.
