@@ -4,7 +4,7 @@
             Logo
         </div>
         <div class="w-1/3">
-            Search
+            <autocomplete></autocomplete>
         </div>
         <div class="w-1/3">
             Meuk
@@ -15,5 +15,5 @@
 <script>
     export default {
         //
-    }
+    };
 </script>

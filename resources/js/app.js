@@ -10,6 +10,8 @@ window.Vue = require('vue');
 
 import ReactiveSearch from '@appbaseio/reactivesearch-vue';
 Vue.use(ReactiveSearch);
+Vue.prototype.config = window.config;
+require('./filters');
 
 /**
  * The following block of code may be used to automatically register your
