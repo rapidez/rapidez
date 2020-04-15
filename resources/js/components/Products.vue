@@ -45,7 +45,7 @@
                         URLParams
                     >
                         <div class="flex w-1/2 sm:w-1/3 md:w-1/4 px-1 my-1" slot="renderItem" slot-scope="{ item }">
-                            <a :href="'/'+item.url_key" class="block w-full bg-gray-100" key="item._id">
+                            <a :href="'/'+item.url_key" class="block w-full bg-gray-100" :key="item.id">
                                 <img :src="config.media_url+'/catalog/product' + item.thumbnail" class="object-contain h-48 w-full mb-3" />
                                 <div class="px-2">
                                     <strong class="block hyphens">{{ item.name }}</strong>
@@ -54,10 +54,11 @@
                                 <div v-if="item.variants">
                                     <ul class="flex">
                                         <li v-for="variant in item.variants" class="h-16 w-16">
-                                            <img :src="mediaUrl+'/catalog/product' + variant.image" class="object-contain h-16 w-full" />
+                                            <img :src="config.media_url+'/catalog/product' + variant.image" class="object-contain h-16 w-full" />
                                         </li>
                                     </ul>
                                 </div>
+                                <product-compare-checkbox :key="item.id" />
                             </a>
                         </div>
                     </reactive-list>
