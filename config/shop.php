@@ -63,5 +63,6 @@ return [
     // Enabled extensions.
     'extensions' => [
         \Extensions\Variants\VariantExtension::class,
+        \Extensions\Compare\CompareExtension::class,
     ],
 ];
