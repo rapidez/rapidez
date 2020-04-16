@@ -17,7 +17,7 @@ To explore the data in ElasticSearch you can use Kibana: http://localhost:5601
 
 ## Extensions
 
-The idea is to have a base application which can be extended with extensions. Those extensions currently house within the `extensions` directory. Later on this should be moved to Composer packages. Until then these extensions can be enabled/disabled in the shop configuration: `config/shop.php`.
+The idea is to have a base application which can be extended with extensions. Those extensions currently house within the `extensions` directory. Later on this should be moved to Composer packages. Until then these extensions can be enabled/disabled by their service providers in `config/app.php`.
 
 To keep everything as flexible as possible when a extension is enabled only the functional part of it will be active. The visual part needs to be registered manually so it can be customized however, and placed wherever wanted. Read the "Compare extension" readme at `extensions/Compare/README.md`. So a developer does have multiple options:
 

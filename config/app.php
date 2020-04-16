@@ -165,7 +165,8 @@ return [
         /*
          * Package Service Providers...
          */
-        App\Providers\ExtensionsServiceProvider::class,
+        Extensions\Variants\VariantExtensionServiceProvider::class,
+        Extensions\Compare\CompareExtensionServiceProvider::class,
 
         /*
          * Application Service Providers...

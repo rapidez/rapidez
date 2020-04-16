@@ -4,13 +4,18 @@ namespace Extensions\Compare;
 
 use App\Product;
 use App\Scopes\WithProductCategoryIdsScope;
-use Extensions\ExtensionInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\ServiceProvider;
 
-class CompareExtension implements ExtensionInterface
+class CompareExtensionServiceProvider extends ServiceProvider
 {
+    /**
+     * Bootstrap services.
+     *
+     * @return void
+     */
     public function boot()
     {
         View::composer(['category', 'compare'], function ($view) {
@@ -22,6 +27,10 @@ class CompareExtension implements ExtensionInterface
         });
 
         Route::middleware('web')->group(function () {
+            Route::get('compare', function () {
+                return view('compare::overview');
+            });
+
             Route::post('compare', function (Request $request) {
                 abort_unless(Product::find($request->product), 404);
                 $request->session()->push('compare', $request->product);

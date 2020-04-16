@@ -2,12 +2,17 @@
 
 namespace Extensions\Variants;
 
-use Extensions\ExtensionInterface;
 use Extensions\Variants\Scopes\WithProductVariantsScope;
+use Illuminate\Support\ServiceProvider;
 use TorMorten\Eventy\Facades\Eventy;
 
-class VariantExtension implements ExtensionInterface
+class VariantExtensionServiceProvider extends ServiceProvider
 {
+    /**
+     * Bootstrap services.
+     *
+     * @return void
+     */
     public function boot()
     {
         Eventy::addFilter('index.product.scopes', function () {

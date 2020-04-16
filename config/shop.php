@@ -59,10 +59,4 @@ return [
         'description',
         'manufacturer',
     ],
-
-    // Enabled extensions.
-    'extensions' => [
-        \Extensions\Variants\VariantExtension::class,
-        \Extensions\Compare\CompareExtension::class,
-    ],
 ];
