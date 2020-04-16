@@ -19,7 +19,7 @@ There is a `Widget.vue` component which can be used. Just register it in the `ap
 ```
 Vue.component('product-compare-widget', require('Extensions/Compare/components/Widget.vue').default);
 ```
-This component can be customized with multiple class props. If it does not fit your needs you can create your own Vue component and use the mixin: `Methods.js` for the functionality as done within the component. Most likely the component is displayed fixed so render it at the end of the html with for example the `page_end` stack on the `category.blade.php`:
+This component can be customized with multiple class props. It's also possible to overwrite the product part of it with the slot. If it does not fit your needs you can create your own Vue component and use the mixin: `Methods.js` for the functionality as done within the component. Most likely the component is displayed fixed so render it at the end of the html with for example the `page_end` stack on the `category.blade.php`:
 ```
 @push('page_end')
     <product-compare-widget
