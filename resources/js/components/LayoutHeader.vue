@@ -1,5 +1,5 @@
 <template>
-    <div class="flex mb-5 bg-gray-400">
+    <div class="flex mb-5 bg-secondary">
         <div class="w-1/3">
             Logo
         </div>

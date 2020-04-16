@@ -3,8 +3,11 @@
         <div :class="classProduct" v-for="product in products">
             <slot>
                 {{ product.name }}
-                <button :class="classButton" @click="compareRemove(product.id)">Remove</button>
+                <button :class="classRemoveButton" @click="compareRemove(product.id)">Remove</button>
             </slot>
+        </div>
+        <div class="text-center">
+            <a href="/compare" :class="classCompareButton">Compare</a>
         </div>
     </div>
 </template>
@@ -17,14 +20,17 @@
 
         props: {
             classWrapper: {
-                default: 'fixed right-0 bottom-0 mr-16 p-3 bg-gray-500 rounded-t',
+                default: 'fixed right-0 bottom-0 mr-16 p-3 bg-secondary rounded-t',
             },
             classProduct: {
-                default: '',
+                default: 'py-2',
             },
-            classButton: {
-                default: '',
-            }
+            classCompareButton: {
+                default: 'inline-block btn btn-primary mt-3',
+            },
+            classRemoveButton: {
+                default: 'float-right ml-5 text-gray-800 text-sm',
+            },
         },
 
         computed: {

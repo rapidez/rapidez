@@ -17,7 +17,6 @@
 
 @push('page_end')
     <product-compare-widget
-        class-wrapper="fixed right-0 bottom-0 mr-16 p-3 bg-blue-500 rounded-t"
-        class-product="border-b"
+        class-product="py-2 border-b border-primary"
     />
 @endpush

@@ -1,5 +1,5 @@
 <template>
-    <div class="flex mt-5 py-3 bg-gray-400">
+    <div class="flex mt-5 py-3 bg-secondary">
         <div class="w-1/4">
             Content
         </div>

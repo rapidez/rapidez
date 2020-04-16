@@ -1,3 +1,8 @@
+:root {
+    --color-primary: #3182ce; /* bg-blue-600 */
+    --color-secondary: #cbd5e0; /* bg-gray-400 */
+}
+
 /**
  * This injects Tailwind's base styles, which is a combination of
  * Normalize.css and some additional base styles.
@@ -35,6 +40,8 @@
  * @import "components/buttons";
  * @import "components/forms";
  */
+
+@import "components/buttons.css";
 
 /**
  * This injects all of Tailwind's utility classes, generated based on your
