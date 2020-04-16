@@ -1,4 +1,6 @@
 - Header search => RAKI
+    - Basis styling (dus project onafhankelijk)
+    - "searchable" configuratie weg en "is_searchable" kolom gebruiken zoals ook gedaan met de compare en filters
 - Sizes filter POP => RAKI
 - Color filter POP => RAKI
 - Content pages
