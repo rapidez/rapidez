@@ -34,7 +34,7 @@ Vue.component('product-compare-overview', require('Extensions/Compare/components
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-var app = new Vue({
+const app = new Vue({
     el: '#app',
     data: {
         shop: window.shop
