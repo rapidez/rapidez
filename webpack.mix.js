@@ -20,7 +20,7 @@ mix.js('resources/js/app.js', 'public/js')
    .webpackConfig({
         resolve: {
             alias: {
-                'Extensions': path.resolve('extensions'),
+                'Extensions': path.resolve(__dirname, 'extensions'),
             },
         }
     });

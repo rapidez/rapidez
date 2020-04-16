@@ -10,7 +10,7 @@ window.Vue = require('vue');
 
 import ReactiveSearch from '@appbaseio/reactivesearch-vue';
 Vue.use(ReactiveSearch);
-Vue.prototype.config = window.config;
+Vue.prototype.config = window.shop.config;
 require('./filters');
 
 /**
@@ -24,12 +24,18 @@ require('./filters');
 const files = require.context('./', true, /\.vue$/i)
 files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
+Vue.component('product-compare-widget', require('Extensions/Compare/components/Widget.vue').default);
+Vue.component('product-compare-checkbox', require('Extensions/Compare/components/Checkbox.vue').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({
+var app = new Vue({
     el: '#app',
+    data: {
+        shop: window.shop
+    },
 });

@@ -18,11 +18,13 @@
             @yield('content')
         </div>
         <layout-footer></layout-footer>
+        @stack('page_end')
     </div>
 
     <!-- Scripts -->
     <script>
-        window.config = @json(array_merge(Arr::only(config('shop'), config('shop.exposed')), $jsVars ?? []));
+        window.shop = {};
+        window.shop.config = @json(array_merge(Arr::only(config('shop'), config('shop.exposed')), $jsVars ?? []));
         @stack('variables')
     </script>
     <script src="{{ mix('js/app.js') }}"></script>

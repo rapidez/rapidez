@@ -18,8 +18,8 @@ class WithProductAttributesScope implements Scope
      */
     public function apply(Builder $builder, Model $model)
     {
-        $attributes = Attribute::getCachedWhere(function ($attribute) {
-            return array_key_exists($attribute['code'], config('shop.attributes'));
+        $attributes = Attribute::getCachedWhere(function ($attribute) use ($model) {
+            return in_array($attribute['code'], $model->attributesToSelect ?: array_keys(config('shop.attributes')));
         });
 
         $builder->select($builder->getQuery()->from.'.entity_id AS id');

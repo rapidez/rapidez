@@ -24,12 +24,12 @@ class OnlyProductAttributesScope implements Scope
                     attribute_code AS code,
                     backend_type AS type,
                     frontend_input AS input,
+                    is_searchable AS search,
                     is_filterable AS filter,
+                    is_comparable AS compare,
                     used_for_sort_by AS sorting,
                     GREATEST(
                         is_searchable,
-                        is_visible_on_front,
-                        is_used_for_promo_rules,
                         attribute_code IN ("'.implode('","', config('shop.default_flat_attributes')).'")
                     ) AS flat
                 ')

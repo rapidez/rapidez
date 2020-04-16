@@ -4,23 +4,17 @@ namespace App;
 
 use App\Scopes\WithProductAttributesScope;
 use App\Scopes\WithProductCategoryIdsScope;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Arr;
 
 class Product extends Model
 {
-    /**
-     * The primary key for the model.
-     *
-     * @var string
-     */
+    public $attributesToSelect = [];
+
     protected $primaryKey = 'entity_id';
 
-    /**
-     * The "booting" method of the model.
-     *
-     * @return void
-     */
-    protected static function boot()
+    protected static function boot(): void
     {
         parent::boot();
 
@@ -28,13 +22,22 @@ class Product extends Model
         static::addGlobalScope(new WithProductCategoryIdsScope);
     }
 
-    /**
-     * Get the table associated with the model.
-     *
-     * @return string
-     */
-    public function getTable()
+    public function getTable(): string
     {
         return 'catalog_product_flat_' . config('shop.store');
+    }
+
+    public function scopeByIds(Builder $query, array $productIds): Builder
+    {
+        return $query->whereIn($this->getTable().'.entity_id', $productIds);
+    }
+
+    public function scopeOnlyComparable(Builder $query): Builder
+    {
+        $this->attributesToSelect = Arr::pluck(Attribute::getCachedWhere(function ($attribute) {
+            return $attribute['compare'] || in_array($attribute['code'], ['name']);
+        }), 'code');
+
+        return $query;
     }
 }

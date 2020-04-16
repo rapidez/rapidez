@@ -58,7 +58,10 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <product-compare-checkbox :key="item.id" />
+                                <product-compare-checkbox
+                                    :key="item.id"
+                                    classLabel="italic"
+                                />
                             </a>
                         </div>
                     </reactive-list>
@@ -105,7 +108,7 @@
                 return {
                     "query": {
                         "terms": {
-                            "category_ids": [ config.category ]
+                            "category_ids": [ this.$root.shop.config.category ]
                         }
                     }
                 }
