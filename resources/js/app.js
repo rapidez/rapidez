@@ -26,6 +26,7 @@ files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(
 
 Vue.component('product-compare-widget', require('Extensions/Compare/components/Widget.vue').default);
 Vue.component('product-compare-checkbox', require('Extensions/Compare/components/Checkbox.vue').default);
+Vue.component('product-compare-overview', require('Extensions/Compare/components/Overview.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

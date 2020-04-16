@@ -2,7 +2,7 @@
 
 The compared products are available at `this.$root.shop.compare` on the category and compare page which is reactive.
 
-## Compare checkbox
+## Checkbox
 
 There is a `Checkbox.vue` component which can be used. Just register it in the `app.js`:
 ```
@@ -13,7 +13,7 @@ This component can be customized with `classLabel` and `classCheckbox` props. If
 <product-compare-checkbox :key="item.id" />
 ```
 
-## Compare widget
+## Widget
 
 There is a `Widget.vue` component which can be used. Just register it in the `app.js`:
 ```
@@ -28,3 +28,7 @@ This component can be customized with multiple class props. It's also possible t
 @endpush
 ```
 The props should be in kebab-case in Blade.
+
+## Overview
+
+Just like the others there is a `Overview.vue` component. And because this is a whole page there is also a Blade view. To overwrite that view you've to publish it with `php artisan vendor:publish --provider="Extensions\Compare\CompareExtensionServiceProvider"`.

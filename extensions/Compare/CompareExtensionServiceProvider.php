@@ -18,7 +18,13 @@ class CompareExtensionServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer(['category', 'compare'], function ($view) {
+        $this->loadViewsFrom(__DIR__.'/views', 'compare-extension');
+
+        $this->publishes([
+            __DIR__.'/views' => resource_path('views/vendor/compare-extension'),
+        ], 'views');
+
+        View::composer(['category', 'compare-extension::overview'], function ($view) {
             if ($productIds = session('compare')) {
                 $products = $this->getComparedProductsArray($productIds);
             }
@@ -28,7 +34,7 @@ class CompareExtensionServiceProvider extends ServiceProvider
 
         Route::middleware('web')->group(function () {
             Route::get('compare', function () {
-                return view('compare::overview');
+                return view('compare-extension::overview');
             });
 
             Route::post('compare', function (Request $request) {
