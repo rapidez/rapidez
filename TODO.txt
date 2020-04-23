@@ -1,8 +1,17 @@
 - Header search => RAKI
     - Basis styling (dus project onafhankelijk)
+        - Styling ala RS
     - "searchable" configuratie weg en "is_searchable" kolom gebruiken zoals ook gedaan met de compare en filters
 - Sizes filter POP => RAKI
 - Color filter POP => RAKI
-- Content pages
+- Content pages => ROY/RAKI
+    - Page builder in rs zetten => RAKI
+    - Homepage opmaak met pagebuilder. => RAKI
+- Menu in header => ROY
+    - Standaard magento menu
+    - Snowdog extensie
+- Header + footer in magento 2 zetten. => RAKI
+    - Hoe gaat we dit opzetten zodat we dit op 1 plek kunnen beheren
 - PDP
 - Vue Router / Turbolinks
+- When are attributes added to the flat table? => Raki/Roy
