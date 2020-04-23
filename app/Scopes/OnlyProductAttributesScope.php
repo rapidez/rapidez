@@ -28,7 +28,7 @@ class OnlyProductAttributesScope implements Scope
                     is_filterable AS filter,
                     is_comparable AS compare,
                     used_for_sort_by AS sorting,
-                    attribute_code IN ("'.implode('","', config('shop.default_flat_attributes')).'") AS flat
+                    used_in_product_listing AS flat
                 ')
                 ->join('catalog_eav_attribute', 'eav_attribute.attribute_id', '=', 'catalog_eav_attribute.attribute_id')
                 ->leftJoin('eav_attribute_label', function ($join) {

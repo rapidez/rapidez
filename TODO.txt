@@ -14,5 +14,4 @@
     - this should be managable in one place (laravel + magento)
 - PDP
 - Vue Router / Turbolinks
-- When are attributes added to the flat table? => Raki/Roy
 - Image resizing

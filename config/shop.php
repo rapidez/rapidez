@@ -17,17 +17,6 @@ return [
         'searchable',
     ],
 
-    // The attributes which are by default present in the flat tables.
-    // Custom attributes do not have to be listed here.
-    'default_flat_attributes' => [
-        'name',
-        'description',
-        'sku',
-        'price',
-        'thumbnail',
-        'url_key',
-    ],
-
     // The attributes that should be available when getting a
     // product with a boolean if it should be indexed in ES.
     'attributes' => [
