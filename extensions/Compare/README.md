@@ -1,6 +1,6 @@
 # Compare
 
-The compared products are available at `this.$root.shop.compare` on the category and compare page which is reactive.
+The compared products are available at `this.$root.config.compare` on the category and compare page which is reactive.
 
 ## Checkbox
 
