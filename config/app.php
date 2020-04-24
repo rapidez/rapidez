@@ -167,6 +167,7 @@ return [
          */
         Extensions\Variants\VariantExtensionServiceProvider::class,
         Extensions\Compare\CompareExtensionServiceProvider::class,
+        Extensions\SnowdogMenu\SnowdogMenuExtensionServiceProvider::class,
 
         /*
          * Application Service Providers...
