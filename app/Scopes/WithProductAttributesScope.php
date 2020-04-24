@@ -22,7 +22,11 @@ class WithProductAttributesScope implements Scope
             return in_array($attribute['code'], $model->attributesToSelect ?: array_keys(config('shop.attributes')));
         });
 
-        $builder->select($builder->getQuery()->from.'.entity_id AS id');
+        $attributes = array_filter($attributes, fn ($a) => $a['type'] !== 'static');
+
+        $builder
+            ->select($builder->getQuery()->from.'.entity_id AS id')
+            ->addSelect('sku');
 
         foreach ($attributes as $attribute) {
             $attribute = (object)$attribute;
