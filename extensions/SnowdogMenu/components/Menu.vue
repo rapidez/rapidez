@@ -32,9 +32,3 @@
         }
     }
 </script>
-
-<style>
-    .hover\:next-flex:hover > * + * {
-        display: flex;
-    }
-</style>
