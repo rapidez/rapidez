@@ -10,7 +10,7 @@ window.Vue = require('vue');
 
 import ReactiveSearch from '@appbaseio/reactivesearch-vue';
 Vue.use(ReactiveSearch);
-Vue.prototype.config = window.shop.config;
+Vue.prototype.config = window.config;
 require('./filters');
 
 /**
@@ -37,6 +37,6 @@ Vue.component('product-compare-overview', require('Extensions/Compare/components
 const app = new Vue({
     el: '#app',
     data: {
-        shop: window.shop
+        config: window.config
     },
 });

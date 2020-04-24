@@ -2,6 +2,7 @@
     - Basis styling (dus project onafhankelijk)
         - Styling ala RS
     - "searchable" configuratie weg en "is_searchable" kolom gebruiken zoals ook gedaan met de compare en filters
+
 - Sizes filter POP => RAKI
 - Color filter POP => RAKI
 - Content pages => ROY/RAKI
@@ -15,3 +16,4 @@
 - PDP
 - Vue Router / Turbolinks
 - Image resizing
+- Header search uniqueifyResults gives wrong results with counter

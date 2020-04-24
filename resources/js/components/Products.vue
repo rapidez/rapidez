@@ -108,7 +108,7 @@
                 return {
                     "query": {
                         "terms": {
-                            "category_ids": [ this.$root.shop.config.category ]
+                            "category_ids": [ this.$root.config.category ]
                         }
                     }
                 }

@@ -13,7 +13,7 @@ export default {
 
     computed: {
         checked: function () {
-            return this.$root.shop.compare[this.productId]
+            return this.$root.config.compare[this.productId]
         }
     }
 }

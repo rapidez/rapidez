@@ -35,7 +35,7 @@
 
         computed: {
             products: function () {
-                return this.$root.shop.compare
+                return this.$root.config.compare
             }
         }
     }

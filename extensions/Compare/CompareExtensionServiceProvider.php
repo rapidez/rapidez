@@ -29,7 +29,7 @@ class CompareExtensionServiceProvider extends ServiceProvider
                 $products = $this->getComparedProductsArray($productIds);
             }
 
-            $view->getFactory()->startPush('variables', 'window.shop.compare = '.json_encode($products ?? []).';');
+            config(['frontend.compare' => $products ?? []]);
         });
 
         Route::middleware('web')->group(function () {

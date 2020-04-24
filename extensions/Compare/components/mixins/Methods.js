@@ -1,7 +1,7 @@
 export default {
     methods: {
         compareToggle(productId) {
-            if (productId in this.$root.shop.compare) {
+            if (productId in this.$root.config.compare) {
                 this.compareRemove(productId)
             } else {
                 this.compareAdd(productId)
@@ -12,7 +12,7 @@ export default {
             axios.post('/compare', {
                 product: productId
             }).then(response => {
-                this.$root.shop.compare = response.data;
+                this.$root.config.compare = response.data;
             }).catch(error => {
                 alert('Something went wrong.')
             })
@@ -20,7 +20,7 @@ export default {
 
         compareRemove(productId) {
             axios.delete('/compare/' + productId).then(response => {
-                this.$root.shop.compare = response.data;
+                this.$root.config.compare = response.data;
             }).catch(error => {
                 alert('Something went wrong.')
             })

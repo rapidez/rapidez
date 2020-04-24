@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Attribute;
+use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +25,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        config(['frontend' => Arr::only(config('shop'), config('shop.exposed'))]);
+
+        config(['frontend.searchable' => Arr::pluck(Attribute::getCachedWhere(function ($attribute) {
+            return $attribute['search'];
+        }), 'code')]);
     }
 }

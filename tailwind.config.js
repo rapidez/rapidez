@@ -7,6 +7,10 @@ module.exports = {
         },
         inset: {
             '-full': '-100%',
+            '1/2': '50%',
+        },
+        width: {
+            '960px': '960px'
         }
     }
   },

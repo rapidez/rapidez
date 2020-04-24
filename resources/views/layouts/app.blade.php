@@ -23,9 +23,7 @@
 
     <!-- Scripts -->
     <script>
-        window.shop = {};
-        window.shop.config = @json(array_merge(Arr::only(config('shop'), config('shop.exposed')), $jsVars ?? []));
-        @stack('variables')
+        window.config = @json(config('frontend'));
     </script>
     <script src="{{ mix('js/app.js') }}"></script>
     @stack('scripts')

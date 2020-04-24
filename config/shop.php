@@ -40,12 +40,5 @@ return [
     // with a boolean if it should be indexed in ES.
     'custom_attributes' => [
         'category_ids'      => true,
-    ],
-
-    // The searchable attributes.
-    'searchable' => [
-        'name',
-        'description',
-        'manufacturer',
-    ],
+    ]
 ];
