@@ -1,19 +1,17 @@
-- Header search => RAKI
-    - Basis styling (dus project onafhankelijk)
-        - Styling ala RS
-    - "searchable" configuratie weg en "is_searchable" kolom gebruiken zoals ook gedaan met de compare en filters
+Raki
+- POP Sizes filter
+- POP Color filter
+- Content pages with Magento page builder
+- Header and footer Vue components in Magento 2
 
-- Sizes filter POP => RAKI
-- Color filter POP => RAKI
-- Content pages => ROY/RAKI
-    - Page builder RS/magento => RAKI
-    - Homepage styling with pagebuilder. => RAKI
-- Menu in header => ROY
-    - Standaard magento menu
-    - Snowdog extensie
-- Header + footer in magento 2. => RAKI
-    - this should be managable in one place (laravel + magento)
-- PDP
+Roy
+- PDP Size selector
+- PDP Add to cart
+
+Lonneke
+- Compare
+
+Dunno
 - Vue Router / Turbolinks
 - Image resizing
 - Header search uniqueifyResults gives wrong results with counter
