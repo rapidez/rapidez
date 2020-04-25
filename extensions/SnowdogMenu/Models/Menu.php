@@ -2,6 +2,7 @@
 
 namespace Extensions\SnowdogMenu\Models;
 
+use App\Scopes\ForCurrentStoreScope;
 use App\Scopes\IsActiveScope;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -32,15 +33,7 @@ class Menu extends Model
         parent::boot();
 
         static::addGlobalScope(new IsActiveScope);
-
-        // TODO: Let the ForCurrentStoreScope scope accept params so
-        // that global scope can be used instead of having this.
-        static::addGlobalScope('for-current-store', function (Builder $builder) {
-            $builder->join('snowmenu_store', function ($join) {
-                $join->on('snowmenu_store.menu_id', '=', 'snowmenu_menu.menu_id')
-                     ->where('store_id', config('shop.store'));
-            });
-        });
+        static::addGlobalScope(new ForCurrentStoreScope('snowmenu_store'));
     }
 
     /**
