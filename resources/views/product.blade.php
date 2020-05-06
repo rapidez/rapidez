@@ -12,6 +12,8 @@
     <div class="font-bold text-3xl mb-3">{{ round($product->price, 2) }}</div>
 
     <dl class="flex flex-wrap w-64">
+        <dt class="w-1/2 font-bold">ID</dt>
+        <dd class="w-1/2">{{ $product->id }}</dd>
         <dt class="w-1/2 font-bold">SKU</dt>
         <dd class="w-1/2">{{ $product->sku }}</dd>
         <dt class="w-1/2 font-bold">Color</dt>
