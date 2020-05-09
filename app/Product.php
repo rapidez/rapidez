@@ -7,6 +7,7 @@ use App\Scopes\WithProductAttributesScope;
 use App\Scopes\WithProductCategoryIdsScope;
 use App\Scopes\WithProductSuperAttributesScope;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Arr;
 use TorMorten\Eventy\Facades\Eventy;
 
@@ -56,6 +57,17 @@ class Product extends Model
         $casts['super_attributes'] = 'object';
 
         return $casts;
+    }
+
+    public function images(): BelongsToMany
+    {
+        return $this->belongsToMany(
+            ProductImage::class,
+            'catalog_product_entity_media_gallery_value_to_entity',
+            'entity_id',
+            'value_id',
+            'id'
+        );
     }
 
     public function scopeByIds(Builder $query, array $productIds): Builder
