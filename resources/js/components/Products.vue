@@ -26,6 +26,7 @@
                             :title="filter.name"
                             :selectAllLabel="'All '+ filter.name"
                             :react="{and: reactiveFilters}"
+                            :defaultQuery="categoryQuery"
                             URLParams
                         />
                     </div>
