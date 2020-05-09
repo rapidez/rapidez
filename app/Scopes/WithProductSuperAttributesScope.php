@@ -35,7 +35,10 @@ class WithProductSuperAttributesScope implements Scope
         }
 
         $query = DB::table('catalog_product_super_attribute')
-            ->selectRaw('JSON_OBJECTAGG(eav_attribute.attribute_id, COALESCE(NULLIF(value, ""), frontend_label)) AS super_attributes')
+            ->selectRaw('JSON_OBJECTAGG(eav_attribute.attribute_id, JSON_OBJECT(
+                "code", attribute_code,
+                "label", COALESCE(NULLIF(value, ""), frontend_label)
+            )) AS super_attributes')
             ->join('eav_attribute', 'eav_attribute.attribute_id', '=', 'catalog_product_super_attribute.attribute_id')
             ->leftJoin('catalog_product_super_attribute_label', function ($join) {
                 $join
