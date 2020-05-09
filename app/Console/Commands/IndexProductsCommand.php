@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Attribute;
 use App\Jobs\IndexProductJob;
 use App\Product;
 use App\Store;
@@ -26,7 +27,7 @@ class IndexProductsCommand extends Command
      */
     protected $description = 'Index the products in Elasticsearch';
 
-    protected int $chunkSize = 1000;
+    protected int $chunkSize = 500;
 
     protected Elasticsearch $elasticsearch;
 
@@ -57,7 +58,7 @@ class IndexProductsCommand extends Command
 
             $productQuery = Product::where('visibility', 4);
 
-            $scopes = Eventy::filter('index.product.scopes') ?? [];
+            $scopes = Eventy::filter('index.product.scopes') ?: [];
             foreach ($scopes as $scope) {
                 $productQuery->withGlobalScope($scope, new $scope);
             }
@@ -68,11 +69,13 @@ class IndexProductsCommand extends Command
             $productQuery->chunk($this->chunkSize, function ($products) use ($store, $bar) {
                 foreach ($products as $product) {
                     $data = ['store' => $store->store_id];
-                    foreach (array_merge(config('shop.attributes'), config('shop.custom_attributes')) as $attribute => $index) {
+                    foreach (array_merge(
+                        config('shop.attributes'),
+                        config('shop.custom_attributes'),
+                        Eventy::filter('index.product.attributes') ?: []
+                    ) as $attribute => $index) {
                         if ($index) {
-                            $data[$attribute] = $attribute == 'category_ids'
-                                ? explode(',', $product->$attribute)
-                                : $product->$attribute;
+                            $data[$attribute] = $product->$attribute;
                         }
                     }
                     $data = Eventy::filter('index.product.data', $data, $product);

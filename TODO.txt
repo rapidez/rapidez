@@ -5,7 +5,7 @@ Raki
 - Header and footer Vue components in Magento 2
 
 Roy
-- PDP Size selector
+- Filters do not seem to be scoped to the category
 - PDP Add to cart
 
 Lonneke

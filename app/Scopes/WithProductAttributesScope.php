@@ -30,6 +30,7 @@ class WithProductAttributesScope implements Scope
 
         foreach ($attributes as $attribute) {
             $attribute = (object)$attribute;
+
             if ($attribute->flat) {
                 if ($attribute->input == 'select') {
                     $builder->addSelect($attribute->code.'_value AS '.$attribute->code);
@@ -37,14 +38,22 @@ class WithProductAttributesScope implements Scope
                     $builder->addSelect($builder->getQuery()->from.'.'.$attribute->code.' AS '.$attribute->code);
                 }
             } else {
+                // TODO: When it's a select we've to get the actual value.
                 $builder
-                    ->addSelect($attribute->code.'.value AS '.$attribute->code)
+                    ->selectRaw('COALESCE('.$attribute->code.'_'.config('shop.store').'.value, '.$attribute->code.'_0.value) AS '.$attribute->code)
                     ->leftJoin(
-                        'catalog_product_entity_'.$attribute->type.' AS '.$attribute->code,
+                        'catalog_product_entity_'.$attribute->type.' AS '.$attribute->code.'_'.config('shop.store'),
                         function ($join) use ($builder, $attribute) {
-                            $join->on($attribute->code.'.entity_id', '=', $builder->getQuery()->from.'.entity_id')
-                                 ->where($attribute->code.'.attribute_id', $attribute->id)
-                                 ->where($attribute->code.'.store_id', config('shop.store'));
+                            $join->on($attribute->code.'_'.config('shop.store').'.entity_id', '=', $builder->getQuery()->from.'.entity_id')
+                                 ->where($attribute->code.'_'.config('shop.store').'.attribute_id', $attribute->id)
+                                 ->where($attribute->code.'_'.config('shop.store').'.store_id', config('shop.store'));
+                        }
+                    )->leftJoin(
+                        'catalog_product_entity_'.$attribute->type.' AS '.$attribute->code.'_0',
+                        function ($join) use ($builder, $attribute) {
+                            $join->on($attribute->code.'_0.entity_id', '=', $builder->getQuery()->from.'.entity_id')
+                                 ->where($attribute->code.'_0.attribute_id', $attribute->id)
+                                 ->where($attribute->code.'_0.store_id', 0);
                         }
                     );
             }

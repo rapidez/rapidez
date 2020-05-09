@@ -5,6 +5,7 @@ namespace App\Scopes;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Scope;
+use Illuminate\Support\Facades\DB;
 
 class OnlyProductAttributesScope implements Scope
 {
@@ -28,7 +29,17 @@ class OnlyProductAttributesScope implements Scope
                     is_filterable AS filter,
                     is_comparable AS compare,
                     used_for_sort_by AS sorting,
-                    used_in_product_listing AS flat
+                    GREATEST(
+                        IF(backend_type = "static", 1, 0),
+                        used_in_product_listing,
+                        used_for_sort_by,
+                        is_filterable
+                    ) AS flat,
+                    EXISTS(
+                        SELECT 1
+                        FROM catalog_product_super_attribute
+                        WHERE catalog_product_super_attribute.attribute_id = eav_attribute.attribute_id
+                    ) AS super
                 ')
                 ->join('catalog_eav_attribute', 'eav_attribute.attribute_id', '=', 'catalog_eav_attribute.attribute_id')
                 ->leftJoin('eav_attribute_label', function ($join) {
