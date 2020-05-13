@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Store;
+use App\Models\Store;
 use Closure;
 use Illuminate\Support\Facades\Cache;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
-use App\Model;
+use App\Models\Model;
 
 class ProductImage extends Model
 {
