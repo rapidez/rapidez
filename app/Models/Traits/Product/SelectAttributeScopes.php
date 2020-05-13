@@ -5,6 +5,7 @@ namespace App\Models\Traits\Product;
 use App\Models\Attribute;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Arr;
+use TorMorten\Eventy\Facades\Eventy;
 
 trait SelectAttributeScopes
 {
