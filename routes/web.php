@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Models\Category;
+use App\Models\Category;
 use App\Models\Page;
 use App\Models\Product;
 use App\Models\Rewrite;

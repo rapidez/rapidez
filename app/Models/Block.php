@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Models\Models;
+namespace App\Models;
 
+use App\Models\Traits\HasContentAttributeWithVariables;
 use App\Scopes\ForCurrentStoreScope;
 use App\Scopes\IsActiveScope;
-use App\Traits\HasContentAttributeWithVariables;
 use Illuminate\Database\Eloquent\Model;
 
 class Block extends Model

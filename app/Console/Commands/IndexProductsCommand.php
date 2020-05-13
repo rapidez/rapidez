@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Models\Attribute;
+use App\Models\Attribute;
 use App\Jobs\IndexProductJob;
 use App\Models\Product;
 use App\Models\Store;
