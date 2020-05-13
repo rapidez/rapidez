@@ -1,5 +1,5 @@
 <template>
-    <div :class="classWrapper">
+    <div :class="classWrapper" v-if="Object.keys(products).length">
         <div :class="classProduct" v-for="product in products">
             <slot>
                 {{ product.name }}
