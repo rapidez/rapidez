@@ -2,8 +2,8 @@
 
 namespace Extensions\Compare;
 
-use App\Product;
-use App\Scopes\WithProductCategoryIdsScope;
+use App\Models\Product;
+use App\Scopes\WithProductAttributesScope;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
@@ -38,7 +38,7 @@ class CompareExtensionServiceProvider extends ServiceProvider
             });
 
             Route::post('compare', function (Request $request) {
-                abort_unless(Product::find($request->product), 404);
+                abort_unless(Product::exist($request->product), 404);
                 $request->session()->push('compare', $request->product);
                 return $this->getComparedProductsArray($request->session()->get('compare'));
             })->name('compare.store');
@@ -55,7 +55,8 @@ class CompareExtensionServiceProvider extends ServiceProvider
     protected function getComparedProductsArray(array $productIds): array
     {
         return Product::byIds($productIds)
-            ->withoutGlobalScope(WithProductCategoryIdsScope::class)
+            ->withoutGlobalScopes()
+            ->withGlobalScope(WithProductAttributesScope::class, new WithProductAttributesScope)
             ->selectOnlyComparable()
             ->get()
             ->keyBy('id')
