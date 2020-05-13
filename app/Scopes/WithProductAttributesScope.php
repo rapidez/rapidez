@@ -3,6 +3,7 @@
 namespace App\Scopes;
 
 use App\Attribute;
+use App\Exceptions\NoAttributesToSelectSpecifiedException;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Scope;
@@ -18,8 +19,12 @@ class WithProductAttributesScope implements Scope
      */
     public function apply(Builder $builder, Model $model)
     {
+        if (empty($model->attributesToSelect)) {
+            throw NoAttributesToSelectSpecifiedException::create();
+        }
+
         $attributes = Attribute::getCachedWhere(function ($attribute) use ($model) {
-            return in_array($attribute['code'], $model->attributesToSelect ?: array_keys(config('shop.attributes')));
+            return in_array($attribute['code'], $model->attributesToSelect);
         });
 
         $attributes = array_filter($attributes, fn ($a) => $a['type'] !== 'static');
@@ -32,7 +37,7 @@ class WithProductAttributesScope implements Scope
             $attribute = (object)$attribute;
 
             if ($attribute->flat) {
-                if ($attribute->input == 'select') {
+                if ($attribute->input == 'select' && !in_array($attribute->code, ['tax_class_id'])) {
                     $builder->addSelect($attribute->code.'_value AS '.$attribute->code);
                 } else {
                     $builder->addSelect($builder->getQuery()->from.'.'.$attribute->code.' AS '.$attribute->code);

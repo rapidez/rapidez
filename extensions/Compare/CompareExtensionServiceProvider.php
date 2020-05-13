@@ -56,7 +56,7 @@ class CompareExtensionServiceProvider extends ServiceProvider
     {
         return Product::byIds($productIds)
             ->withoutGlobalScope(WithProductCategoryIdsScope::class)
-            ->onlyComparable()
+            ->selectOnlyComparable()
             ->get()
             ->keyBy('id')
             ->toArray();

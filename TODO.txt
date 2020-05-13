@@ -1,16 +1,21 @@
 Raki
 - POP Sizes filter
 - POP Color filter
-- Content pages with Magento page builder
 - Header and footer Vue components in Magento 2
 
 Roy
+- Get and show currency
 - PDP Add to cart
+- Header minicart
+- Sauzen
+- Turbolinks
 
 Lonneke
 - Compare
 
 Dunno
-- Vue Router / Turbolinks
+- Category and pages searchable in the autocomplete
+- Nova CMS backend
+- Extend readme with
 - Image resizing
 - Header search uniqueifyResults gives wrong results with counter

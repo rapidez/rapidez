@@ -28,12 +28,15 @@ class OnlyProductAttributesScope implements Scope
                     is_searchable AS search,
                     is_filterable AS filter,
                     is_comparable AS compare,
+                    used_in_product_listing AS listing,
                     used_for_sort_by AS sorting,
+                    is_visible_on_front AS productpage,
                     GREATEST(
                         IF(backend_type = "static", 1, 0),
+                        is_used_for_promo_rules,
                         used_in_product_listing,
                         used_for_sort_by,
-                        is_filterable
+                        IF(attribute_code IN ("status", "required_options", "tax_class_id", "weight"), 1, 0)
                     ) AS flat,
                     EXISTS(
                         SELECT 1

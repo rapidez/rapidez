@@ -24,7 +24,7 @@ class VariantExtensionServiceProvider extends ServiceProvider
         });
 
         Eventy::addFilter('index.product.attributes', function () {
-            return ['variants' => true];
+            return ['variants'];
         });
     }
 }

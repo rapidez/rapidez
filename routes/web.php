@@ -26,7 +26,7 @@ Route::get('{any?}', function ($url = null) {
         }
 
         if ($rewrite->entity_type == 'product') {
-            if ($product = Product::find($rewrite->entity_id)) {
+            if ($product = Product::selectForProductPage()->find($rewrite->entity_id)) {
                 return view('product', compact('product'));
             }
         }

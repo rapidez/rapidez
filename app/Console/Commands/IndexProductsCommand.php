@@ -9,6 +9,7 @@ use App\Store;
 use Cviebrock\LaravelElasticsearch\Manager as Elasticsearch;
 use Elasticsearch\Common\Exceptions\Missing404Exception;
 use Illuminate\Console\Command;
+use Illuminate\Support\Arr;
 use TorMorten\Eventy\Facades\Eventy;
 
 class IndexProductsCommand extends Command
@@ -56,7 +57,7 @@ class IndexProductsCommand extends Command
 
             $this->createIndexIfNeeded('products_' . $store->store_id);
 
-            $productQuery = Product::where('visibility', 4);
+            $productQuery = Product::where('visibility', 4)->selectOnlyIndexable();
 
             $scopes = Eventy::filter('index.product.scopes') ?: [];
             foreach ($scopes as $scope) {
@@ -68,16 +69,7 @@ class IndexProductsCommand extends Command
 
             $productQuery->chunk($this->chunkSize, function ($products) use ($store, $bar) {
                 foreach ($products as $product) {
-                    $data = ['store' => $store->store_id];
-                    foreach (array_merge(
-                        config('shop.attributes'),
-                        config('shop.custom_attributes'),
-                        Eventy::filter('index.product.attributes') ?: []
-                    ) as $attribute => $index) {
-                        if ($index) {
-                            $data[$attribute] = $product->$attribute;
-                        }
-                    }
+                    $data = array_merge(['store' => $store->store_id], $product->toArray());
                     $data = Eventy::filter('index.product.data', $data, $product);
                     IndexProductJob::dispatch($data);
                 }

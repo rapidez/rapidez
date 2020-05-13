@@ -75,10 +75,54 @@ class Product extends Model
         return $query->whereIn($this->getTable().'.entity_id', $productIds);
     }
 
-    public function scopeOnlyComparable(Builder $query): Builder
+    public function scopeSelectAttributes(Builder $query, array $attributes): Builder
+    {
+        $this->attributesToSelect = $attributes;
+
+        return $query;
+    }
+
+    public function scopeSelectForProductPage(Builder $query): Builder
+    {
+        $this->attributesToSelect = Arr::pluck(Attribute::getCachedWhere(function ($attribute) {
+            return $attribute['productpage'] || in_array($attribute['code'], [
+                'name',
+                'meta_title',
+                'meta_description',
+                'price',
+                'description',
+            ]);
+        }), 'code');
+
+        return $query;
+    }
+
+    public function scopeSelectOnlyComparable(Builder $query): Builder
     {
         $this->attributesToSelect = Arr::pluck(Attribute::getCachedWhere(function ($attribute) {
             return $attribute['compare'] || in_array($attribute['code'], ['name']);
+        }), 'code');
+
+        return $query;
+    }
+
+    public function scopeSelectOnlyIndexable(Builder $query): Builder
+    {
+        $this->attributesToSelect = Arr::pluck(Attribute::getCachedWhere(function ($attribute) {
+            if (in_array($attribute['code'], ['msrp_display_actual_price_type', 'price_view', 'shipment_type', 'status'])) {
+                return false;
+            }
+
+            if ($attribute['listing'] || $attribute['filter']) {
+                return true;
+            }
+
+            $alwaysInFlat = array_merge(['sku'], Eventy::filter('index.product.attributes') ?: []);
+            if (in_array($attribute['code'], $alwaysInFlat)) {
+                return true;
+            }
+
+            return false;
         }), 'code');
 
         return $query;
