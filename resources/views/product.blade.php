@@ -27,7 +27,7 @@
             @endif
 
             <form>
-                @foreach ($product->super_attributes as $superAttributeId => $superAttribute)
+                @foreach ($product->super_attributes ?: [] as $superAttributeId => $superAttribute)
                     <label for="super_attribute_{{ $superAttributeId }}">{{ $superAttribute->label }}</label>
                     <div class="inline-block relative w-64 mb-3">
                         <select id="super_attribute_{{ $superAttributeId }}" name="{{ $superAttributeId }}" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">

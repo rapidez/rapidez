@@ -4,6 +4,7 @@ Raki
 - Header and footer Vue components in Magento 2
 
 Roy
+- Multiselect filters
 - Get and show currency
 - PDP Add to cart
 - Header minicart
