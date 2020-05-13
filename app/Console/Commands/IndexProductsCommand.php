@@ -19,7 +19,7 @@ class IndexProductsCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'index:products';
+    protected $signature = 'index:products {--fresh : Recreate the indexes}';
 
     /**
      * The console command description.
@@ -55,7 +55,7 @@ class IndexProductsCommand extends Command
             $this->line('Store: '.$store->name);
             config()->set('shop.store', $store->store_id);
 
-            $this->createIndexIfNeeded('products_' . $store->store_id);
+            $this->createIndexIfNeeded('products_' . $store->store_id, $this->option('fresh'));
 
             $productQuery = Product::where('visibility', 4)->selectOnlyIndexable();
 
@@ -83,8 +83,16 @@ class IndexProductsCommand extends Command
         $this->info('Done!');
     }
 
-    public function createIndexIfNeeded(string $index): void
+    public function createIndexIfNeeded(string $index, $recreate = false): void
     {
+        if ($recreate) {
+            try {
+                $this->elasticsearch->indices()->delete(['index' => $index]);
+            } catch (Missing404Exception $e) {
+                //
+            }
+        }
+
         try {
             $this->elasticsearch->cat()->indices(['index' => $index]);
         } catch (Missing404Exception $e) {
