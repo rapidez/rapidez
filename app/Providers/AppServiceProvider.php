@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Attribute;
+use App\Models\Models\Attribute;
 use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
 

@@ -2,7 +2,7 @@
 
 namespace App\Scopes;
 
-use App\Attribute;
+use App\Models\Models\Attribute;
 use App\Exceptions\NoAttributesToSelectSpecifiedException;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;

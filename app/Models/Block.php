@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models\Models;
 
 use App\Scopes\ForCurrentStoreScope;
 use App\Scopes\IsActiveScope;

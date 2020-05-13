@@ -1,8 +1,8 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
-use App\Model;
+use App\Models\Model;
 use App\Scopes\WithProductAttributesScope;
 use App\Scopes\WithProductCategoryIdsScope;
 use App\Scopes\WithProductSuperAttributesScope;

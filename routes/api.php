@@ -1,6 +1,6 @@
 <?php
 
-use App\Attribute;
+use App\Models\Models\Attribute;
 use Illuminate\Http\Request;
 
 /*

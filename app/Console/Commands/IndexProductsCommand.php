@@ -2,10 +2,10 @@
 
 namespace App\Console\Commands;
 
-use App\Attribute;
+use App\Models\Models\Attribute;
 use App\Jobs\IndexProductJob;
-use App\Product;
-use App\Store;
+use App\Models\Product;
+use App\Models\Store;
 use Cviebrock\LaravelElasticsearch\Manager as Elasticsearch;
 use Elasticsearch\Common\Exceptions\Missing404Exception;
 use Illuminate\Console\Command;
