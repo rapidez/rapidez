@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Config;
 use App\Models\Model;
 use App\Models\Traits\Product\CastSuperAttributes;
 use App\Models\Traits\Product\SelectAttributeScopes;
@@ -10,6 +11,7 @@ use App\Scopes\WithProductCategoryIdsScope;
 use App\Scopes\WithProductSuperAttributesScope;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use NumberFormatter;
 use TorMorten\Eventy\Facades\Eventy;
 
 class Product extends Model
@@ -19,6 +21,8 @@ class Product extends Model
     public array $attributesToSelect = [];
 
     protected $primaryKey = 'entity_id';
+
+    protected $appends = ['formatted_price'];
 
     protected static function boot(): void
     {
@@ -58,6 +62,15 @@ class Product extends Model
     public function getCategoryIdsAttribute(string $value): array
     {
         return explode(',', $value);
+    }
+
+    public function getFormattedPriceAttribute(): string
+    {
+        $currency  = Config::getCachedByPath('currency/options/default');
+        $locale    = Config::getCachedByPath('general/locale/code');
+        $formatter = new NumberFormatter($locale, NumberFormatter::CURRENCY);
+
+        return $formatter->formatCurrency($this->price, $currency);
     }
 
     public static function exist($productId): bool

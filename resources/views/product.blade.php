@@ -14,7 +14,7 @@
         </div>
         <div class="w-1/3">
             <h1 class="font-bold text-4xl">{{ $product->name }}</h1>
-            <div class="font-bold text-3xl mb-3">{{ round($product->price, 2) }}</div>
+            <div class="font-bold text-3xl mb-3">{{ $product->formattedPrice }}</div>
 
             @if($product->variants)
                 <div class="flex">

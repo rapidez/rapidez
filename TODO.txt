@@ -5,7 +5,6 @@ Raki
 
 Roy
 - Multiselect filters
-- Get and show currency
 - PDP Add to cart
 - Header minicart
 - Sauzen

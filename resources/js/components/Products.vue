@@ -50,7 +50,7 @@
                                 <img :src="config.media_url+'/catalog/product' + item.thumbnail" class="object-contain h-48 w-full mb-3" />
                                 <div class="px-2">
                                     <strong class="block hyphens">{{ item.name }}</strong>
-                                    <div class="">&euro;{{ item.price }}</div>
+                                    <div class="">{{ item.formatted_price }}</div>
                                 </div>
                                 <div v-if="item.variants">
                                     <ul class="flex">
