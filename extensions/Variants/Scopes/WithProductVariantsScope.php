@@ -2,11 +2,9 @@
 
 namespace Extensions\Variants\Scopes;
 
-use App\Attribute;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Scope;
-use Illuminate\Support\Facades\DB;
 
 class WithProductVariantsScope implements Scope
 {

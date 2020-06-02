@@ -2,8 +2,8 @@
 
 namespace Extensions\SnowdogMenu\Models;
 
-use App\Block;
-use App\Category;
+use App\Models\Block;
+use App\Models\Category;
 use App\Scopes\IsActiveScope;
 use Illuminate\Database\Eloquent\Model;
 
