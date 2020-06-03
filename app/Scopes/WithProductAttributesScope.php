@@ -40,15 +40,6 @@ class WithProductAttributesScope implements Scope
             if ($attribute->flat) {
                 if ($attribute->input == 'select' && !in_array($attribute->code, ['tax_class_id'])) {
                     $builder->addSelect($attribute->code.'_value AS '.$attribute->code);
-                } elseif ($attribute->input == 'multiselect') {
-                    $query = DB::table('eav_attribute_option_value')
-                        ->selectRaw('JSON_ARRAYAGG(`value`)')
-                        ->whereRaw('FIND_IN_SET(option_id, '.$builder->getQuery()->from.'.'.$attribute->code.')')
-                        ->whereIn('store_id', [0, config('shop.store')])
-                        ->groupBy('store_id')
-                        ->orderByDesc('store_id')
-                        ->limit(1);
-                    $builder->selectSub($query, $attribute->code);
                 } else {
                     $builder->addSelect($builder->getQuery()->from.'.'.$attribute->code.' AS '.$attribute->code);
                 }

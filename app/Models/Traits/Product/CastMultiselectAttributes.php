@@ -2,6 +2,7 @@
 
 namespace App\Models\Traits\Product;
 
+use App\Casts\Multiselect;
 use App\Models\Attribute;
 use Illuminate\Support\Arr;
 
@@ -14,7 +15,7 @@ trait CastMultiselectAttributes
         }), 'code');
 
         foreach ($multiselectAttributes as $multiselectAttribute) {
-            $casts[$multiselectAttribute] = 'array';
+            $casts[$multiselectAttribute] = Multiselect::class;
         }
 
         return $casts;
