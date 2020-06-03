@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
+use App\Models\Model;
 use App\Scopes\OnlyProductAttributesScope;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Cache;
 

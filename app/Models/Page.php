@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
+use App\Models\Model;
 use App\Models\Traits\HasContentAttributeWithVariables;
 use App\Scopes\ForCurrentStoreScope;
 use App\Scopes\IsActiveScope;
-use Illuminate\Database\Eloquent\Model;
 
 class Page extends Model
 {

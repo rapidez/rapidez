@@ -50,6 +50,7 @@ class Product extends Model
             parent::getCasts(),
             $this->getSuperAttributeCasts(),
             $this->getMultiselectAttributeCasts(),
+            Eventy::filter('product.casts') ?: [],
         );
     }
 
