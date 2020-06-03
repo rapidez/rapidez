@@ -7,14 +7,6 @@ use Illuminate\Support\Arr;
 
 trait CastSuperAttributes
 {
-    public function getCasts(): array
-    {
-        return array_merge(
-            parent::getCasts(),
-            $this->getSuperAttributeCasts()
-        );
-    }
-
     protected function getSuperAttributeCasts(): array
     {
         $superAttributes = Arr::pluck(Attribute::getCachedWhere(function ($attribute) {

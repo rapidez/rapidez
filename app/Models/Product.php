@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Config;
 use App\Models\Model;
+use App\Models\Traits\Product\CastMultiselectAttributes;
 use App\Models\Traits\Product\CastSuperAttributes;
 use App\Models\Traits\Product\SelectAttributeScopes;
 use App\Scopes\WithProductAttributesScope;
@@ -16,7 +17,7 @@ use TorMorten\Eventy\Facades\Eventy;
 
 class Product extends Model
 {
-    use CastSuperAttributes, SelectAttributeScopes;
+    use CastSuperAttributes, CastMultiselectAttributes, SelectAttributeScopes;
 
     public array $attributesToSelect = [];
 
@@ -41,6 +42,15 @@ class Product extends Model
     public function getTable(): string
     {
         return 'catalog_product_flat_' . config('shop.store');
+    }
+
+    public function getCasts(): array
+    {
+        return array_merge(
+            parent::getCasts(),
+            $this->getSuperAttributeCasts(),
+            $this->getMultiselectAttributeCasts(),
+        );
     }
 
     public function images(): BelongsToMany
