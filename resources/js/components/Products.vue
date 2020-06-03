@@ -23,10 +23,11 @@
                             :componentId="'filter_'+filter.code"
                             :dataField="filter.code + '.keyword'"
                             class="filter"
-                            :title="filter.name"
+                            :title="filter.name+(filter.input == 'multiselect' ? '(and)' : '(or)')"
                             :selectAllLabel="'All '+ filter.name"
                             :react="{and: reactiveFilters}"
                             :defaultQuery="categoryQuery"
+                            :queryFormat="filter.input == 'multiselect' ? 'and' : 'or'"
                             URLParams
                         />
                     </div>
