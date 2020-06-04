@@ -18,7 +18,7 @@ class DetermineAndSetShop
     public function handle($request, Closure $next)
     {
         $stores = Cache::rememberForever('stores', function () {
-            return Store::all()->pluck('store_id', 'code');
+            return Store::pluck('store_id', 'code');
         });
 
         if (isset($stores[$request->server('MAGE_RUN_CODE')])) {
