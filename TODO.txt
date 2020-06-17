@@ -4,8 +4,7 @@ Raki
 - Header and footer Vue components in Magento 2
 
 Roy
-- PDP Add to cart
-- Header minicart
+- Fully functional cart
 - Sauzen
 - Turbolinks
 
@@ -13,8 +12,9 @@ Lonneke
 - Compare
 
 Dunno
+- Checkout
 - Category and pages searchable in the autocomplete
 - Nova CMS backend
-- Extend readme with
+- Extend readme
 - Image resizing
 - Header search uniqueifyResults gives wrong results with counter

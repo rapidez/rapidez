@@ -9,10 +9,14 @@ return [
     // Media url.
     'media_url' => env('MEDIA_URL', 'https://media.running.shop'),
 
+    // Magento url.
+    'magento_url' => env('MAGENTO_URL', 'https://running.shop'),
+
     // The variables which should be exposed to the frontend.
     'exposed' => [
         'store',
         'es_url',
         'media_url',
+        'magento_url',
     ],
 ];

@@ -23,6 +23,24 @@ window.axios = require('axios');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
+window.axios.interceptors.request.use(function (config) {
+    window.app.$data.config.loading = true
+    return config;
+}, function (error) {
+    return Promise.reject(error);
+});
+
+window.axios.interceptors.response.use(function (response) {
+    window.app.$data.config.loading = false
+    return response
+}, function(error) {
+    window.app.$data.config.loading = false
+    return Promise.reject(error)
+});
+
+window.magento = axios.create()
+window.magento.defaults.baseURL = config.magento_url + '/rest/V1/'
+
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting

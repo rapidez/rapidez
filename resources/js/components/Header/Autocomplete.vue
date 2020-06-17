@@ -31,7 +31,7 @@
                                 <div class="px-2 flex flex-wrap flex-grow lg:w-1/2">
                                     <strong class="block hyphens w-full">{{ suggestion.source.name }}</strong>
                                     <span class="brand w-full">{{ suggestion.source.manufacturer }}</span>
-                                    <div class="self-end">&euro; {{ suggestion.source.price | price() }}</div>
+                                    <div class="self-end">&euro; {{ suggestion.source.price | price }}</div>
                                 </div>
                             </a>
                         </li>

@@ -36,7 +36,7 @@ Vue.component('snowdog-menu', require('Extensions/SnowdogMenu/components/Menu.vu
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({
+window.app = new Vue({
     el: '#app',
     data: {
         config: window.config

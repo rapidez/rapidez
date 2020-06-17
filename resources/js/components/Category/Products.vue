@@ -102,7 +102,7 @@
                  })
                  .catch((error) => {
                     alert('Something went wrong')
-                 })
+                })
         },
 
         methods: {
@@ -110,7 +110,7 @@
                 return {
                     "query": {
                         "terms": {
-                            "category_ids": [ this.$root.config.category ]
+                            "category_ids": [ this.$root.config.category.entity_id ]
                         }
                     }
                 }

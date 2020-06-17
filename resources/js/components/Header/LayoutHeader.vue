@@ -1,13 +1,13 @@
 <template>
-    <div class="flex flex-wrap mb-5 bg-secondary">
+    <div class="flex flex-wrap items-center mb-5 bg-secondary">
         <div class="w-3/12">
-            Logo
+            <div class="text-4xl ml-3">Reactive Search</div>
         </div>
         <div class="w-6/12">
             <autocomplete></autocomplete>
         </div>
         <div class="w-3/12">
-            Meuk
+            <mini-cart class="float-right mr-3"></mini-cart>
         </div>
         <div class="w-full">
             <snowdog-menu identifier="main"></snowdog-menu>

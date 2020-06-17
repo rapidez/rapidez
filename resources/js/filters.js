@@ -7,5 +7,8 @@ Vue.filter('truncate', function (value, limit) {
 });
 
 Vue.filter('price', function (value) {
-    return parseFloat(value).toFixed(2);
+    return new Intl.NumberFormat(config.locale.replace('_', '-'), {
+        style: 'currency',
+        currency: config.currency,
+    }).format(value);
 });
