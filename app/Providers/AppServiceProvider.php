@@ -28,8 +28,6 @@ class AppServiceProvider extends ServiceProvider
     {
         config(['frontend' => Arr::only(config('shop'), config('shop.exposed'))]);
 
-        config(['frontend.cart' => null]);
-
         config(['frontend.locale' => Config::getCachedByPath('general/locale/code')]);
         config(['frontend.currency' => Config::getCachedByPath('currency/options/default')]);
 

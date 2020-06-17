@@ -23,7 +23,7 @@
         </div>
         <button
             :class="btnClass"
-            :disabled="this.$root.config.loading"
+            :disabled="this.$root.loading"
             @click="add()"
         >
             Add to cart

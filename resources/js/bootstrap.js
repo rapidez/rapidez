@@ -1,59 +1,28 @@
 window._ = require('lodash');
-
-/**
- * We'll load jQuery and the Bootstrap jQuery plugin which provides support
- * for JavaScript based Bootstrap features such as modals and tabs. This
- * code may be modified to fit the specific needs of your application.
- */
-
-// try {
-//     window.Popper = require('popper.js').default;
-//     window.$ = window.jQuery = require('jquery');
-
-//     require('bootstrap');
-// } catch (e) {}
-
-/**
- * We'll load the axios HTTP library which allows us to easily issue requests
- * to our Laravel back-end. This library automatically handles sending the
- * CSRF token as a header based on the value of the "XSRF" token cookie.
- */
-
 window.axios = require('axios');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
-window.axios.interceptors.request.use(function (config) {
-    window.app.$data.config.loading = true
-    return config;
-}, function (error) {
-    return Promise.reject(error);
-});
-
-window.axios.interceptors.response.use(function (response) {
-    window.app.$data.config.loading = false
-    return response
-}, function(error) {
-    window.app.$data.config.loading = false
-    return Promise.reject(error)
-});
-
 window.magento = axios.create()
 window.magento.defaults.baseURL = config.magento_url + '/rest/V1/'
 
-/**
- * Echo exposes an expressive API for subscribing to channels and listening
- * for events that are broadcast by Laravel. Echo and event broadcasting
- * allows your team to easily build robust real-time web applications.
- */
+// It's not possible to set global interceptors like headers
+// or the base url can; so we set them for all instances.
+// See: https://github.com/axios/axios/issues/510
+const instances = [window.axios, window.magento]
+instances.forEach(function (instance) {
+    instance.interceptors.request.use(function (config) {
+        window.app.$data.loading = true
+        return config;
+    }, function (error) {
+        return Promise.reject(error);
+    });
 
-// import Echo from 'laravel-echo'
-
-// window.Pusher = require('pusher-js');
-
-// window.Echo = new Echo({
-//     broadcaster: 'pusher',
-//     key: process.env.MIX_PUSHER_APP_KEY,
-//     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-//     useTLS: true
-// });
+    instance.interceptors.response.use(function (response) {
+        window.app.$data.loading = false
+        return response
+    }, function(error) {
+        window.app.$data.loading = false
+        return Promise.reject(error)
+    });
+})

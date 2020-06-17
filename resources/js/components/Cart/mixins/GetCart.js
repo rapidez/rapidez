@@ -8,7 +8,7 @@ export default {
                     let response = await magento.get('guest-carts/' + localStorage.getItem('mask'))
                     if (response !== undefined && response.data) {
                         localStorage.setItem('cart', JSON.stringify(response.data))
-                        this.$root.config.cart = response.data
+                        this.$root.cart = response.data
                     }
                 } catch (error) {
                     if (error.response.status == 404) {
@@ -31,10 +31,10 @@ export default {
 
     computed: {
         cart: function () {
-            if (this.$root.config.cart === null && localStorage.cart) {
-                this.$root.config.cart = JSON.parse(localStorage.cart)
+            if (this.$root.cart === null && localStorage.cart) {
+                this.$root.cart = JSON.parse(localStorage.cart)
             }
-            return this.$root.config.cart
+            return this.$root.cart
         }
     }
 }

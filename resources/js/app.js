@@ -39,6 +39,8 @@ Vue.component('snowdog-menu', require('Extensions/SnowdogMenu/components/Menu.vu
 window.app = new Vue({
     el: '#app',
     data: {
-        config: window.config
+        config: window.config,
+        loading: false,
+        cart: null,
     },
 });
