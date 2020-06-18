@@ -10,8 +10,12 @@ window.Vue = require('vue');
 
 import ReactiveSearch from '@appbaseio/reactivesearch-vue';
 Vue.use(ReactiveSearch);
-Vue.prototype.config = window.config;
 require('./filters');
+
+var Turbolinks = require("turbolinks")
+Turbolinks.start()
+import TurbolinksAdapter from 'vue-turbolinks';
+Vue.use(TurbolinksAdapter)
 
 /**
  * The following block of code may be used to automatically register your
@@ -36,11 +40,14 @@ Vue.component('snowdog-menu', require('Extensions/SnowdogMenu/components/Menu.vu
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-window.app = new Vue({
-    el: '#app',
-    data: {
-        config: window.config,
-        loading: false,
-        cart: null,
-    },
+document.addEventListener('turbolinks:load', () => {
+    Vue.prototype.config = window.config;
+    window.app = new Vue({
+        el: '#app',
+        data: {
+            config: window.config,
+            loading: false,
+            cart: null,
+        },
+    });
 });

@@ -10,6 +10,8 @@
     <meta name="description" content="@yield('description', '')"/>
 
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+
+    <script src="{{ mix('js/app.js') }}" defer></script>
 </head>
 <body class="bg-white antialiased">
     <div id="app">
@@ -21,11 +23,6 @@
         @stack('page_end')
     </div>
 
-    <!-- Scripts -->
-    <script>
-        window.config = @json(config('frontend'));
-    </script>
-    <script src="{{ mix('js/app.js') }}"></script>
-    @stack('scripts')
+    <script>window.config = @json(config('frontend'));</script>
 </body>
 </html>

@@ -6,12 +6,12 @@ Raki
 Roy
 - Fully functional cart
 - Sauzen
-- Turbolinks
 
 Lonneke
 - Compare
 
 Dunno
+- Split Products.vue into multiple components
 - Checkout
 - Category and pages searchable in the autocomplete
 - Nova CMS backend
