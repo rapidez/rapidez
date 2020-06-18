@@ -18,9 +18,14 @@ trait HasContentAttributeWithVariables
         return $content;
     }
 
-    protected function processMediaAndStore(string $content): string
+    protected function processMediaAndStoreUrl(string $content): string
     {
-        return preg_replace('/{{(media|store) url=("|&quot;)(.*?)("|&quot;)}}/m', config('shop.media_url') . '/${3}', $content);
+        return preg_replace('/{{(media|store) url=("|&quot;|\')(.*?)("|&quot;|\')}}/m', config('shop.media_url') . '/${3}', $content);
+    }
+
+    protected function processStoreDirectUrl(string $content): string
+    {
+        return preg_replace('/{{store direct_url=("|&quot;|\')(.*?)("|&quot;|\')}}/m', config('app.url') . '/${2}', $content);
     }
 
     protected function processWidgets(string $content): string

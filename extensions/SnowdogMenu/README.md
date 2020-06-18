@@ -1,10 +1,9 @@
 # Snowdog Menu
 
-There is a `Menu.vue` component which can be used. Just register it in the `app.js`:
+A Blade component will be registered which can be used:
 ```
-Vue.component('snowdog-menu', require('Extensions/SnowdogMenu/components/Menu.vue').default);
+<x-snowdog-menu identifier="main"/>
 ```
-And use it in your header with `<snowdog-menu identifier="main"></snowdog-menu>`.
 
 ## Configuration
 

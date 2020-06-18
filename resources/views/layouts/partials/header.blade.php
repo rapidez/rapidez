@@ -9,6 +9,6 @@
         <mini-cart class="float-right mr-3"></mini-cart>
     </div>
     <div class="w-full">
-        <snowdog-menu identifier="main"></snowdog-menu>
+        <x-snowdog-menu identifier="main"/>
     </div>
 </div>

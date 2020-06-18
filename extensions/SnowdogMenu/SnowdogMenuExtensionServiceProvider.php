@@ -3,6 +3,8 @@
 namespace Extensions\SnowdogMenu;
 
 use Extensions\SnowdogMenu\Models\Menu;
+use Extensions\SnowdogMenu\ViewComponents\SnowdogMenuComponent;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
@@ -28,23 +30,6 @@ class SnowdogMenuExtensionServiceProvider extends ServiceProvider
             __DIR__.'/config/snowdogmenu-extension.php' => config_path('snowdogmenu-extension.php'),
         ], 'config');
 
-        Route::middleware('api')->prefix('api')->group(function () {
-            Route::get('menu/{identifier}', function ($identifier) {
-                return Cache::rememberForever('snowdogmenu.'.$identifier, function () use ($identifier) {
-                    $menu = Menu::where('identifier', $identifier)->firstOrFail();
-                    return view('snowdogmenu-extension::menu', [
-                        'items' => $this->convertToMenuTree($menu->items),
-                    ])->render();
-                });
-            });
-        });
-    }
-
-    protected function convertToMenuTree($items, $parentId = null)
-    {
-        return $items->where('parent_id', $parentId)->map(function ($item) use ($items) {
-            $item['children'] = $this->convertToMenuTree($items, $item->node_id);
-            return $item;
-        })->sortBy('position');
+        Blade::component('snowdog-menu', SnowdogMenuComponent::class);
     }
 }

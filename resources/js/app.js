@@ -32,8 +32,6 @@ Vue.component('product-compare-widget', require('Extensions/Compare/components/W
 Vue.component('product-compare-checkbox', require('Extensions/Compare/components/Checkbox.vue').default);
 Vue.component('product-compare-overview', require('Extensions/Compare/components/Overview.vue').default);
 
-Vue.component('snowdog-menu', require('Extensions/SnowdogMenu/components/Menu.vue').default);
-
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
