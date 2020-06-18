@@ -10,16 +10,15 @@
     <meta name="description" content="@yield('description', '')"/>
 
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-
     <script src="{{ mix('js/app.js') }}" defer></script>
 </head>
 <body class="bg-white antialiased">
     <div id="app">
-        <layout-header></layout-header>
+        @include('layouts.partials.header')
         <div class="mx-5">
             @yield('content')
         </div>
-        <layout-footer></layout-footer>
+        @include('layouts.partials.footer')
         @stack('page_end')
     </div>
 
