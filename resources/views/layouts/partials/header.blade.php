@@ -2,7 +2,7 @@
     <div class="w-3/12">
         <div class="text-4xl ml-3">Reactive Search</div>
     </div>
-    <div class="w-6/12">
+    <div class="w-6/12 h-12 flex items-center">
         <autocomplete></autocomplete>
     </div>
     <div class="w-3/12">
