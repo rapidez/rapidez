@@ -10,9 +10,13 @@ window.Vue = require('vue');
 
 import ReactiveSearch from '@appbaseio/reactivesearch-vue';
 Vue.use(ReactiveSearch);
+
+import AsyncComputed from 'vue-async-computed';
+Vue.use(AsyncComputed);
+
 require('./filters');
 
-var Turbolinks = require("turbolinks")
+var Turbolinks = require('turbolinks')
 Turbolinks.start()
 import TurbolinksAdapter from 'vue-turbolinks';
 Vue.use(TurbolinksAdapter)

@@ -24,6 +24,7 @@
         "tailwindcss": "^1.0",
         "turbolinks": "^5.2.0",
         "vue": "^2.5.17",
+        "vue-async-computed": "^3.8.2",
         "vue-template-compiler": "^2.6.10",
         "vue-turbolinks": "^2.1.0"
     }

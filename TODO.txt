@@ -4,7 +4,7 @@ Raki
 - Header and footer Vue components in Magento 2
 
 Roy
-- Fully functional cart
+- Refactor the cart api endpoint to a quote model with a scope
 - Sauzen
 
 Lonneke
