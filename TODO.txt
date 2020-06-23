@@ -1,18 +1,19 @@
 Raki
 - POP Sizes filter
 - POP Color filter
-- Header and footer Vue components in Magento 2
 
 Roy
+- Checkout
 - Sauzen
 
 Lonneke
 - Compare
 
 Dunno
-- Split Products.vue into multiple components
-- Checkout
 - Cart coupon
+- Cross and upsells
+- My Account
+- Split Products.vue into multiple components
 - Category and pages searchable in the autocomplete
 - Nova CMS backend
 - Extend readme
