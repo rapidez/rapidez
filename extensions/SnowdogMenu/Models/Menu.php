@@ -2,8 +2,8 @@
 
 namespace Extensions\SnowdogMenu\Models;
 
-use App\Scopes\ForCurrentStoreScope;
-use App\Scopes\IsActiveScope;
+use App\Models\Scopes\ForCurrentStoreScope;
+use App\Models\Scopes\IsActiveScope;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 

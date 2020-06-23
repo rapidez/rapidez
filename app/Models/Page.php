@@ -3,9 +3,9 @@
 namespace App\Models;
 
 use App\Models\Model;
+use App\Models\Scopes\ForCurrentStoreScope;
+use App\Models\Scopes\IsActiveScope;
 use App\Models\Traits\HasContentAttributeWithVariables;
-use App\Scopes\ForCurrentStoreScope;
-use App\Scopes\IsActiveScope;
 
 class Page extends Model
 {

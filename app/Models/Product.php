@@ -4,12 +4,12 @@ namespace App\Models;
 
 use App\Models\Config;
 use App\Models\Model;
+use App\Models\Scopes\Product\WithProductAttributesScope;
+use App\Models\Scopes\Product\WithProductCategoryIdsScope;
+use App\Models\Scopes\Product\WithProductSuperAttributesScope;
 use App\Models\Traits\Product\CastMultiselectAttributes;
 use App\Models\Traits\Product\CastSuperAttributes;
 use App\Models\Traits\Product\SelectAttributeScopes;
-use App\Scopes\WithProductAttributesScope;
-use App\Scopes\WithProductCategoryIdsScope;
-use App\Scopes\WithProductSuperAttributesScope;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use NumberFormatter;

@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Models\Model;
-use App\Scopes\OnlyProductAttributesScope;
+use App\Models\Scopes\Attribute\OnlyProductAttributesScope;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Cache;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Scopes;
+namespace App\Models\Scopes\Product;
 
 use App\Exceptions\NoAttributesToSelectSpecifiedException;
 use App\Models\Attribute;

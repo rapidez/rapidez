@@ -4,8 +4,8 @@ namespace Extensions\SnowdogMenu\Models;
 
 use App\Models\Block;
 use App\Models\Category;
+use App\Models\Scopes\IsActiveScope;
 use App\Models\Traits\HasContentAttributeWithVariables;
-use App\Scopes\IsActiveScope;
 use Illuminate\Database\Eloquent\Model;
 
 class MenuItem extends Model
