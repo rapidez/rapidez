@@ -4,7 +4,6 @@ Raki
 - Header and footer Vue components in Magento 2
 
 Roy
-- Refactor the cart api endpoint to a quote model with a scope
 - Sauzen
 
 Lonneke
@@ -13,6 +12,7 @@ Lonneke
 Dunno
 - Split Products.vue into multiple components
 - Checkout
+- Cart coupon
 - Category and pages searchable in the autocomplete
 - Nova CMS backend
 - Extend readme
