@@ -4,7 +4,7 @@ window.axios = require('axios');
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 window.magento = axios.create()
-window.magento.defaults.baseURL = config.magento_url + '/rest/V1/'
+window.magento.defaults.baseURL = config.magento_url + '/rest/' + config.store_code + '/V1/'
 
 // It's not possible to set global interceptors like headers
 // or the base url can; so we set them for all instances.

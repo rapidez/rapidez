@@ -3,5 +3,7 @@
 @section('title', 'Checkout')
 
 @section('content')
-    <h1 class="font-bold text-4xl">Checkout</h1>
+    <div class="container mx-auto">
+        <checkout></checkout>
+    </div>
 @endsection

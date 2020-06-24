@@ -38,11 +38,11 @@ class Attribute extends Model
 
     public static function getCachedWhere(callable $callback): array
     {
-        if (!$attributes = config('cache.attributes')) {
+        if (!$attributes = config('cache.app.attributes')) {
             $attributes = Cache::rememberForever('attributes', function () {
                 return self::all()->toArray();
             });
-            config(['cache.attributes' => $attributes]);
+            config(['cache.app.attributes' => $attributes]);
         }
 
         return Arr::where($attributes, function ($attribute) use ($callback) {
