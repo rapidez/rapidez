@@ -28,7 +28,15 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer('layouts.app', function ($view) {
-            config(['frontend' => Arr::only(config('shop'), array_merge(config('shop.exposed'), ['store_code']))]);
+            $exposedFrontendConfigValues = Arr::only(
+                config('shop'),
+                array_merge(config('shop.exposed'), ['store_code'])
+            );
+
+            config(['frontend' => array_merge(
+                config('frontend') ?: [],
+                $exposedFrontendConfigValues
+            )]);
 
             config(['frontend.locale' => Config::getCachedByPath('general/locale/code')]);
             config(['frontend.currency' => Config::getCachedByPath('currency/options/default')]);
