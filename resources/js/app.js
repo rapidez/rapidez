@@ -50,6 +50,9 @@ document.addEventListener('turbolinks:load', () => {
             config: window.config,
             loading: false,
             cart: null,
+            checkout: {
+                step: 1
+            }
         },
     });
 });
