@@ -1,6 +1,9 @@
 .btn {
     @apply inline-block font-bold py-2 px-4 rounded;
 }
+.btn:disabled {
+    @apply opacity-75 cursor-not-allowed;
+}
 .btn-primary {
     @apply bg-primary text-white;
 }

@@ -26,7 +26,7 @@
                 </div>
             @endif
 
-            <add-to-cart btn-class="block btn btn-primary disabled:opacity-75 disabled:cursor-not-allowed" />
+            <add-to-cart btn-class="block btn btn-primary" />
         </div>
     </div>
 
