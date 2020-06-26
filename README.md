@@ -1,4 +1,6 @@
-# Running.shop Vue
+# Rapidez
+
+Headless Magento with Laravel, Vue and Reactive Search.
 
 ## Setup
 

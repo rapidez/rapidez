@@ -1,6 +1,6 @@
 <div class="flex flex-wrap items-center mb-5 bg-secondary">
     <div class="w-3/12">
-        <div class="text-4xl ml-3">Reactive Search</div>
+        <div class="text-4xl ml-3">Rapidez</div>
     </div>
     <div class="w-6/12 h-12 flex items-center">
         <autocomplete></autocomplete>
