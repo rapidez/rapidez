@@ -1,6 +1,6 @@
 <template>
     <renderless-cart>
-        <div v-if="cart" slot-scope="{ cart, changeQty, remove }">
+        <div v-if="hasItems" slot-scope="{ cart, hasItems, changeQty, remove }">
             <div class="flex items-center border-b pb-2 mb-2" v-for="item in cart.items">
                 <div class="w-1/12 pr-3">
                     <a :href="item.url" class="block">

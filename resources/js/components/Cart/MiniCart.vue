@@ -1,6 +1,6 @@
 <template>
     <renderless-cart>
-        <div class="group" v-if="cart" slot-scope="{ cart }">
+        <div class="group" v-if="hasItems" slot-scope="{ cart, hasItems }">
             Cart: <span>{{ cart.items_count }}</span>
             <div class="hidden absolute right-0 bg-white border p-3 mr-1 z-10 group-hover:block">
                 <table class="mb-3">

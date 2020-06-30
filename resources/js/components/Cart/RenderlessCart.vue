@@ -7,6 +7,7 @@
         render() {
             return this.$scopedSlots.default({
                 cart: this.cart,
+                hasItems: this.hasItems,
                 changeQty: this.changeQty,
                 remove: this.remove,
             })
@@ -29,6 +30,12 @@
                     .then((response) => this.refreshCart())
                     .catch((error) => alert(error.response.data.message))
             },
+        },
+
+        computed: {
+            hasItems: function () {
+                return this.cart && this.cart.items && Object.keys(this.cart.items).length
+            }
         }
     }
 </script>
