@@ -3,7 +3,7 @@
         <div>
             <renderless-login v-if="checkout.step == 1" v-slot="{ email, password, go, emailChange, passwordChange, emailAvailable }">
                 <div class="flex justify-center">
-                    <div class="w-1/3 p-8 border rounded">
+                    <form class="w-1/3 p-8 border rounded" v-on:submit.prevent="go()">
                         <h1 class="font-bold text-4xl text-center mb-5">Checkout</h1>
                         <input
                             class="form-input w-full"
@@ -23,13 +23,13 @@
                             @input="passwordChange"
                         >
                         <button
+                            type="submit"
                             class="btn btn-primary w-full mt-5"
                             :disabled="loading"
-                            @click="go()"
                         >
                             Continue
                         </button>
-                    </div>
+                    </form>
                 </div>
             </renderless-login>
 
@@ -38,7 +38,7 @@
                     Credentials
                 </div>
                 <div class="w-1/5 px-2">
-                    <div class="p-3 border rounded">
+                    <div v-if="cart" class="p-3 border rounded">
                         <table class="mb-3">
                             <tr class="py-3" v-for="item in cart.items">
                                 <td>{{ item.name }}</td>

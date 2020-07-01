@@ -49,6 +49,7 @@ document.addEventListener('turbolinks:load', () => {
         data: {
             config: window.config,
             loading: false,
+            user: null,
             cart: null,
             checkout: {
                 step: 1

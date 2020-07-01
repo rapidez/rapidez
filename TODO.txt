@@ -19,3 +19,4 @@ Dunno
 - Extend readme
 - Image resizing
 - Header search uniqueifyResults gives wrong results with counter
+- Make everything translatable
