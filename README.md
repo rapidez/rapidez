@@ -1,11 +1,15 @@
-# Rapidez
+# Rapidez - Headless Magento 🏎
 
-Headless Magento with Laravel, Vue and Reactive Search.
+With Laravel, Vue and Reactive Search 🤘🏻
+
+## Background
+
+The idea behind Rapidez is to have a blazing fast headless frontend for your Magento 2 webshop which should be very easy to customize. The frontend is seperated from the Magento installation and communication between them is done via the Magento API. To speed things up we're also querying the Magento database to get catalog information for example. For category pages and the filters we're using Reactive Search which uses ElasticSearch as database. Indexation is also taken care of and is pretty fast.
 
 ## Setup
 
 - `cp .env.example .env`
-- Check the database credentials
+- Add the url and database credentials from the Magento installation
 - `php artisan key:generate`
 - `composer install`
 - `yarn`
@@ -13,9 +17,17 @@ Headless Magento with Laravel, Vue and Reactive Search.
 - `docker-compose up -d`
 - `php artisan index:products`
 
+### CORS
+
+Because we're making Ajax request to the Magento API; CORS need to be opened. If you're using Valet Plus this can easily done, see: https://github.com/weprovide/valet-plus/issues/493
+
 ## Kibana
 
 To explore the data in ElasticSearch you can use Kibana: http://localhost:5601
+
+## Vue Storefront comparison
+
+Vue Storefront does support multiple backends where the focus of Rapidez is Magento 2. The learning curve of Vue Storefront can be steep because it's totally different from Magento which uses PHP. Rapidez combines best of both worlds by using PHP and Vue. Just the interactive elements are written in Vue but the functional part is sepearted from the visual part so anyone without Vue knowledge can work with it.
 
 ## Extensions
 
