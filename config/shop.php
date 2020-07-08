@@ -1,7 +1,7 @@
 <?php
 return [
     // Default store, see middleware: DetermineAndSetShop
-    'store' => 1,
+    'store' => env('STORE', 1),
 
     // Elasticsearch url.
     'es_url' => env('ES_URL', 'http://localhost:9200'),
