@@ -48,20 +48,21 @@
                     return false
                 }
 
-                await magento.post('guest-carts/' + localStorage.mask + '/shipping-information', {
-                    addressInformation: {
-                        shipping_address: this.shippingAddress,
-                        // TODO: Make selectable and later implement carriers like Paazl.
-                        shipping_carrier_code: 'freeshipping',
-                        shipping_method_code: 'freeshipping'
-                    }
-                })
-                .then((response) => {
+                try {
+                    let response = await magento.post('guest-carts/' + localStorage.mask + '/shipping-information', {
+                        addressInformation: {
+                            shipping_address: this.shippingAddress,
+                            // TODO: Make selectable and later implement carriers like Paazl.
+                            shipping_carrier_code: 'freeshipping',
+                            shipping_method_code: 'freeshipping'
+                        }
+                    })
                     this.$root.checkout.payment_methods = response.data.payment_methods
-                })
-                .catch((error) => alert(error.response.data.message))
-
-                return true
+                    return true
+                } catch (error) {
+                    alert(error.response.data.message)
+                    return false
+                }
             },
 
             validateCredentials() {
@@ -78,25 +79,26 @@
 
             async savePaymentMethod() {
                 if (!this.$root.checkout.payment_method) {
-                    return false
+                    // return false
                 }
 
-                await magento.post('guest-carts/' + localStorage.mask + '/payment-information', {
-                    billingAddress: this.shippingAddress,
-                    email: this.$root.guestEmail,
-                    paymentMethod: {
-                        method: this.$root.checkout.payment_method
-                    }
-                })
-                .then((response) => {
+                try {
+                    let response = await magento.post('guest-carts/' + localStorage.mask + '/payment-information', {
+                        billingAddress: this.shippingAddress,
+                        email: this.$root.guestEmail,
+                        paymentMethod: {
+                            method: this.$root.checkout.payment_method
+                        }
+                    })
                     // response.data = orderId
                     localStorage.removeItem('mask')
                     localStorage.removeItem('cart')
                     this.$root.cart = null
-                })
-                .catch((error) => alert(error.response.data.message))
-
-                return true
+                    return true
+                } catch (error) {
+                    alert(error.response.data.message)
+                    return false
+                }
             }
         },
 

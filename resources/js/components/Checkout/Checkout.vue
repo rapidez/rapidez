@@ -129,7 +129,13 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Continue</button>
+                        <button
+                            type="submit"
+                            class="btn btn-primary"
+                            :disabled="loading"
+                        >
+                            Continue
+                        </button>
                     </form>
                 </div>
                 <div class="w-1/5 px-2">
@@ -159,7 +165,13 @@
                         <label :for="method.code">{{ method.title }}</label>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Continue</button>
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                        :disabled="loading"
+                    >
+                        Continue
+                    </button>
                 </form>
             </div>
 

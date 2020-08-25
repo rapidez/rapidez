@@ -1,12 +1,6 @@
 .btn {
-    @apply inline-block font-bold py-2 px-4 rounded;
-}
-.btn:disabled {
-    @apply opacity-75 cursor-not-allowed;
+    @apply inline-block font-bold py-2 px-4 rounded disabled:opacity-75 disabled:cursor-not-allowed;
 }
 .btn-primary {
-    @apply bg-primary text-white;
-}
-.btn-primary:hover {
-    @apply opacity-75;
+    @apply bg-primary text-white hover:opacity-75;
 }
