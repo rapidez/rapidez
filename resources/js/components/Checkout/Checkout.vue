@@ -33,110 +33,136 @@
                 </div>
             </renderless-login>
 
-            <div v-if="checkout.step == 2" class="flex -mx-2">
+            <div v-if="[2, 3].includes(checkout.step)" class="flex -mx-2">
                 <div class="w-4/5 px-2">
-                    <h1 class="font-bold text-4xl mb-5">Credentials</h1>
+                    <div v-if="checkout.step == 2">
+                        <h1 class="font-bold text-4xl mb-5">Credentials</h1>
 
-                    <form class="w-2/3" v-on:submit.prevent="save(['credentials'], 3)">
-                        <div class="grid grid-cols-12 col-gap-4 mb-3">
-                            <label class="col-span-12 text-gray-700 text-sm" for="firstname">Name</label>
-                            <div class="col-span-6">
-                                <input
-                                    type="text"
-                                    class="form-input w-full"
-                                    id="firstname"
-                                    placeholder="Firstname"
-                                    :value="checkout.shipping_address.firstname"
-                                    @input="inputChange('shipping_address', $event)"
-                                >
+                        <form class="w-2/3" v-on:submit.prevent="save(['credentials'], 3)">
+                            <div class="grid grid-cols-12 col-gap-4 mb-3">
+                                <label class="col-span-12 text-gray-700 text-sm" for="firstname">Name</label>
+                                <div class="col-span-6">
+                                    <input
+                                        type="text"
+                                        class="form-input w-full"
+                                        id="firstname"
+                                        placeholder="Firstname"
+                                        :value="checkout.shipping_address.firstname"
+                                        @input="inputChange('shipping_address', $event)"
+                                    >
+                                </div>
+                                <div class="col-span-4">
+                                    <input
+                                        type="text"
+                                        class="form-input w-full"
+                                        id="lastname"
+                                        placeholder="Lastname"
+                                        :value="checkout.shipping_address.lastname"
+                                        @input="inputChange('shipping_address', $event)"
+                                    >
+                                </div>
                             </div>
-                            <div class="col-span-4">
-                                <input
-                                    type="text"
-                                    class="form-input w-full"
-                                    id="lastname"
-                                    placeholder="Lastname"
-                                    :value="checkout.shipping_address.lastname"
-                                    @input="inputChange('shipping_address', $event)"
-                                >
-                            </div>
-                        </div>
 
-                        <div class="grid grid-cols-12 col-gap-4 mb-3">
-                            <div class="col-span-3">
-                                <label class="text-gray-700 text-sm" for="zipcode">Postcode</label>
-                                <input
-                                    type="text"
-                                    class="form-input w-full"
-                                    id="zipcode"
-                                    placeholder="Zipcode"
-                                    :value="checkout.shipping_address.zipcode"
-                                    @input="inputChange('shipping_address', $event)"
-                                >
+                            <div class="grid grid-cols-12 col-gap-4 mb-3">
+                                <div class="col-span-3">
+                                    <label class="text-gray-700 text-sm" for="zipcode">Postcode</label>
+                                    <input
+                                        type="text"
+                                        class="form-input w-full"
+                                        id="zipcode"
+                                        placeholder="Zipcode"
+                                        :value="checkout.shipping_address.zipcode"
+                                        @input="inputChange('shipping_address', $event)"
+                                    >
+                                </div>
+                                <div class="col-span-3">
+                                    <label class="text-gray-700 text-sm" for="housenumber">Housenumber</label>
+                                    <input
+                                        type="text"
+                                        class="form-input w-full"
+                                        id="housenumber"
+                                        placeholder="Nr."
+                                        :value="checkout.shipping_address.housenumber"
+                                        @input="inputChange('shipping_address', $event)"
+                                    >
+                                </div>
                             </div>
-                            <div class="col-span-3">
-                                <label class="text-gray-700 text-sm" for="housenumber">Housenumber</label>
-                                <input
-                                    type="text"
-                                    class="form-input w-full"
-                                    id="housenumber"
-                                    placeholder="Nr."
-                                    :value="checkout.shipping_address.housenumber"
-                                    @input="inputChange('shipping_address', $event)"
-                                >
-                            </div>
-                        </div>
 
-                        <div class="grid grid-cols-12 col-gap-4 mb-3">
-                            <div class="col-span-6">
-                                <label class="text-gray-700 text-sm" for="street">Street</label>
-                                <input
-                                    type="text"
-                                    class="form-input w-full"
-                                    id="street"
-                                    placeholder="Street"
-                                    :value="checkout.shipping_address.street"
-                                    @input="inputChange('shipping_address', $event)"
-                                >
+                            <div class="grid grid-cols-12 col-gap-4 mb-3">
+                                <div class="col-span-6">
+                                    <label class="text-gray-700 text-sm" for="street">Street</label>
+                                    <input
+                                        type="text"
+                                        class="form-input w-full"
+                                        id="street"
+                                        placeholder="Street"
+                                        :value="checkout.shipping_address.street"
+                                        @input="inputChange('shipping_address', $event)"
+                                    >
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="grid grid-cols-12 col-gap-4 mb-3">
-                            <div class="col-span-6">
-                                <label class="text-gray-700 text-sm" for="city">City</label>
-                                <input
-                                    type="text"
-                                    class="form-input w-full"
-                                    id="city"
-                                    placeholder="City"
-                                    :value="checkout.shipping_address.city"
-                                    @input="inputChange('shipping_address', $event)"
-                                >
+                            <div class="grid grid-cols-12 col-gap-4 mb-3">
+                                <div class="col-span-6">
+                                    <label class="text-gray-700 text-sm" for="city">City</label>
+                                    <input
+                                        type="text"
+                                        class="form-input w-full"
+                                        id="city"
+                                        placeholder="City"
+                                        :value="checkout.shipping_address.city"
+                                        @input="inputChange('shipping_address', $event)"
+                                    >
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="grid grid-cols-12 col-gap-4 mb-3">
-                            <div class="col-span-6">
-                                <label class="text-gray-700 text-sm" for="telephone">Telephone</label>
-                                <input
-                                    type="text"
-                                    class="form-input w-full"
-                                    id="telephone"
-                                    placeholder="Telephone"
-                                    :value="checkout.shipping_address.telephone"
-                                    @input="inputChange('shipping_address', $event)"
-                                >
+                            <div class="grid grid-cols-12 col-gap-4 mb-3">
+                                <div class="col-span-6">
+                                    <label class="text-gray-700 text-sm" for="telephone">Telephone</label>
+                                    <input
+                                        type="text"
+                                        class="form-input w-full"
+                                        id="telephone"
+                                        placeholder="Telephone"
+                                        :value="checkout.shipping_address.telephone"
+                                        @input="inputChange('shipping_address', $event)"
+                                    >
+                                </div>
                             </div>
-                        </div>
 
-                        <button
-                            type="submit"
-                            class="btn btn-primary"
-                            :disabled="loading"
-                        >
-                            Continue
-                        </button>
-                    </form>
+                            <button
+                                type="submit"
+                                class="btn btn-primary"
+                                :disabled="loading"
+                            >
+                                Continue
+                            </button>
+                        </form>
+                    </div>
+
+                    <div v-if="checkout.step == 3">
+                        <h1 class="font-bold text-4xl mb-5">Payment method</h1>
+                        <form class="w-2/3" v-on:submit.prevent="save(['payment_method'], 4)">
+                            <div class="my-2" v-for="method in checkout.payment_methods">
+                                <input
+                                    type="radio"
+                                    name="payment_method"
+                                    :value="method.code"
+                                    :id="method.code"
+                                    v-model="checkout.payment_method"
+                                >
+                                <label :for="method.code">{{ method.title }}</label>
+                            </div>
+
+                            <button
+                                type="submit"
+                                class="btn btn-primary"
+                                :disabled="loading"
+                            >
+                                Continue
+                            </button>
+                        </form>
+                    </div>
                 </div>
                 <div class="w-1/5 px-2">
                     <div v-if="cart" class="p-3 border rounded">
@@ -149,30 +175,6 @@
                         </table>
                     </div>
                 </div>
-            </div>
-
-            <div v-if="checkout.step == 3">
-                <h1 class="font-bold text-4xl mb-5">Payment method</h1>
-                <form class="w-2/3" v-on:submit.prevent="save(['payment_method'], 4)">
-                    <div class="my-2" v-for="method in checkout.payment_methods">
-                        <input
-                            type="radio"
-                            name="payment_method"
-                            :value="method.code"
-                            :id="method.code"
-                            v-model="checkout.payment_method"
-                        >
-                        <label :for="method.code">{{ method.title }}</label>
-                    </div>
-
-                    <button
-                        type="submit"
-                        class="btn btn-primary"
-                        :disabled="loading"
-                    >
-                        Continue
-                    </button>
-                </form>
             </div>
 
             <div v-if="checkout.step == 4">

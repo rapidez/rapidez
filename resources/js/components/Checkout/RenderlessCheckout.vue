@@ -79,7 +79,8 @@
 
             async savePaymentMethod() {
                 if (!this.$root.checkout.payment_method) {
-                    // return false
+                    alert('No payment method selected')
+                    return false
                 }
 
                 try {
