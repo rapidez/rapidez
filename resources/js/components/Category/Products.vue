@@ -18,6 +18,12 @@
                             URLParams
                             :showFilter="false"
                         />
+                        <swatchFilter
+                            v-else-if="filter.text_swatch || filter.visual_swatch"
+                            :attributeData="filter"
+                            :dataType="!! filter.text_swatch ? 'text' : 'visual'"
+                            :swatchClasses="!! filter.text_swatch ? '' : 'focus:shadow-outlin rounded-full cursor-pointer m-1 border-solid border-2 border-black h-6 w-6'"
+                        />
                         <multi-list
                             v-else
                             :componentId="'filter_'+filter.code"
@@ -117,7 +123,7 @@
             },
             onChange() {
                 sessionStorage.setItem('height', this.$el.clientHeight)
-            }
+            },
         },
 
         computed: {
@@ -133,8 +139,8 @@
             },
             reactiveFilters: function () {
                 return _.map(this.filters, function (filter) {
-                    return 'filter_' + filter.code;
-                })
+                    return 'filter_' + filter.code + (filter.text_swatch || filter.visual_swatch ? '_swatch' : '');
+                });
             },
             sortOptions: function () {
                 return _.flatMap(this.sortings, function (sorting) {

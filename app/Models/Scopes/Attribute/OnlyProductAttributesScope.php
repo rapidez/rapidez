@@ -42,7 +42,9 @@ class OnlyProductAttributesScope implements Scope
                         SELECT 1
                         FROM catalog_product_super_attribute
                         WHERE catalog_product_super_attribute.attribute_id = eav_attribute.attribute_id
-                    ) AS super
+                    ) AS super,
+                    additional_data->>"$.swatch_input_type" = "text" AS text_swatch,
+                    additional_data->>"$.swatch_input_type" = "visual" AS visual_swatch
                 ')
                 ->join('catalog_eav_attribute', 'eav_attribute.attribute_id', '=', 'catalog_eav_attribute.attribute_id')
                 ->leftJoin('eav_attribute_label', function ($join) {

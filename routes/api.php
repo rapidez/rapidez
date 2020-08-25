@@ -1,6 +1,8 @@
 <?php
 
 use App\Models\Attribute;
+use App\Models\OptionSwatch;
+use Illuminate\Http\Request;
 use App\Models\Quote;
 
 /*
@@ -18,6 +20,10 @@ Route::get('attributes', function () {
     return Attribute::getCachedWhere(function ($attribute) {
         return $attribute['filter'] || $attribute['sorting'];
     });
+});
+
+Route::get('swatches', function () {
+    return OptionSwatch::getCachedSwatchValues();
 });
 
 Route::get('cart/{mask}', function ($mask) {

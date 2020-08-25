@@ -6,6 +6,7 @@ use App\Models\Attribute;
 use App\Jobs\IndexProductJob;
 use App\Models\Product;
 use App\Models\Store;
+use App\Scopes\WithProductSwatchesScope;
 use Cviebrock\LaravelElasticsearch\Manager as Elasticsearch;
 use Elasticsearch\Common\Exceptions\Missing404Exception;
 use Illuminate\Console\Command;
@@ -63,6 +64,8 @@ class IndexProductsCommand extends Command
             foreach ($scopes as $scope) {
                 $productQuery->withGlobalScope($scope, new $scope);
             }
+
+            $productQuery->withGlobalScope('swatches', new WithProductSwatchesScope);
 
             $bar = $this->output->createProgressBar($productQuery->count());
             $bar->start();
