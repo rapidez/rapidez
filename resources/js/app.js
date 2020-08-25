@@ -15,6 +15,7 @@ import AsyncComputed from 'vue-async-computed';
 Vue.use(AsyncComputed);
 
 require('./filters');
+require('./mixins');
 
 var Turbolinks = require('turbolinks')
 Turbolinks.start()
@@ -49,10 +50,23 @@ document.addEventListener('turbolinks:load', () => {
         data: {
             config: window.config,
             loading: false,
+            guestEmail: null,
             user: null,
             cart: null,
             checkout: {
-                step: 1
+                step: 1,
+                shipping_address: {
+                    'firstname': process.env.MIX_DEBUG ? 'Roy' : null,
+                    'lastname': process.env.MIX_DEBUG ? 'Duineveld' : null,
+                    'zipcode': process.env.MIX_DEBUG ? '1823CW' : null,
+                    'housenumber': process.env.MIX_DEBUG ? 7 : null,
+                    'street': process.env.MIX_DEBUG ? 'Pettemerstraat' : null,
+                    'city': process.env.MIX_DEBUG ? 'Alkmaar' : null,
+                    'telephone': process.env.MIX_DEBUG ? '0727100094' : null,
+                },
+                billing_address: {},
+                payment_method: null,
+                payment_methods: [],
             }
         },
     });

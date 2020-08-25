@@ -51,7 +51,7 @@
             async add() {
                 await this.refreshCart()
 
-                magento.post('guest-carts/' + this.cart.id + '/items', {
+                magento.post('guest-carts/' + localStorage.mask + '/items', {
                     cartItem: {
                         sku: config.product.sku,
                         quote_id: localStorage.getItem('mask'),

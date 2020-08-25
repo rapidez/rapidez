@@ -41,6 +41,7 @@ class Quote extends Model
         parent::boot();
 
         static::addGlobalScope('with-all-information', function (Builder $builder) {
+            // TODO: add shipping information like "estimate-shipping-methods" does.
             $builder
                 ->select([
                     'quote_id_mask.quote_id',

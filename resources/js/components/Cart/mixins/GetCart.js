@@ -37,6 +37,8 @@ export default {
         },
     },
 
+    // TODO: This is executed without being called. See:
+    // https://github.com/foxbenjaminfox/vue-async-computed/issues/98
     asyncComputed: {
         cart: function () {
             return this.getCart()

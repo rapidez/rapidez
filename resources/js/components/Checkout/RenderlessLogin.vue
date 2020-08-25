@@ -7,20 +7,17 @@
         props: ['step'],
 
         data: () => ({
-            email: null,
+            email: process.env.MIX_DEBUG ? 'roy@justbetter.nl' : null,
             password: null,
             emailAvailable: true,
         }),
 
         render() {
             return this.$scopedSlots.default({
+                loginInputChange: this.loginInputChange,
                 email: this.email,
-                emailChange: this.emailChange,
                 emailAvailable: this.emailAvailable,
-
                 password: this.password,
-                passwordChange: this.passwordChange,
-
                 go: this.go,
             })
         },
@@ -50,6 +47,7 @@
                 })
                 .then((response) => {
                     if (this.emailAvailable = response.data) {
+                        this.$root.guestEmail = this.email
                         this.$root.checkout.step = 2
                     } else {
                         // TODO: Focus on password.
@@ -76,12 +74,8 @@
                 // Add quote to the user: https://magento.stackexchange.com/questions/291397/how-to-merge-guest-quote-items-to-customer-quoteif-customer-log-in-by-magento
             },
 
-            emailChange(e) {
-                this.email = e.target.value
-            },
-
-            passwordChange(e) {
-                this.password = e.target.value
+            loginInputChange(e) {
+                this[e.target.id] = e.target.value
             },
         }
     }
