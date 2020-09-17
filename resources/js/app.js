@@ -65,6 +65,10 @@ document.addEventListener('turbolinks:load', () => {
                     'telephone': process.env.MIX_DEBUG ? '0727100094' : null,
                 },
                 billing_address: {},
+
+                shipping_method: null,
+                shipping_methods: [],
+
                 payment_method: null,
                 payment_methods: [],
             }

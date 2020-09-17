@@ -14,9 +14,33 @@
             })
         },
 
+        mounted() {
+            this.getShippingMethods()
+        },
+
         methods: {
             inputChange(type, e) {
-                this.$root.checkout[type][e.target.id] = e.target.value
+                this.checkout[type][e.target.id] = e.target.value
+            },
+
+            async getShippingMethods() {
+                try {
+                    let response = await magento.post('guest-carts/' + localStorage.mask + '/estimate-shipping-methods', {
+                        address: {
+                            country_id: 'NL',
+                        }
+                    })
+                    this.checkout.shipping_methods = response.data
+
+                    if (response.data.length === 1) {
+                        this.checkout.shipping_method = response.data[0].carrier_code+'_'+response.data[0].method_code
+                    }
+
+                    return true
+                } catch (error) {
+                    alert(error.response.data.message)
+                    return false
+                }
             },
 
             async save(savedItems, goToStep) {
@@ -39,7 +63,7 @@
                 })
 
                 if (validated) {
-                    this.$root.checkout.step = goToStep
+                    this.checkout.step = goToStep
                 }
             },
 
@@ -52,12 +76,11 @@
                     let response = await magento.post('guest-carts/' + localStorage.mask + '/shipping-information', {
                         addressInformation: {
                             shipping_address: this.shippingAddress,
-                            // TODO: Make selectable and later implement carriers like Paazl.
-                            shipping_carrier_code: 'freeshipping',
-                            shipping_method_code: 'freeshipping'
+                            shipping_carrier_code: this.checkout.shipping_method.split('_')[0],
+                            shipping_method_code: this.checkout.shipping_method.split('_')[1],
                         }
                     })
-                    this.$root.checkout.payment_methods = response.data.payment_methods
+                    this.checkout.payment_methods = response.data.payment_methods
                     return true
                 } catch (error) {
                     alert(error.response.data.message)
@@ -67,7 +90,13 @@
 
             validateCredentials() {
                 let validated = true
-                Object.entries(this.$root.checkout.shipping_address).forEach(([key, val]) => {
+
+                if (!this.checkout.shipping_method) {
+                    alert('No shipping method selected')
+                    validated = false
+                }
+
+                Object.entries(this.checkout.shipping_address).forEach(([key, val]) => {
                     if (!val) {
                         alert(key + ' cannot be empty')
                         validated = false
@@ -78,7 +107,7 @@
             },
 
             async savePaymentMethod() {
-                if (!this.$root.checkout.payment_method) {
+                if (!this.checkout.payment_method) {
                     alert('No payment method selected')
                     return false
                 }
@@ -88,7 +117,7 @@
                         billingAddress: this.shippingAddress,
                         email: this.$root.guestEmail,
                         paymentMethod: {
-                            method: this.$root.checkout.payment_method
+                            method: this.checkout.payment_method
                         }
                     })
                     // response.data = orderId

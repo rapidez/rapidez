@@ -130,9 +130,22 @@
                                 </div>
                             </div>
 
+                            <h1 class="font-bold text-4xl mt-5 mb-3">Shipping method</h1>
+
+                            <div class="my-2" v-for="method in checkout.shipping_methods">
+                                <input
+                                    type="radio"
+                                    name="shipping_method"
+                                    :value="method.carrier_code+'_'+method.method_code"
+                                    :id="method.carrier_code+'_'+method.method_code"
+                                    v-model="checkout.shipping_method"
+                                >
+                                <label :for="method.carrier_code+'_'+method.method_code">{{ method.method_title }}</label>
+                            </div>
+
                             <button
                                 type="submit"
-                                class="btn btn-primary"
+                                class="btn btn-primary mt-3"
                                 :disabled="loading"
                             >
                                 Continue
