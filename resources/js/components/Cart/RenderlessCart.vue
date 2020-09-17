@@ -15,7 +15,7 @@
 
         methods: {
             changeQty(item) {
-                magento.put('guest-carts/' + localStorage.mask + '/items/' + item.item_id, {
+                this.magentoCart('put', 'items/' + item.item_id, {
                     cartItem: {
                         quote_id: localStorage.mask,
                         qty: item.qty
@@ -26,7 +26,7 @@
             },
 
             remove(item) {
-                magento.delete('guest-carts/' + localStorage.mask + '/items/' + item.item_id)
+                this.magentoCart('delete', 'items/' + item.item_id)
                     .then((response) => this.refreshCart())
                     .catch((error) => alert(error.response.data.message))
             },

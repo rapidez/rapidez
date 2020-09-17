@@ -61,22 +61,36 @@
                     username: this.email,
                     password: this.password,
                 })
-                .then((response) => {
+                .then(async (response) => {
                     localStorage.token = response.data
-                    this.refreshUser()
+                    window.magentoUser.defaults.headers.common['Authorization'] = `Bearer ${localStorage.token}`;
+                    await this.refreshUser()
                     this.$root.checkout.step = 2
+
+                    if (this.$root.cart) {
+                        await this.linkUserToCart()
+                        localStorage.mask = this.$root.cart.entity_id
+                    }
+
                 })
                 .catch((error) => {
                     alert(error.response.data.message)
                     this.password = null
                 })
-
-                // Add quote to the user: https://magento.stackexchange.com/questions/291397/how-to-merge-guest-quote-items-to-customer-quoteif-customer-log-in-by-magento
             },
 
             loginInputChange(e) {
                 this[e.target.id] = e.target.value
             },
+
+            async linkUserToCart() {
+                await magentoUser.put('guest-carts/'+localStorage.mask, {
+                    customerId: this.$root.user.id,
+                    storeId: config.store
+                }).catch((error) => {
+                    alert(error.response.data.message)
+                })
+            }
         }
     }
 </script>

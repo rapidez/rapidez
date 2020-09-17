@@ -26,6 +26,9 @@ Route::get('swatches', function () {
     return OptionSwatch::getCachedSwatchValues();
 });
 
-Route::get('cart/{mask}', function ($mask) {
-    return Quote::where('masked_id', $mask)->firstOrFail();
+Route::get('cart/{quoteIdMaskOrCustomerToken}', function ($quoteIdMaskOrCustomerToken) {
+    return Quote::where(function ($query) use ($quoteIdMaskOrCustomerToken) {
+        $query->where('masked_id', $quoteIdMaskOrCustomerToken)
+              ->orWhere('token', $quoteIdMaskOrCustomerToken);
+    })->firstOrFail();
 });

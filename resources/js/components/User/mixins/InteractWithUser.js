@@ -14,9 +14,7 @@ export default {
 
         async refreshUser(redirect = true) {
             try {
-                let response = await magento.get('customers/me', {
-                    headers: { Authorization: `Bearer ${localStorage.token}` }
-                })
+                let response = await magentoUser.get('customers/me')
                 localStorage.user = JSON.stringify(response.data)
                 this.$root.user = response.data
             } catch (error) {
@@ -32,6 +30,8 @@ export default {
         logout() {
             localStorage.removeItem('token')
             localStorage.removeItem('user')
+            localStorage.removeItem('mask')
+            localStorage.removeItem('cart')
             this.$root.user = null
             Turbolinks.visit('/')
         }

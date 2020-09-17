@@ -15,7 +15,7 @@ export default {
 
             if (localStorage.mask) {
                 try {
-                    let response = await axios.get('/api/cart/' + localStorage.mask)
+                    let response = await axios.get('/api/cart/' + (localStorage.token ? localStorage.token : localStorage.mask))
                     localStorage.cart = JSON.stringify(response.data)
                     this.$root.cart = response.data
                 } catch (error) {
@@ -29,7 +29,14 @@ export default {
 
         async getMask() {
             if (!localStorage.mask) {
-                let response = await magento.post('guest-carts').catch((error) => alert('Something went wrong, please try again'))
+                try {
+                    var response = this.$root.user
+                        ? await magentoUser.post('carts/mine')
+                        : await magento.post('guest-carts')
+                } catch (error) {
+                    alert('Something went wrong, please try again')
+                }
+
                 if (response !== undefined && response.data) {
                     localStorage.mask = response.data
                 }

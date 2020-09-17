@@ -25,7 +25,7 @@
 
             async getShippingMethods() {
                 try {
-                    let response = await magento.post('guest-carts/' + localStorage.mask + '/estimate-shipping-methods', {
+                    let response = await this.magentoCart('post', 'estimate-shipping-methods', {
                         address: {
                             country_id: 'NL',
                         }
@@ -73,7 +73,7 @@
                 }
 
                 try {
-                    let response = await magento.post('guest-carts/' + localStorage.mask + '/shipping-information', {
+                    let response = await this.magentoCart('post', 'shipping-information', {
                         addressInformation: {
                             shipping_address: this.shippingAddress,
                             shipping_carrier_code: this.checkout.shipping_method.split('_')[0],
@@ -113,7 +113,7 @@
                 }
 
                 try {
-                    let response = await magento.post('guest-carts/' + localStorage.mask + '/payment-information', {
+                    let response = await this.magentoCart('post', 'payment-information', {
                         billingAddress: this.shippingAddress,
                         email: this.$root.guestEmail,
                         paymentMethod: {

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Casts\QuoteItems;
 use App\Models\Model;
+use App\Models\Scopes\IsActiveScope;
 use Illuminate\Database\Eloquent\Builder;
 
 class Quote extends Model
@@ -40,11 +41,11 @@ class Quote extends Model
     {
         parent::boot();
 
+        static::addGlobalScope(new IsActiveScope);
         static::addGlobalScope('with-all-information', function (Builder $builder) {
-            // TODO: add shipping information like "estimate-shipping-methods" does.
             $builder
                 ->select([
-                    'quote_id_mask.quote_id',
+                    'quote.entity_id',
                     'items_count',
                     'items_qty',
                 ])
@@ -65,18 +66,19 @@ class Quote extends Model
                     "total", quote_item.row_total_incl_tax,
                     "attributes", quote_item_option.value
                 )), "$.null__") AS items')
-                ->join('quote_id_mask', 'quote_id_mask.quote_id', '=', 'quote.entity_id')
+                ->leftJoin('quote_id_mask', 'quote_id_mask.quote_id', '=', 'quote.entity_id')
+                ->leftJoin('oauth_token', 'oauth_token.customer_id', '=', 'quote.customer_id')
                 ->leftJoin('quote_address', function ($join) {
-                    $join->on('quote_address.quote_id', '=', 'quote_id_mask.quote_id')->where('address_type', 'shipping');
+                    $join->on('quote_address.quote_id', '=', 'quote.entity_id')->where('address_type', 'shipping');
                 })
                 ->leftJoin('quote_item', function ($join) {
-                    $join->on('quote_item.quote_id', '=', 'quote_id_mask.quote_id')->whereNull('parent_item_id');
+                    $join->on('quote_item.quote_id', '=', 'quote.entity_id')->whereNull('parent_item_id');
                 })
                 ->leftJoin('quote_item_option', function ($join) {
                     $join->on('quote_item.item_id', '=', 'quote_item_option.item_id')->where('code', 'attributes');
                 })
                 ->leftJoin('catalog_product_flat_'.config('shop.store').' AS product', 'product.entity_id', '=', 'quote_item.product_id')
-                ->groupBy('quote_id_mask.quote_id');
+                ->groupBy('quote.entity_id');
         });
     }
 }
