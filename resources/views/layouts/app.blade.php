@@ -9,8 +9,8 @@
     <title>@yield('title', '')</title>
     <meta name="description" content="@yield('description', '')"/>
 
-    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-    <script src="{{ mix('js/app.js') }}" defer></script>
+    <link href="{{ url(mix('css/app.css')) }}" rel="stylesheet">
+    <script src="{{ url(mix('js/app.js')) }}" defer></script>
 </head>
 <body class="bg-white antialiased">
     <div id="app">

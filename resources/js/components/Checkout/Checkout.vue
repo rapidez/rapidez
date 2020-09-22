@@ -9,20 +9,20 @@
                             class="form-input w-full"
                             id="email"
                             type="email"
+                            dusk="email"
                             placeholder="Email"
                             :value="email"
                             @input="loginInputChange"
-                            dusk="email"
                         >
                         <input
                             v-if="!emailAvailable"
                             class="form-input w-full mt-3"
                             id="password"
                             type="password"
+                            dusk="password"
                             placeholder="Password"
                             :value="password"
                             @input="loginInputChange"
-                            dusk="password"
                         >
                         <button
                             type="submit"
@@ -49,6 +49,7 @@
                                         type="text"
                                         class="form-input w-full"
                                         id="firstname"
+                                        dusk="firstname"
                                         placeholder="Firstname"
                                         :value="checkout.shipping_address.firstname"
                                         @input="inputChange('shipping_address', $event)"
@@ -59,6 +60,7 @@
                                         type="text"
                                         class="form-input w-full"
                                         id="lastname"
+                                        dusk="lastname"
                                         placeholder="Lastname"
                                         :value="checkout.shipping_address.lastname"
                                         @input="inputChange('shipping_address', $event)"
@@ -73,6 +75,7 @@
                                         type="text"
                                         class="form-input w-full"
                                         id="zipcode"
+                                        dusk="zipcode"
                                         placeholder="Zipcode"
                                         :value="checkout.shipping_address.zipcode"
                                         @input="inputChange('shipping_address', $event)"
@@ -84,6 +87,7 @@
                                         type="text"
                                         class="form-input w-full"
                                         id="housenumber"
+                                        dusk="housenumber"
                                         placeholder="Nr."
                                         :value="checkout.shipping_address.housenumber"
                                         @input="inputChange('shipping_address', $event)"
@@ -98,6 +102,7 @@
                                         type="text"
                                         class="form-input w-full"
                                         id="street"
+                                        dusk="street"
                                         placeholder="Street"
                                         :value="checkout.shipping_address.street"
                                         @input="inputChange('shipping_address', $event)"
@@ -112,6 +117,7 @@
                                         type="text"
                                         class="form-input w-full"
                                         id="city"
+                                        dusk="city"
                                         placeholder="City"
                                         :value="checkout.shipping_address.city"
                                         @input="inputChange('shipping_address', $event)"
@@ -126,6 +132,7 @@
                                         type="text"
                                         class="form-input w-full"
                                         id="telephone"
+                                        dusk="telephone"
                                         placeholder="Telephone"
                                         :value="checkout.shipping_address.telephone"
                                         @input="inputChange('shipping_address', $event)"
@@ -150,6 +157,7 @@
                                 type="submit"
                                 class="btn btn-primary mt-3"
                                 :disabled="loading"
+                                dusk="continue"
                             >
                                 Continue
                             </button>
@@ -159,12 +167,13 @@
                     <div v-if="checkout.step == 3">
                         <h1 class="font-bold text-4xl mb-5">Payment method</h1>
                         <form class="w-2/3" v-on:submit.prevent="save(['payment_method'], 4)">
-                            <div class="my-2" v-for="method in checkout.payment_methods">
+                            <div class="my-2" v-for="(method, index) in checkout.payment_methods">
                                 <input
                                     type="radio"
                                     name="payment_method"
                                     :value="method.code"
                                     :id="method.code"
+                                    :dusk="'method-'+index"
                                     v-model="checkout.payment_method"
                                 >
                                 <label :for="method.code">{{ method.title }}</label>
@@ -174,6 +183,7 @@
                                 type="submit"
                                 class="btn btn-primary"
                                 :disabled="loading"
+                                dusk="continue"
                             >
                                 Continue
                             </button>

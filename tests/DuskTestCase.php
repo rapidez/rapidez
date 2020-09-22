@@ -7,7 +7,7 @@ use App\Models\Product;
 use Facebook\WebDriver\Chrome\ChromeOptions;
 use Facebook\WebDriver\Remote\DesiredCapabilities;
 use Facebook\WebDriver\Remote\RemoteWebDriver;
-use Laravel\Dusk\TestCase as BaseTestCase;
+use BeyondCode\DuskDashboard\Testing\TestCase as BaseTestCase;
 
 abstract class DuskTestCase extends BaseTestCase
 {
@@ -55,7 +55,7 @@ abstract class DuskTestCase extends BaseTestCase
     {
         $options = (new ChromeOptions)->addArguments([
             '--disable-gpu',
-            // '--headless',
+            '--headless',
             '--window-size=1920,1080',
         ]);
 
