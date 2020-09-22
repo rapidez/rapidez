@@ -25,6 +25,7 @@
             :class="btnClass"
             :disabled="this.$root.loading"
             @click="add()"
+            dusk="add-to-cart"
         >
             Add to cart
         </button>

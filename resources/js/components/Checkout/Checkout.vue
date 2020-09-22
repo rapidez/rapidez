@@ -12,6 +12,7 @@
                             placeholder="Email"
                             :value="email"
                             @input="loginInputChange"
+                            dusk="email"
                         >
                         <input
                             v-if="!emailAvailable"
@@ -21,11 +22,13 @@
                             placeholder="Password"
                             :value="password"
                             @input="loginInputChange"
+                            dusk="password"
                         >
                         <button
                             type="submit"
                             class="btn btn-primary w-full mt-5"
                             :disabled="loading"
+                            dusk="continue"
                         >
                             Continue
                         </button>
