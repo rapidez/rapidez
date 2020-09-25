@@ -10,6 +10,7 @@ module.exports = {
                 '1/2': '50%',
             },
             width: {
+                '80': '20rem',
                 '960px': '960px'
             }
         }

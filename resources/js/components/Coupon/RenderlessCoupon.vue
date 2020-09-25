@@ -13,7 +13,7 @@
 
         render() {
             return this.$scopedSlots.default({
-                cart: this.cart,
+                cart: this.$root.cart,
                 removeCoupon: this.removeCoupon,
                 applyCoupon: this.applyCoupon,
                 couponCode: this.couponCode,

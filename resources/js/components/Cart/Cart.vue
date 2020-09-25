@@ -36,7 +36,7 @@
                 </div>
             </div>
 
-            <div class="flex justify-between mt-5">
+            <div class="flex justify-between items-start mt-5">
                 <coupon></coupon>
                 <div class="flex flex-wrap justify-end w-64">
                     <div class="flex flex-wrap p-3 mb-5 bg-secondary rounded">

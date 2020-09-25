@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-white sm:rounded-lg border">
+    <div class="bg-white sm:rounded-lg border w-80">
         <div class="px-4 py-5 sm:p-6">
             <h3 class="text-lg leading-6 font-medium text-gray-900">
                 Apply coupon code
@@ -15,11 +15,18 @@
                                     placeholder="Apply coupon code"
                                     v-on="inputEvents"
                                     :value="couponCode"
-                                    >
+                                    :disabled="$root.loading"
+                                >
                             </div>
                         </div>
                         <span class="mt-3 inline-flex rounded-md sm:mt-0 sm:ml-3 sm:w-auto">
-                            <button type="submit" class="btn btn-primary">Apply</button>
+                            <button
+                                type="submit"
+                                class="btn btn-primary"
+                                :disabled="$root.loading"
+                            >
+                                Apply
+                            </button>
                         </span>
                     </form>
                     <p class="text-red-500 text-xs italic w-3/4 mt-3">{{ submitError }}</p>
