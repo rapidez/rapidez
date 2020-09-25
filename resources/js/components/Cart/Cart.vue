@@ -37,13 +37,15 @@
             </div>
 
             <div class="flex justify-between mt-5">
-                <div><!-- Coupon --></div>
+                <coupon></coupon>
                 <div class="flex flex-wrap justify-end w-64">
                     <div class="flex flex-wrap p-3 mb-5 bg-secondary rounded">
                         <div class="w-1/2">Subtotal</div>
                         <div class="w-1/2 font-mono text-right">{{ cart.subtotal | price }}</div>
                         <div class="w-1/2">Tax</div>
                         <div class="w-1/2 font-mono text-right">{{ cart.tax | price }}</div>
+                        <div class="w-1/2" v-if="cart.discount_name">Discount: {{ cart.discount_name }}</div>
+                        <div class="w-1/2 font-mono text-right" v-if="cart.discount_amount != 0.00">{{ cart.discount_amount | price }}</div>
                         <div class="w-1/2 font-bold">Total</div>
                         <div class="w-1/2 font-mono text-right font-bold">{{ cart.total | price }}</div>
                     </div>

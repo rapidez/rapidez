@@ -52,7 +52,9 @@ class Quote extends Model
                 ->selectRaw('
                     ANY_VALUE(quote_address.subtotal_incl_tax) as subtotal,
                     ANY_VALUE(quote_address.tax_amount) as tax,
-                    ANY_VALUE(quote_address.grand_total) as total
+                    ANY_VALUE(quote_address.grand_total) as total,
+                    ANY_VALUE(quote_address.discount_amount) as discount_amount,
+                    ANY_VALUE(quote_address.discount_description) as discount_name
                 ')
                 ->selectRaw('JSON_REMOVE(JSON_OBJECTAGG(IFNULL(quote_item.item_id, "null__"), JSON_OBJECT(
                     "item_id", quote_item.item_id,
