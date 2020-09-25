@@ -22,7 +22,7 @@
                     <ul class="absolute left-0 right-auto z-10 bg-white shadow-xl rounded-b-lg lg:rounded-t-lg w-screen sm:w-full lg:w-960px xl:ml-0 left-1/2 transform -translate-x-1/2 xl:rounded-t-lg mt-px flex flex-wrap" v-if="isOpen">
                         <li
                             class="flex w-1/2 sm:w-1/2 md:w-1/3 px-4 my-4"
-                            v-for="suggestion in uniqueifyResults(suggestions || [])"
+                            v-for="suggestion in suggestions"
                             v-bind="getItemProps({ item: suggestion })"
                             v-on="getItemEvents({ item: suggestion })"
                             :key="suggestion._id">
@@ -44,14 +44,6 @@
 <script>
     export default {
         methods: {
-            uniqueifyResults: (suggestions) => {
-                var uniqueIds = [];
-                return _.filter(suggestions, function (item) {
-                    let present = !uniqueIds.includes(item.source.id)
-                    uniqueIds.push(item.source.id);
-                    return present;
-                })
-            },
             getCustomHighlight: (props) => ({
                 highlight: {
                     pre_tags: ['<mark>'],
