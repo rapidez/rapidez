@@ -16,15 +16,15 @@ use App\Models\Rewrite;
 |
 */
 
-Route::view('/cart', 'cart');
-Route::view('/checkout', 'checkout');
+Route::view('cart', 'cart.overview');
+Route::view('checkout', 'checkout.overview');
 
 Route::get('{any?}', function ($url = null) {
     if ($rewrite = Rewrite::firstWhere('request_path', $url)) {
         if ($rewrite->entity_type == 'category') {
             if ($category = Category::find($rewrite->entity_id)) {
                 config(['frontend.category' => $category->only('entity_id')]);
-                return view('category', compact('category'));
+                return view('category.overview', compact('category'));
             }
         }
 
@@ -35,13 +35,13 @@ Route::get('{any?}', function ($url = null) {
                     $attributes[] = $superAttribute->code;
                 }
                 config(['frontend.product' => $product->only($attributes)]);
-                return view('product', compact('product'));
+                return view('product.overview', compact('product'));
             }
         }
     }
 
     if ($page = Page::firstWhere('identifier', $url ?: 'home')) {
-        return view('page', compact('page'));
+        return view('page.overview', compact('page'));
     }
 
     abort(404);

@@ -11,7 +11,7 @@
         <account-menu class="float-right"></account-menu>
     </div>
     <div class="w-1/12">
-        <mini-cart class="float-right mr-3"></mini-cart>
+        @include('layouts.partials.header.minicart')
     </div>
     <div class="w-full">
         <x-snowdog-menu identifier="main"/>
