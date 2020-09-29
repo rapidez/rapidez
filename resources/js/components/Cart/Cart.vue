@@ -6,8 +6,8 @@
                     <a :href="item.url" class="block">
                         <img
                             :alt="item.name"
-                            :src="config.media_url + '/catalog/product' + item.image"
-                            class="w-full"
+                            :src="'/image/100x100/catalog/product' + item.image"
+                            width="100"
                         />
                     </a>
                 </div>

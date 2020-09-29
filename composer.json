@@ -17,6 +17,7 @@
         "laravel/horizon": "^4.0",
         "laravel/tinker": "^2.0",
         "predis/predis": "^1.1",
+        "spatie/image": "^1.7",
         "tormjens/eventy": "^0.5.9"
     },
     "require-dev": {

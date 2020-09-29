@@ -168,6 +168,7 @@ return [
         Extensions\Variants\VariantExtensionServiceProvider::class,
         Extensions\Compare\CompareExtensionServiceProvider::class,
         Extensions\SnowdogMenu\SnowdogMenuExtensionServiceProvider::class,
+        Extensions\ImageResizer\ImageResizerExtensionServiceProvider::class,
 
         /*
          * Application Service Providers...

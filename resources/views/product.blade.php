@@ -6,9 +6,9 @@
 @section('content')
     <div class="flex mb-5">
         <div class="w-2/3">
-            <div class="flex flex-wrap">
+            <div class="flex flex-wrap items-center">
                 @foreach($product->images as $image)
-                    <img src="{{ config('shop.media_url').'/catalog/product'.$image->value }}" alt="{{ $product->name }}" class="w-1/2">
+                    <img src="/image/467/catalog/product{{ $image->value }}" alt="{{ $product->name }}" class="w-1/2">
                 @endforeach
             </div>
         </div>
@@ -20,7 +20,7 @@
                 <div class="flex">
                     @foreach($product->variants as $variant)
                         <a href="{{ $variant->url_key }}" title="{{ $variant->name }}" class="w-16">
-                            <img src="{{ config('shop.media_url').'/catalog/product'.$variant->image }}" alt="{{ $variant->name }}">
+                            <img src="/image/64x64/catalog/product{{ $variant->image }}" alt="{{ $variant->name }}">
                         </a>
                     @endforeach
                 </div>
