@@ -24,7 +24,7 @@ class CompareExtensionServiceProvider extends ServiceProvider
             __DIR__.'/views' => resource_path('views/vendor/compare-extension'),
         ], 'views');
 
-        View::composer(['category', 'compare-extension::overview'], function ($view) {
+        View::composer(['category.overview', 'compare-extension::overview'], function ($view) {
             if ($productIds = session('compare')) {
                 $products = $this->getComparedProductsArray($productIds);
             }

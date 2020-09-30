@@ -10,7 +10,28 @@
         {!! str_replace('<ul>', '<ul class="flex">', $block->content) !!}
     @endif
 
-    <products></products>
+    <category v-cloak>
+        <div
+            slot-scope="{ loaded, baseStyles, filters, reactiveFilters, sortOptions, categoryQuery, onChange }"
+            :style="baseStyles"
+        >
+            <reactive-base
+                :app="'products_' + config.store"
+                :url="config.es_url"
+                v-if="loaded"
+            >
+                <selected-filters />
+                <div class="flex">
+                    <div class="w-1/5">
+                        @include('category.partials.filters')
+                    </div>
+                    <div class="w-4/5">
+                        @include('category.partials.listing')
+                    </div>
+                </div>
+            </reactive-base>
+        </div>
+    </category>
 
     {!! str_replace('<h2>', '<h2 class="font-bold text-2xl">', $category->description) !!}
 @endsection
