@@ -17,7 +17,7 @@
             <div class="font-bold text-3xl mb-3">{{ $product->formattedPrice }}</div>
 
             @if($product->variants)
-                <div class="flex">
+                <div class="flex items-center">
                     @foreach($product->variants as $variant)
                         <a href="{{ $variant->url_key }}" title="{{ $variant->name }}" class="w-16">
                             <img src="/image/64x64/catalog/product{{ $variant->image }}" alt="{{ $variant->name }}">
