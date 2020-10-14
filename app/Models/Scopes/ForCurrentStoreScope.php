@@ -33,9 +33,12 @@ class ForCurrentStoreScope implements Scope
         $joinTable    = $this->joinTable ?: $currentTable.'_store';
         $type         = explode('_', $currentTable)[1];
 
-        $builder->join($joinTable, function ($join) use ($currentTable, $type, $joinTable) {
-            $join->on($currentTable.'.'.$type.'_id', '=', $joinTable.'.'.$type.'_id')
-                 ->where('store_id', config('shop.store'));
-        });
+        $builder
+            ->leftJoin($joinTable, function ($join) use ($currentTable, $type, $joinTable) {
+                $join->on($currentTable.'.'.$type.'_id', '=', $joinTable.'.'.$type.'_id');
+            })
+            ->whereIn('store_id', [0, config('shop.store')])
+            ->orderByDesc('store_id')
+            ->limit(1);
     }
 }
