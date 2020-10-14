@@ -39,10 +39,12 @@ class Config extends Model
         });
     }
 
-    public static function getCachedByPath(string $path): string
+    public static function getCachedByPath(string $path, $default = null): ?string
     {
-        return Cache::rememberForever('config.'.config('shop.store').'.'.str_replace('/', '.', $path), function () use ($path) {
-            return self::where('path', $path)->first('value')->value;
+        $cacheKey = 'config.'.config('shop.store').'.'.str_replace('/', '.', $path);
+
+        return Cache::rememberForever($cacheKey, function () use ($path, $default) {
+            return self::where('path', $path)->first('value')->value ?? $default;
         });
     }
 }

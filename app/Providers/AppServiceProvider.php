@@ -38,7 +38,7 @@ class AppServiceProvider extends ServiceProvider
                 $exposedFrontendConfigValues
             )]);
 
-            config(['frontend.locale' => Config::getCachedByPath('general/locale/code')]);
+            config(['frontend.locale' => Config::getCachedByPath('general/locale/code', 'en_US')]);
             config(['frontend.currency' => Config::getCachedByPath('currency/options/default')]);
 
             config(['frontend.searchable' => Arr::pluck(Attribute::getCachedWhere(function ($attribute) {

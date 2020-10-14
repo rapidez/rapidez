@@ -78,7 +78,7 @@ class Product extends Model
     public function getFormattedPriceAttribute(): string
     {
         $currency  = Config::getCachedByPath('currency/options/default');
-        $locale    = Config::getCachedByPath('general/locale/code');
+        $locale    = Config::getCachedByPath('general/locale/code', 'en_US');
         $formatter = new NumberFormatter($locale, NumberFormatter::CURRENCY);
 
         return $formatter->formatCurrency($this->price, $currency);
