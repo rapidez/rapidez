@@ -2,11 +2,8 @@
 
 namespace Extensions\SnowdogMenu;
 
-use Extensions\SnowdogMenu\Models\Menu;
 use Extensions\SnowdogMenu\ViewComponents\SnowdogMenuComponent;
 use Illuminate\Support\Facades\Blade;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
 class SnowdogMenuExtensionServiceProvider extends ServiceProvider
