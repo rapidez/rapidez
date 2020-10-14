@@ -4,7 +4,7 @@
     @else
         {{ $item->html($loop) }}
     @endif
-    @includeWhen($item->children, 'snowdogmenu-extension::menu', ['items' => $item->children])
+    @includeWhen($item->children->count(), 'snowdogmenu-extension::menu', ['items' => $item->children])
     @if($item->type == 'wrapper')
         </div>
     @endif
