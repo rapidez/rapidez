@@ -13,7 +13,7 @@
 >
     <div class="flex w-1/2 sm:w-1/3 md:w-1/4 px-1 my-1" slot="renderItem" slot-scope="{ item }">
         <div class="flex flex-col justify-between w-full bg-gray-100" :key="item.id">
-            <a :href="'/'+item.url_key">
+            <a :href="'/'+item.url">
                 <img :src="'/image/200/catalog/product' + item.thumbnail" class="object-contain h-48 w-full mb-3" />
                 <div class="px-2">
                     <strong class="block hyphens">@{{ item.name }}</strong>

@@ -23,7 +23,7 @@ class Product extends Model
 
     protected $primaryKey = 'entity_id';
 
-    protected $appends = ['formatted_price'];
+    protected $appends = ['formatted_price', 'url'];
 
     protected static function boot(): void
     {
@@ -82,6 +82,11 @@ class Product extends Model
         $formatter = new NumberFormatter($locale, NumberFormatter::CURRENCY);
 
         return $formatter->formatCurrency($this->price, $currency);
+    }
+
+    public function getUrlAttribute(): string
+    {
+        return $this->url_key . Config::getCachedByPath('catalog/seo/product_url_suffix', '.html');
     }
 
     public static function exist($productId): bool
