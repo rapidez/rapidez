@@ -39,11 +39,11 @@
         <dd class="w-1/2">{{ $product->id }}</dd>
         <dt class="w-1/2 font-bold">SKU</dt>
         <dd class="w-1/2">{{ $product->sku }}</dd>
-        <dt class="w-1/2 font-bold">Color</dt>
-        <dd class="w-1/2">{{ $product->color }}</dd>
-        <dt class="w-1/2 font-bold">Brand</dt>
-        <dd class="w-1/2">{{ $product->manufacturer }}</dd>
-        <dt class="w-1/2 font-bold">Shoe type</dt>
-        <dd class="w-1/2">{{ $product->shoe_type }}</dd>
+        <dt class="w-1/2 font-bold">Style</dt>
+        <dd class="w-1/2">{{ implode(', ', $product->style_general) }}</dd>
+        <dt class="w-1/2 font-bold">Pattern</dt>
+        <dd class="w-1/2">{{ implode(', ', $product->pattern) }}</dd>
+        <dt class="w-1/2 font-bold">Climate</dt>
+        <dd class="w-1/2">{{ implode(', ', $product->climate) }}</dd>
     </dl>
 @endsection
