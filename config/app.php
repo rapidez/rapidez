@@ -165,10 +165,10 @@ return [
         /*
          * Package Service Providers...
          */
-        Extensions\Variants\VariantExtensionServiceProvider::class,
         Extensions\Compare\CompareExtensionServiceProvider::class,
-        Extensions\SnowdogMenu\SnowdogMenuExtensionServiceProvider::class,
         Extensions\ImageResizer\ImageResizerExtensionServiceProvider::class,
+        // Extensions\Variants\VariantExtensionServiceProvider::class,
+        // Extensions\SnowdogMenu\SnowdogMenuExtensionServiceProvider::class,
 
         /*
          * Application Service Providers...
