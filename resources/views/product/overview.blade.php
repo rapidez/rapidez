@@ -39,11 +39,11 @@
         <dd class="w-1/2">{{ $product->id }}</dd>
         <dt class="w-1/2 font-bold">SKU</dt>
         <dd class="w-1/2">{{ $product->sku }}</dd>
-        <dt class="w-1/2 font-bold">Style</dt>
-        <dd class="w-1/2">{{ implode(', ', $product->style_general) }}</dd>
-        <dt class="w-1/2 font-bold">Pattern</dt>
-        <dd class="w-1/2">{{ implode(', ', $product->pattern) }}</dd>
-        <dt class="w-1/2 font-bold">Climate</dt>
-        <dd class="w-1/2">{{ implode(', ', $product->climate) }}</dd>
+        @foreach(['style_general', 'pattern', 'climate', 'activity', 'style_bags', 'material', 'strap_bags', 'features_bags', 'gender', 'category_gear', 'format', 'style_bottom', 'style_general'] as $attribute)
+            @if($product->$attribute)
+                <dt class="w-1/2 font-bold">{{ ucfirst(str_replace('_', ' ', $attribute)) }}</dt>
+                <dd class="w-1/2">{{ is_array($product->$attribute) ? implode(', ', $product->$attribute) : $product->$attribute }}</dd>
+            @endif
+        @endforeach
     </dl>
 @endsection
