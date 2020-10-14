@@ -14,6 +14,6 @@
         @include('layouts.partials.header.minicart')
     </div>
     <div class="w-full">
-        {{-- <x-snowdog-menu identifier="main"/> --}}
+        <x-menu/>
     </div>
 </div>
