@@ -5,7 +5,7 @@
         </div>
     </div>
     <div class="w-6/12 h-12 flex items-center">
-        <autocomplete></autocomplete>
+        @include('layouts.partials.header.autocomplete')
     </div>
     <div class="w-2/12">
         <account-menu class="float-right"></account-menu>
