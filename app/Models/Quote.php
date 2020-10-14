@@ -62,7 +62,7 @@ class Quote extends Model
                     "sku", quote_item.sku,
                     "name", quote_item.name,
                     "image", product.thumbnail,
-                    "url", product.url_key,
+                    "url_key", product.url_key,
                     "qty", quote_item.qty,
                     "price", quote_item.price_incl_tax,
                     "total", quote_item.row_total_incl_tax,

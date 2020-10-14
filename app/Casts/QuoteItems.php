@@ -3,6 +3,7 @@
 namespace App\Casts;
 
 use App\Models\Attribute;
+use App\Models\Config;
 use App\Models\OptionValue;
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 use Illuminate\Support\Arr;
@@ -35,6 +36,7 @@ class QuoteItems implements CastsAttributes
                 $options[$superAttributes[$attributeId]] = OptionValue::getCachedByOptionId($attributeValue);
             }
             $item->options = $options;
+            $item->url = '/' . $item->url_key . Config::getCachedByPath('catalog/seo/product_url_suffix', '.html');
             unset($item->attributes);
         }
 
