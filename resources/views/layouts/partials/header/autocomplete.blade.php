@@ -20,7 +20,7 @@
                     v-for="suggestion in suggestions"
                     :key="suggestion._id"
                 >
-                    <a :href="'/'+suggestion.source.url" class="flex flex-wrap w-full h-full" key="suggestion._id">
+                    <a :href="suggestion.source.url" class="flex flex-wrap w-full h-full" key="suggestion._id">
                         <img :src="config.media_url+'/catalog/product/' + suggestion.source.thumbnail" class="object-contain lg:w-3/12 self-center" />
                         <div class="px-2 flex flex-wrap flex-grow lg:w-1/2">
                             <strong class="block hyphens w-full">@{{ suggestion.source.name }}</strong>

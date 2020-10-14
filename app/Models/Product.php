@@ -86,7 +86,7 @@ class Product extends Model
 
     public function getUrlAttribute(): string
     {
-        return $this->url_key . Config::getCachedByPath('catalog/seo/product_url_suffix', '.html');
+        return '/' . $this->url_key . Config::getCachedByPath('catalog/seo/product_url_suffix', '.html');
     }
 
     public static function exist($productId): bool
