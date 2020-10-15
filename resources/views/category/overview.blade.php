@@ -10,28 +10,32 @@
         {!! str_replace('<ul>', '<ul class="flex">', $block->content) !!}
     @endif
 
-    <category v-cloak>
-        <div
-            slot-scope="{ loaded, baseStyles, filters, reactiveFilters, sortOptions, categoryQuery, onChange }"
-            :style="baseStyles"
-        >
-            <reactive-base
-                :app="'products_' + config.store"
-                :url="config.es_url"
-                v-if="loaded"
+    @if($category->is_anchor)
+        <category v-cloak>
+            <div
+                slot-scope="{ loaded, baseStyles, filters, reactiveFilters, sortOptions, categoryQuery, onChange }"
+                :style="baseStyles"
             >
-                <selected-filters />
-                <div class="flex">
-                    <div class="w-1/5">
-                        @include('category.partials.filters')
+                <reactive-base
+                    :app="'products_' + config.store"
+                    :url="config.es_url"
+                    v-if="loaded"
+                >
+                    <selected-filters />
+                    <div class="flex">
+                        <div class="w-1/5">
+                            @include('category.partials.filters')
+                        </div>
+                        <div class="w-4/5">
+                            @include('category.partials.listing')
+                        </div>
                     </div>
-                    <div class="w-4/5">
-                        @include('category.partials.listing')
-                    </div>
-                </div>
-            </reactive-base>
-        </div>
-    </category>
+                </reactive-base>
+            </div>
+        </category>
+    @else
+        <i>This is a non anchor category without any content because most likely everything is rendered with layout updates or widgets.</i>
+    @endif
 
     {!! str_replace('<h2>', '<h2 class="font-bold text-2xl">', $category->description) !!}
 @endsection

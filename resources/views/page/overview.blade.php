@@ -6,6 +6,6 @@
 @section('content')
     <h1 class="font-bold text-4xl">{{ $page->content_heading }}</h1>
     <div class="mb-5">
-        {!! $page->content ?: '<i>This page doesn\'t have any content because most likely everything is rendered with layout updates.</i>' !!}
+        {!! $page->content ?: '<i>This page doesn\'t have any content because most likely everything is rendered with layout updates or widgets.</i>' !!}
     </div>
 @endsection
