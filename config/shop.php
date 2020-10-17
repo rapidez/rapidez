@@ -4,7 +4,7 @@ return [
     'store' => env('STORE', 1),
 
     // Elasticsearch url.
-    'es_url' => env('ES_URL', 'http://localhost:9200'),
+    'es_url' => env('ELASTICSEARCH_URL', 'http://localhost:9200'),
 
     // Media url.
     'media_url' => env('MEDIA_URL', env('MAGENTO_URL') . '/media'),
