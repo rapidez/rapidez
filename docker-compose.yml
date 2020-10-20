@@ -1,6 +1,7 @@
 version: '3'
 services:
   elasticsearch:
+    container_name: elasticsearch
     image: docker.elastic.co/elasticsearch/elasticsearch:7.6.0
     restart: unless-stopped
     volumes:
@@ -10,12 +11,14 @@ services:
     ports:
       - 127.0.0.1:9200:9200
   magento:
+    container_name: magento
     image: michielgerritsen/magento-project-community-edition:php74-fpm-magento2.4.1
     restart: unless-stopped
     ports:
       - 127.0.0.1:1234:80
       - 127.0.0.1:3307:3306
   kibana:
+    container_name: kibana
     image: docker.elastic.co/kibana/kibana:7.6.0
     ports:
       - 127.0.0.1:5601:5601
