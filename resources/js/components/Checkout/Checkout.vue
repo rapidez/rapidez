@@ -8,7 +8,6 @@
             return this.$scopedSlots.default({
                 cart: this.cart,
                 checkout: this.checkout,
-                loading: this.$root.loading,
                 inputChange: this.inputChange,
                 save: this.save,
             })

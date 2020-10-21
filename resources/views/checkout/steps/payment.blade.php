@@ -15,7 +15,7 @@
     <button
         type="submit"
         class="btn btn-primary"
-        :disabled="loading"
+        :disabled="$root.loading"
         dusk="continue"
     >
         Continue

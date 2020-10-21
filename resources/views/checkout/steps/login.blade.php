@@ -24,7 +24,7 @@
             <button
                 type="submit"
                 class="btn btn-primary w-full mt-5"
-                :disabled="loading"
+                :disabled="$root.loading"
                 dusk="continue"
             >
                 Continue
