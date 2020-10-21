@@ -5,6 +5,7 @@
 >
     <data-search
         component-id="autocomplete"
+        :inner-class="{ input: 'rounded' }"
         :data-field="config.searchable"
         :show-icon="false"
         :debounce="100"
@@ -14,7 +15,7 @@
             slot="render"
             slot-scope="{ downshiftProps: { isOpen }, data: suggestions }"
         >
-            <ul class="absolute left-0 right-auto z-20 bg-white border shadow-xl rounded-b-lg lg:rounded-t-lg w-screen sm:w-full lg:w-960px xl:ml-0 left-1/2 transform -translate-x-1/2 xl:rounded-t-lg mt-px flex flex-wrap" v-if="isOpen">
+            <ul class="absolute left-0 right-auto z-20 bg-white border shadow-xl rounded-b-lg lg:rounded-t-lg w-screen sm:w-full lg:w-960px xl:ml-0 left-1/2 transform -translate-x-1/2 xl:rounded-t-lg mt-px flex flex-wrap" v-if="isOpen && suggestions.length">
                 <li
                     class="flex w-1/2 sm:w-1/2 md:w-1/3 px-4 my-4"
                     v-for="suggestion in suggestions"

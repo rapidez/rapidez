@@ -2,7 +2,7 @@
 return [
     'classes' => [
         1 => [
-            'ul' => 'flex',
+            'ul' => 'flex flex-wrap',
             'li' => 'group',
             'category' => 'block p-3 text-primary font-bold',
         ],
