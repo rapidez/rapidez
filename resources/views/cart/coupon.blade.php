@@ -1,5 +1,5 @@
-<div class="bg-white sm:rounded-lg border w-80">
-    <div class="px-4 py-5 sm:p-6">
+<div class="bg-white rounded-lg border sm:w-80 mb-3">
+    <div class="p-3">
         <h3 class="text-lg leading-6 font-medium text-gray-900">
             Apply coupon code
         </h3>
@@ -28,7 +28,7 @@
                         </button>
                     </span>
                 </form>
-                <p class="text-red-500 text-xs italic w-3/4 mt-3">@{{ submitError }}</p>
+                <p class="text-red-500 text-xs italic w-3/4 mt-3" v-if="submitError">@{{ submitError }}</p>
                 <div class="relative rounded-md" v-if="cart.discount_name">
                     <div class="w-100">
                         <button class="inline-block" @click="removeCoupon">
