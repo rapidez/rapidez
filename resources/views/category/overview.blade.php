@@ -22,11 +22,11 @@
                     v-if="loaded"
                 >
                     <selected-filters />
-                    <div class="flex">
-                        <div class="w-1/5">
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-1/5">
                             @include('category.partials.filters')
                         </div>
-                        <div class="w-4/5">
+                        <div class="md:w-4/5">
                             @include('category.partials.listing')
                         </div>
                     </div>

@@ -1,4 +1,6 @@
-<div v-for="filter in filters" :key="filter.code">
+<button type="button" class="md:hidden btn btn-primary w-full mb-3">@lang('Filters')</button>
+
+<div class="hidden md:block" v-for="filter in filters" :key="filter.code">
     <dynamic-range-slider
         v-if="filter.input == 'price'"
         :component-id="'filter_'+filter.code"

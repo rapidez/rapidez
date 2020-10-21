@@ -11,7 +11,7 @@
     @query-change="onChange"
     u-r-l-params
 >
-    <div class="flex w-1/2 sm:w-1/3 md:w-1/4 px-1 my-1" slot="renderItem" slot-scope="{ item }">
+    <div class="flex w-1/2 sm:w-1/3 lg:w-1/4 px-1 my-1" slot="renderItem" slot-scope="{ item }">
         <div class="flex flex-col justify-between w-full bg-gray-100" :key="item.id">
             <a :href="item.url">
                 <img :src="'/image/200/catalog/product' + item.thumbnail" class="object-contain h-48 w-full mb-3" />
