@@ -12,7 +12,7 @@
                 @foreach($product->images as $image)
                     <img
                         src="/image/467/catalog/product{{ $image->value }}" alt="{{ $product->name }}"
-                        class="{{ $product->images->count() == 1 ? 'w-full' : 'w-1/2' }}"
+                        class="{{ $product->images->count() == 1 ? 'w-full sm:w-1/2' : 'w-1/2' }}"
                     />
                 @endforeach
             </div>
