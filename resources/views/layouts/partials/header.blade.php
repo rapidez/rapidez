@@ -8,7 +8,7 @@
         @include('layouts.partials.header.autocomplete')
     </div>
     <div class="w-3/12 flex justify-end pr-3">
-        <account-menu class="my-1 mr-3"></account-menu>
+        @include('layouts.partials.header.account')
         @include('layouts.partials.header.minicart')
     </div>
     <div class="w-full">
