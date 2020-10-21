@@ -1,4 +1,12 @@
 module.exports = {
+    purge: [
+        './resources/views/**/*.blade.php',
+        './resources/css/**/*.css',
+        './resources/js/**/*.vue',
+        './extensions/**/*.vue',
+        './extensions/**/*.blade.php',
+        './extensions/Menu/config/menu-extension.php',
+    ],
     theme: {
         extend: {
             colors: {
@@ -21,7 +29,7 @@ module.exports = {
         opacity: ['responsive', 'hover', 'focus', 'disabled'],
     },
     plugins: [
-        require('@tailwindcss/custom-forms')
+        require('@tailwindcss/ui'),
     ],
     experimental: {
         applyComplexClasses: true,
