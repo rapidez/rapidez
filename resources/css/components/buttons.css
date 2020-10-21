@@ -1,6 +1,9 @@
 .btn {
-    @apply inline-block font-bold py-2 px-4 rounded disabled:opacity-75 disabled:cursor-not-allowed;
+    @apply inline-block font-semibold py-2 px-4 border rounded disabled:opacity-50 disabled:cursor-not-allowed;
 }
 .btn-primary {
-    @apply bg-primary text-white hover:opacity-75;
+    @apply bg-primary border-primary text-white hover:opacity-75;
+}
+.btn-outline-primary {
+    @apply bg-transparent hover:bg-primary text-primary hover:text-white border-primary hover:border-transparent hover:opacity-75;
 }
