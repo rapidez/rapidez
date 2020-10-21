@@ -19,13 +19,6 @@
                     <strong class="block hyphens">@{{ item.name }}</strong>
                     <div class="">@{{ item.formatted_price }}</div>
                 </div>
-                <div v-if="item.variants">
-                    <ul class="flex">
-                        <li v-for="variant in item.variants" class="h-16 w-16">
-                            <img :src="'/image/64x64/catalog/product' + variant.image" class="object-contain h-16 w-full" />
-                        </li>
-                    </ul>
-                </div>
             </a>
             <product-compare-checkbox
                 :key="item.id"
