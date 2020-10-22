@@ -1,7 +1,7 @@
 <div class="bg-white rounded-lg border sm:w-80 mb-3">
     <div class="p-3">
         <h3 class="text-lg leading-6 font-medium text-gray-900">
-            Apply coupon code
+            @lang('Apply coupon code')
         </h3>
         <coupon v-slot="{ cart, removeCoupon, couponCode, inputEvents, applyCoupon, submitError }">
             <div>
@@ -11,7 +11,7 @@
                             <input
                                 id="couponCode"
                                 class="form-input block w-full sm:text-sm sm:leading-5"
-                                placeholder="Apply coupon code"
+                                placeholder="@lang('Apply coupon code')"
                                 v-on="inputEvents"
                                 :value="couponCode"
                                 :disabled="$root.loading"
@@ -24,7 +24,7 @@
                             class="btn btn-primary"
                             :disabled="$root.loading"
                         >
-                            Apply
+                            @lang('Apply')
                         </button>
                     </span>
                 </form>
@@ -36,7 +36,7 @@
                                 <path d="M4 8l2-2m0 0l2-2M6 6L4 4m2 2l2 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </button>
-                        Discount: @{{ cart.discount_name }}
+                        @lang('Discount'): @{{ cart.discount_name }}
                     </div>
                 </div>
             </div>
