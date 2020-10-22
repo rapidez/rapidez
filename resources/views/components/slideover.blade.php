@@ -2,7 +2,7 @@
     <div>
         {{ $button }}
 
-        <div class="fixed inset-0 overflow-hidden md:static md:block" :class="isOpen ? 'pointer-events-auto' : 'pointer-events-none'">
+        <div class="fixed inset-0 overflow-hidden md:static md:block z-30" :class="isOpen ? 'pointer-events-auto' : 'pointer-events-none'">
             <div class="absolute inset-0 overflow-hidden md:static">
                 <transition
                     enter-active-class="ease-in-out duration-500"
