@@ -41,6 +41,6 @@ class OptionValue extends Model
                 ->toArray();
         })[$optionId]['value'];
 
-        return $optionValue[config('shop.store')] ?? $optionValue[0];
+        return html_entity_decode($optionValue[config('shop.store')] ?? $optionValue[0]);
     }
 }
