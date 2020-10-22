@@ -26,7 +26,8 @@
             :inner-class="{
                 title: 'capitalize font-semibold',
                 count: 'text-gray-400',
-                list: 'max-h-none-important'
+                list: 'max-h-none-important',
+                label: 'text-gray-600'
             }"
             :title="filter.name+(filter.input == 'multiselect' ? '' : '(or)')"
             :select-all-label="''"
