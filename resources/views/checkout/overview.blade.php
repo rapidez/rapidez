@@ -10,8 +10,8 @@
                     @include('checkout.steps.login')
                 </div>
 
-                <div v-if="[2, 3].includes(checkout.step)" class="flex -mx-2">
-                    <div class="w-4/5 px-2">
+                <div v-if="[2, 3].includes(checkout.step)" class="md:flex -mx-2">
+                    <div class="w-full mb-5 md:w-2/3 lg:w-3/4 px-2">
                         <div v-if="checkout.step == 2">
                             @include('checkout.steps.credentials')
                         </div>
@@ -20,7 +20,7 @@
                             @include('checkout.steps.payment')
                         </div>
                     </div>
-                    <div class="w-1/5 px-2">
+                    <div class="md:w-1/3 lg:w-1/4 px-2 md:mt-20">
                         @include('checkout.partials.sidebar')
                     </div>
                 </div>

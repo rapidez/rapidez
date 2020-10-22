@@ -1,4 +1,4 @@
-<h1 class="font-bold text-4xl mb-5">Payment method</h1>
+<h1 class="font-bold text-4xl mb-5">@lang('Payment method')</h1>
 <form class="w-2/3" v-on:submit.prevent="save(['payment_method'], 4)">
     <div class="my-2" v-for="(method, index) in checkout.payment_methods">
         <input
@@ -18,6 +18,6 @@
         :disabled="$root.loading"
         dusk="continue"
     >
-        Continue
+        @lang('Continue')
     </button>
 </form>

@@ -1,13 +1,13 @@
 <login v-slot="{ email, password, go, loginInputChange, emailAvailable }">
     <div class="flex justify-center">
-        <form class="w-1/3 p-8 border rounded" v-on:submit.prevent="go()">
-            <h1 class="font-bold text-4xl text-center mb-5">Checkout</h1>
+        <form class="p-8 border rounded" v-on:submit.prevent="go()">
+            <h1 class="font-bold text-4xl text-center mb-5">@lang('Checkout')</h1>
             <input
                 class="form-input w-full"
                 id="email"
                 type="email"
                 dusk="email"
-                placeholder="Email"
+                placeholder="@lang('Email')"
                 :value="email"
                 @input="loginInputChange"
             >
@@ -17,7 +17,7 @@
                 id="password"
                 type="password"
                 dusk="password"
-                placeholder="Password"
+                placeholder="@lang('Password')"
                 :value="password"
                 @input="loginInputChange"
             >
@@ -27,7 +27,7 @@
                 :disabled="$root.loading"
                 dusk="continue"
             >
-                Continue
+                @lang('Continue')
             </button>
         </form>
     </div>
