@@ -1,3 +1,4 @@
+/* Used by the slide over */
 @media (min-width: 768px) {
     .md\:hidden-important {
         display: none !important;
@@ -5,4 +6,9 @@
     .md\:block-important {
         display: block !important;
     }
+}
+
+/* Used by the filters */
+.max-h-none-important {
+    max-height: none !important;
 }

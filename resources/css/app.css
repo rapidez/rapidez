@@ -42,7 +42,6 @@
  */
 
 @import "components/buttons.css";
-@import "components/slideover.css";
 
 /**
  * This injects all of Tailwind's utility classes, generated based on your
@@ -70,3 +69,5 @@
  */
 
 [v-cloak] { display: none; }
+
+@import "utilities/importants.css";

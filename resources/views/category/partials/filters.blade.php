@@ -25,7 +25,8 @@
             :data-field="filter.code + '.keyword'"
             :inner-class="{
                 title: 'capitalize font-semibold',
-                count: 'text-gray-400'
+                count: 'text-gray-400',
+                list: 'max-h-none-important'
             }"
             :title="filter.name+(filter.input == 'multiselect' ? '' : '(or)')"
             :select-all-label="''"
