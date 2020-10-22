@@ -57,6 +57,7 @@
                         <div class="w-1/2">Tax</div>
                         <div class="w-1/2 font-mono text-right">@{{ cart.tax | price }}</div>
                         <div class="w-1/2" v-if="cart.discount_name">Discount: @{{ cart.discount_name }}</div>
+                        <div class="w-1/2" v-if="!cart.discount_name && cart.discount_amount != 0.00">Discount</div>
                         <div class="w-1/2 font-mono text-right" v-if="cart.discount_amount != 0.00">@{{ cart.discount_amount | price }}</div>
                         <div class="w-1/2 font-bold">Total</div>
                         <div class="w-1/2 font-mono text-right font-bold">@{{ cart.total | price }}</div>
