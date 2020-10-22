@@ -1,0 +1,8 @@
+@media (min-width: 768px) {
+    .md\:hidden-important {
+        display: none !important;
+    }
+    .md\:block-important {
+        display: block !important;
+    }
+}
