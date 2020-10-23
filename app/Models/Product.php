@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Casts\DecodeHtmlEntities;
 use App\Models\Config;
 use App\Models\Model;
 use App\Models\Scopes\Product\WithProductAttributesScope;
@@ -48,6 +49,7 @@ class Product extends Model
     {
         return array_merge(
             parent::getCasts(),
+            ['name' => DecodeHtmlEntities::class],
             $this->getSuperAttributeCasts(),
             $this->getMultiselectAttributeCasts(),
             Eventy::filter('product.casts') ?: [],
