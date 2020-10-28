@@ -11,7 +11,6 @@
                 loaded: this.loaded,
                 baseStyles: this.baseStyles,
 
-                categoryQuery: this.categoryQuery,
                 onChange: this.onChange,
 
                 filters: this.filters,
@@ -45,15 +44,6 @@
         },
 
         methods: {
-            categoryQuery() {
-                return {
-                    "query": {
-                        "terms": {
-                            "category_ids": [ this.$root.config.category.entity_id ]
-                        }
-                    }
-                }
-            },
             onChange() {
                 sessionStorage.setItem('height', this.$el.clientHeight)
             },
@@ -73,7 +63,7 @@
             reactiveFilters: function () {
                 return _.map(this.filters, function (filter) {
                     return 'filter_' + filter.code + (filter.text_swatch || filter.visual_swatch ? '_swatch' : '');
-                });
+                }).concat(['category']);
             },
             sortOptions: function () {
                 return _.flatMap(this.sortings, function (sorting) {

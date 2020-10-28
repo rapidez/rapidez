@@ -3,6 +3,12 @@
         <button type="button" class="md:hidden btn btn-primary w-full mb-3" @click="toggle">@lang('Filters')</button>
     </x-slot>
 
+    <reactive-component component-id="category">
+        <div slot-scope="{ setQuery }">
+            <category-filter :set-query="setQuery"></category-filter>
+        </div>
+    </reactive-component>
+
     <div v-for="filter in filters" :key="filter.code">
         <dynamic-range-slider
             v-if="filter.input == 'price'"
@@ -30,9 +36,7 @@
                 label: 'text-gray-600'
             }"
             :title="filter.name+(filter.input == 'multiselect' ? '' : '(or)')"
-            :select-all-label="''"
             :react="{and: reactiveFilters}"
-            :default-query="categoryQuery"
             :query-format="filter.input == 'multiselect' ? 'and' : 'or'"
             :show-search="false"
             u-r-l-params

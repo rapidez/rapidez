@@ -6,7 +6,6 @@
     :from="0"
     :size="32"
     :react="{and: reactiveFilters}"
-    :default-query="categoryQuery"
     :sort-options="sortOptions"
     @query-change="onChange"
     u-r-l-params
