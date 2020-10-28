@@ -12,7 +12,7 @@
     <div v-for="filter in filters" :key="filter.code">
         <dynamic-range-slider
             v-if="filter.input == 'price'"
-            :component-id="'filter_'+filter.code"
+            :component-id="filter.code"
             :data-field="filter.code"
             :title="filter.name"
             :show-filter="false"
@@ -27,7 +27,7 @@
         ></swatch-filter>
         <multi-list
             v-else
-            :component-id="'filter_'+filter.code"
+            :component-id="filter.code"
             :data-field="filter.code + '.keyword'"
             :inner-class="{
                 title: 'capitalize font-semibold',

@@ -1,7 +1,7 @@
 <template>
     <div v-if="loaded">
          <toggle-button
-            :componentId="'filter_'+attributeData.code+'_swatch'"
+            :componentId="attributeData.code+'_swatch'"
             :dataField="attributeData.code+'_swatch.keyword'"
             :title="attributeData.name"
             :data="getSwatchOptionByCode(attributeData.code)"

@@ -62,7 +62,7 @@
             },
             reactiveFilters: function () {
                 return _.map(this.filters, function (filter) {
-                    return 'filter_' + filter.code + (filter.text_swatch || filter.visual_swatch ? '_swatch' : '');
+                    return filter.code + (filter.text_swatch || filter.visual_swatch ? '_swatch' : '');
                 }).concat(['category']);
             },
             sortOptions: function () {
