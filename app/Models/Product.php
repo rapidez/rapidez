@@ -33,6 +33,9 @@ class Product extends Model
         static::addGlobalScope(new WithProductAttributesScope);
         static::addGlobalScope(new WithProductSuperAttributesScope);
         static::addGlobalScope(new WithProductCategoryIdsScope);
+        static::addGlobalScope('only-supported-types', function (Builder $builder) {
+            $builder->whereNotIn('type_id', ['grouped', 'bundle']);
+        });
 
         $scopes = Eventy::filter('product.scopes') ?: [];
         foreach ($scopes as $scope) {
