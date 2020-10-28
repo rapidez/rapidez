@@ -8,6 +8,7 @@
         :inner-class="{ input: 'rounded' }"
         :data-field="config.searchable"
         :show-icon="false"
+        fuzziness="AUTO"
         :debounce="100"
         :size="9"
     >
