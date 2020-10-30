@@ -10,8 +10,8 @@ The idea behind Rapidez is to have a blazing fast headless frontend for your Mag
 
 - `cp .env.example .env`
 - Add the url and database credentials from your Magento 2 installation (or use the demo installation which will be running on `http://localhost:1234` after the Docker steps).
-- `php artisan key:generate`
 - `composer install`
+- `php artisan key:generate`
 - `yarn`
 - `yarn run prod`
 - `docker-compose up -d` (or bring your own Elasticsearch and Magento 2 installation)
