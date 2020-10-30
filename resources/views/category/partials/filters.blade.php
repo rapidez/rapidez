@@ -9,9 +9,10 @@
         </div>
     </reactive-component>
 
-    <template v-for="filter in filters" :key="filter.code">
+    <template v-for="filter in filters">
         @include('category.partials.filter.price')
         @include('category.partials.filter.swatch')
+        @include('category.partials.filter.boolean')
         @include('category.partials.filter.select')
     </template>
 </x-slideover>
