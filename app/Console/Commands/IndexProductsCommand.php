@@ -65,14 +65,15 @@ class IndexProductsCommand extends Command
                 $productQuery->withGlobalScope($scope, new $scope);
             }
 
-            $productQuery->withGlobalScope('swatches', new WithProductSwatchesScope);
-
             $bar = $this->output->createProgressBar($productQuery->count());
             $bar->start();
 
             $productQuery->chunk($this->chunkSize, function ($products) use ($store, $bar) {
                 foreach ($products as $product) {
                     $data = array_merge(['store' => $store->store_id], $product->toArray());
+                    foreach ($product->super_attributes ?: [] as $superAttribute) {
+                        $data[$superAttribute->code] = array_keys((array)$product->{$superAttribute->code});
+                    }
                     $data = Eventy::filter('index.product.data', $data, $product);
                     IndexProductJob::dispatch($data);
                 }
