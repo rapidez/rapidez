@@ -44,6 +44,12 @@ export default {
         },
     },
 
+    computed: {
+        hasItems: function () {
+            return this.cart && this.cart.items && Object.keys(this.cart.items).length
+        }
+    },
+
     // TODO: This is executed without being called. See:
     // https://github.com/foxbenjaminfox/vue-async-computed/issues/98
     asyncComputed: {

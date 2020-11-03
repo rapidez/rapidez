@@ -6,6 +6,7 @@
 
         render() {
             return this.$scopedSlots.default({
+                hasItems: this.hasItems,
                 cart: this.cart,
                 checkout: this.checkout,
                 inputChange: this.inputChange,
@@ -13,7 +14,12 @@
             })
         },
 
-        mounted() {
+        created() {
+            if (!this.hasItems) {
+                window.location.replace('/')
+                return
+            }
+
             this.getShippingMethods()
         },
 
