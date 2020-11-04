@@ -22,7 +22,7 @@
                 {!! $product->description !!}
             </div>
             <div class="font-bold text-3xl mb-3">{{ $product->formattedPrice }}</div>
-            <add-to-cart btn-class="block btn btn-primary" />
+            @include('product.partials.addtocart')
         </div>
     </div>
 
