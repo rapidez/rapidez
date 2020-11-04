@@ -24,10 +24,6 @@ abstract class DuskTestCase extends BaseTestCase
     {
         parent::setUp();
 
-        if (!config('testing.product')) {
-            throw TestProductNotSetException::create();
-        }
-
         $this->testProduct = Product::selectAttributes([
             'name',
             'price',

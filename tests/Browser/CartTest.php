@@ -11,7 +11,7 @@ class CartTest extends DuskTestCase
     public function testAddSimpleProduct()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit($this->testProduct->url_key)
+            $browser->visit($this->testProduct->url)
                     ->waitUntilAllAjaxCallsAreFinished()
                     ->click('@add-to-cart')
                     ->waitUntilAllAjaxCallsAreFinished()

@@ -11,7 +11,7 @@ class CheckoutTest extends DuskTestCase
     public function testCheckoutAsGuest()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit($this->testProduct->url_key)
+            $browser->visit($this->testProduct->url)
                     ->waitUntilAllAjaxCallsAreFinished()
                     ->click('@add-to-cart')
                     ->waitUntilAllAjaxCallsAreFinished()
@@ -31,8 +31,12 @@ class CheckoutTest extends DuskTestCase
 
     public function testCheckoutAsUser()
     {
+        if (!config('testing.pass')) {
+            $this->markTestSkipped('No password for the test user specified.');
+        }
+
         $this->browse(function (Browser $browser) {
-            $browser->visit($this->testProduct->url_key)
+            $browser->visit($this->testProduct->url)
                     ->waitUntilAllAjaxCallsAreFinished()
                     ->click('@add-to-cart')
                     ->waitUntilAllAjaxCallsAreFinished()
