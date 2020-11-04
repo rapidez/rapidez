@@ -2,7 +2,7 @@
     <div>
         <div v-for="(superAttribute, superAttributeId) in config.product.super_attributes">
             <label :for="'super_attribute_'+superAttributeId">{{ superAttribute.label }}</label>
-            <div class="inline-block relative w-64 mb-3">
+            <div class="relative w-64 mb-3">
                 <select
                     :id="'super_attribute_'+superAttributeId"
                     :name="superAttributeId"
@@ -50,7 +50,7 @@
         }),
         methods: {
             async add() {
-                await this.refreshCart()
+                await this.getMask()
 
                 this.magentoCart('post', 'items', {
                     cartItem: {

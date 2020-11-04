@@ -1,12 +1,10 @@
 export default {
     methods: {
-        async getCart() {
-            if (this.$root.cart === null) {
-                if (!localStorage.cart) {
-                    await this.refreshCart()
-                }
+        getCart() {
+            if (this.$root.cart === null && localStorage.cart) {
                 this.$root.cart = JSON.parse(localStorage.cart)
             }
+
             return this.$root.cart
         },
 
@@ -45,16 +43,12 @@ export default {
     },
 
     computed: {
-        hasItems: function () {
-            return this.cart && this.cart.items && Object.keys(this.cart.items).length
-        }
-    },
-
-    // TODO: This is executed without being called. See:
-    // https://github.com/foxbenjaminfox/vue-async-computed/issues/98
-    asyncComputed: {
         cart: function () {
             return this.getCart()
-        }
-    }
+        },
+
+        hasItems: function () {
+            return this.cart && this.cart.items && Object.keys(this.cart.items).length
+        },
+    },
 }
