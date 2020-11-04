@@ -1,6 +1,6 @@
-# Rapidez - Headless Magento 🏎
+# Rapidez - Headless Magento 🚀
 
-With Laravel, Vue and Reactive Search 🤘🏻
+With Laravel, Vue and Reactive Search 🤘🏻 Demo: https://test.rapidez.io 🏎
 
 ## Background
 
@@ -27,10 +27,6 @@ The idea behind Rapidez is to have a blazing fast headless frontend for your Mag
 
 Because we're making Ajax request to the Magento API; CORS need to be opened. If you're using Valet Plus this can easily done, [see here](https://github.com/weprovide/valet-plus/issues/493). With the Docker Magento installation it's already opened [with a patch](https://github.com/michielgerritsen/magento2-extension-integration-test/blob/master/magento/patches/cors.patch). For production you've to restrict this to your domain.
 
-## Vue Storefront comparison
-
-Vue Storefront does support multiple backends where the focus of Rapidez is Magento 2. The learning curve of Vue Storefront can be steep because it's totally different from Magento which uses PHP. Rapidez combines best of both worlds by using PHP and Vue. Just the interactive elements are written in Vue but the functional part is sepearted from the visual part so anyone without Vue knowledge can work with it.
-
 ## Extensions
 
 The idea is to have a base application which can be extended with extensions. Those extensions currently house within the `extensions` directory. Later on this should be moved to Composer packages. Until then these extensions can be enabled/disabled by their service providers in `config/app.php`.
@@ -41,6 +37,24 @@ To keep everything as flexible as possible when a extension is enabled only the 
 - Create a new Vue component (and optionally use the extension mixins)
 
 So when developing extensions make sure the Vue components are as flexible as possible and the functional part is seperated from the visual part. Styling should be project independent in the extensions!
+
+## FAQ
+
+**How is this different from Vue Storefront?**
+
+> Vue Storefront does support multiple backends where the focus of Rapidez is Magento 2. The learning curve of Vue Storefront can be steep because it's totally different from Magento which uses a PHP stack. Rapidez combines best of both worlds by using PHP and Vue.
+
+**Why headless and not a PWA?**
+
+> Do you really need a offline experience on your webshop? PWA makes things more complicated than necessary.
+
+**Do I need to know Vue?**
+
+> No, Vue is only used for some functional frontend components like the cart. All Vue components are "renderless" so most likely you never need to touch them because all the HTML is in the Blade files. But some basic knowledge of Vue could be useful.
+
+**TailwindCSS is used, do I need to use it?**
+
+> No, you do not need te use it. You are completely free to use whatever you want. We like it so we used it for basic styling.
 
 ## Running on a server / going live
 
