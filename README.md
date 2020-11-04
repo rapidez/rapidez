@@ -38,7 +38,31 @@ To keep everything as flexible as possible when a extension is enabled only the 
 
 So when developing extensions make sure the Vue components are as flexible as possible and the functional part is seperated from the visual part. Styling should be project independent in the extensions!
 
+### Create your own extension
+
+This works just like any Laravel package, read their documentation to get started: https://laravel.com/docs/master/packages
+
+### Events
+
+[Eventy](https://github.com/tormjens/eventy) is used to have Wordpress style filters which can be used within extensions.
+
+Filter | Explanation
+--- | ---
+`product.scopes` | Add additional global product scopes
+`product.casts` | Add additional global product casts
+`index.product.scopes` | Add product scopes to the product query when indexing
+`index.product.data` | Manipulate the product data before it's getting indexed 
+`index.product.attributes` | Index additional product attributes
+
+## Themes
+
+Currently you just have to change the Blade files but this will change when we've created packages of everything. Then you can publish the Blade files you'd like to change. Themes can be packages just like the extensions and there will be a fallback system.
+
 ## FAQ
+
+**Why is it so fast?**
+
+> Because we do not use the whole frontend stack from Magento. Just Laravel which queries the Magento database directly and the Magento API for the cart and checkout. Category filters are so fast because of Reactive Search which uses Elasticsearch as database. For the smooth page transitions we use Turbolinks.
 
 **How is this different from Vue Storefront?**
 
