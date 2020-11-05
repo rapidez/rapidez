@@ -2,8 +2,8 @@
 
 namespace Tests;
 
-use App\Exceptions\TestProductNotSetException;
-use App\Models\Product;
+use Rapidez\Core\Exceptions\TestProductNotSetException;
+use Rapidez\Core\Models\Product;
 use Facebook\WebDriver\Chrome\ChromeOptions;
 use Facebook\WebDriver\Remote\DesiredCapabilities;
 use Facebook\WebDriver\Remote\RemoteWebDriver;

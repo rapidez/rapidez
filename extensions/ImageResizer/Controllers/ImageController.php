@@ -25,7 +25,7 @@ class ImageController extends Controller
         $resizedPath = 'resizes/'.$size.'/'.$file;
 
         if (!Storage::exists('public/'.$resizedPath)) {
-            $remoteFile = config('shop.media_url').'/'.$file;
+            $remoteFile = config('rapidez.media_url').'/'.$file;
             if (!$stream = @fopen($remoteFile, 'r')) {
                 throw UnreachableUrl::create($remoteFile);
             }

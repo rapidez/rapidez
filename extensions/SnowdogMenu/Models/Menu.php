@@ -2,8 +2,8 @@
 
 namespace Extensions\SnowdogMenu\Models;
 
-use App\Models\Scopes\ForCurrentStoreScope;
-use App\Models\Scopes\IsActiveScope;
+use Rapidez\Core\Models\Scopes\ForCurrentStoreScope;
+use Rapidez\Core\Models\Scopes\IsActiveScope;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 

@@ -1,9 +1,9 @@
 <?php
 
-use App\Models\Attribute;
-use App\Models\OptionSwatch;
+use Rapidez\Core\Models\Attribute;
+use Rapidez\Core\Models\OptionSwatch;
 use Illuminate\Http\Request;
-use App\Models\Quote;
+use Rapidez\Core\Models\Quote;
 
 /*
 |--------------------------------------------------------------------------

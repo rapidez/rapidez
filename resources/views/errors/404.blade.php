@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @php
-$page = \App\Models\Page::firstWhere('identifier', 'no-route')
+$page = \Rapidez\Core\Models\Page::firstWhere('identifier', 'no-route')
 @endphp
 
 @section('title', $page->meta_title ?: $page->title)

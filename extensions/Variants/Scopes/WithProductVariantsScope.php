@@ -18,7 +18,7 @@ class WithProductVariantsScope implements Scope
     public function apply(Builder $builder, Model $model)
     {
         $builder
-            ->addSelect('products_flat_'.config('shop.store').' as variants')
+            ->addSelect('products_flat_'.config('rapidez.store').' as variants')
             ->leftJoin('justbetter_variantcollections', 'variant_collection', '=', 'code');
     }
 }

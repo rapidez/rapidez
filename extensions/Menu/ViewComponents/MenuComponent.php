@@ -2,7 +2,7 @@
 
 namespace Extensions\Menu\ViewComponents;
 
-use App\Models\Category;
+use Rapidez\Core\Models\Category;
 use Extensions\Menu\Models\Menu;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\View\Component;

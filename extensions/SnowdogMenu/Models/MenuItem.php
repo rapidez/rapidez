@@ -2,10 +2,10 @@
 
 namespace Extensions\SnowdogMenu\Models;
 
-use App\Models\Block;
-use App\Models\Category;
-use App\Models\Scopes\IsActiveScope;
-use App\Models\Traits\HasContentAttributeWithVariables;
+use Rapidez\Core\Models\Block;
+use Rapidez\Core\Models\Category;
+use Rapidez\Core\Models\Scopes\IsActiveScope;
+use Rapidez\Core\Models\Traits\HasContentAttributeWithVariables;
 use Illuminate\Database\Eloquent\Model;
 
 class MenuItem extends Model

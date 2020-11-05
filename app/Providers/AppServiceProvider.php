@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Models\Attribute;
-use App\Models\Config;
+use Rapidez\Core\Models\Attribute;
+use Rapidez\Core\Models\Config;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -29,8 +29,8 @@ class AppServiceProvider extends ServiceProvider
     {
         View::composer('layouts.app', function ($view) {
             $exposedFrontendConfigValues = Arr::only(
-                config('shop'),
-                array_merge(config('shop.exposed'), ['store_code'])
+                config('rapidez'),
+                array_merge(config('rapidez.exposed'), ['store_code'])
             );
 
             config(['frontend' => array_merge(

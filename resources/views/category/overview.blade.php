@@ -6,7 +6,7 @@
 @section('content')
     <h1 class="font-bold text-3xl">{{ $category->name }}</h1>
 
-    @if($block = App\Models\Block::find($category->banners))
+    @if($block = Rapidez\Core\Models\Block::find($category->banners))
         {!! str_replace('<ul>', '<ul class="flex">', $block->content) !!}
     @endif
 

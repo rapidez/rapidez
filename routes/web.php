@@ -1,9 +1,9 @@
 <?php
 
-use App\Models\Category;
-use App\Models\Page;
-use App\Models\Product;
-use App\Models\Rewrite;
+use Rapidez\Core\Models\Category;
+use Rapidez\Core\Models\Page;
+use Rapidez\Core\Models\Product;
+use Rapidez\Core\Models\Rewrite;
 
 /*
 |--------------------------------------------------------------------------

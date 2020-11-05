@@ -2,8 +2,8 @@
 
 namespace Extensions\Compare;
 
-use App\Models\Product;
-use App\Models\Scopes\Product\WithProductAttributesScope;
+use Rapidez\Core\Models\Product;
+use Rapidez\Core\Models\Scopes\Product\WithProductAttributesScope;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
