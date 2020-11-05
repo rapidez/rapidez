@@ -9,8 +9,18 @@
     "license": "MIT",
     "repositories": [
         {
-            "type": "vcs",
-            "url":  "git@github.com:rapidez/core.git"
+            "type": "path",
+            "url":  "../core",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url":  "../menu",
+            "options": {
+                "symlink": true
+            }
         }
     ],
     "require": {
@@ -22,7 +32,8 @@
         "laravel/horizon": "^5.0",
         "laravel/tinker": "^2.0",
         "predis/predis": "^1.1",
-        "rapidez/core": "9999999-dev",
+        "rapidez/core": "@dev",
+        "rapidez/menu": "@dev",
         "spatie/image": "^1.7"
     },
     "require-dev": {

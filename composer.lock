@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7153d2714a8d7043f0f1deaedc14dbd6",
+    "content-hash": "173f5c0625a6ccacfd7f4bc844d2108c",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2884,16 +2884,10 @@
         {
             "name": "rapidez/core",
             "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "git@github.com:rapidez/core.git",
-                "reference": "f54f1f69bf92921d6459160f8743c53d5228a24a"
-            },
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/rapidez/core/zipball/f54f1f69bf92921d6459160f8743c53d5228a24a",
-                "reference": "f54f1f69bf92921d6459160f8743c53d5228a24a",
-                "shasum": ""
+                "type": "path",
+                "url": "../core",
+                "reference": "f54f1f69bf92921d6459160f8743c53d5228a24a"
             },
             "require": {
                 "cviebrock/laravel-elasticsearch": "^8.0",
@@ -2904,7 +2898,6 @@
                 "php": "^7.4",
                 "tormjens/eventy": "^0.6"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -2931,11 +2924,55 @@
             "keywords": [
                 "rapidez"
             ],
-            "support": {
-                "source": "https://github.com/rapidez/core/tree/master",
-                "issues": "https://github.com/rapidez/core/issues"
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
+            "name": "rapidez/menu",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../menu",
+                "reference": "68fde606305abb8c2189fa86d20034d3077a7247"
             },
-            "time": "2020-11-05T13:43:38+00:00"
+            "require": {
+                "illuminate/support": "^8.0",
+                "illuminate/view": "^8.0",
+                "php": "^7.4",
+                "rapidez/core": "dev-master"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Rapidez\\Menu\\MenuServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Rapidez\\Menu\\": "src"
+                }
+            },
+            "authors": [
+                {
+                    "name": "Roy Duineveld",
+                    "email": "royduineveld@gmail.com",
+                    "homepage": "https://royduineveld.nl",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Rapidez Menu",
+            "homepage": "https://rapidez.io",
+            "keywords": [
+                "rapidez"
+            ],
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
         },
         {
             "name": "react/promise",
@@ -8553,12 +8590,13 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "rapidez/core": 20
+        "rapidez/core": 20,
+        "rapidez/menu": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.3|^8.0"
+        "php": "^7.4|^8.0"
     },
     "platform-dev": [],
     "plugin-api-version": "2.0.0"
