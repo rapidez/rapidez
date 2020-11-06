@@ -48,9 +48,9 @@ window.Turbolinks.HttpRequest.prototype.requestLoaded = function() {
 const files = require.context('./', true, /\.vue$/i)
 files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('product-compare-widget', require('Extensions/Compare/components/Widget.vue').default);
-Vue.component('product-compare-checkbox', require('Extensions/Compare/components/Checkbox.vue').default);
-Vue.component('product-compare-overview', require('Extensions/Compare/components/Overview.vue').default);
+Vue.component('product-compare-widget', require('Vendor/Rapidez/Compare/src/components/Widget.vue').default);
+Vue.component('product-compare-checkbox', require('Vendor/Rapidez/Compare/src/components/Checkbox.vue').default);
+Vue.component('product-compare-overview', require('Vendor/Rapidez/Compare/src/components/Overview.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

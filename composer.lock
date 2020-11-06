@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "21f50b490ff97872ab5873571a30f7b9",
+    "content-hash": "b64a73d2f254469f6683b5bde2735667",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2882,6 +2882,51 @@
             "time": "2020-08-18T17:17:46+00:00"
         },
         {
+            "name": "rapidez/compare",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../compare",
+                "reference": "6f788060d0fb9a58211793f3c2e6de7da5b64192"
+            },
+            "require": {
+                "illuminate/http": "^8.0",
+                "illuminate/support": "^8.0",
+                "php": "^7.4",
+                "rapidez/core": "dev-master"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Rapidez\\Compare\\CompareServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Rapidez\\Compare\\": "src"
+                }
+            },
+            "authors": [
+                {
+                    "name": "Roy Duineveld",
+                    "email": "royduineveld@gmail.com",
+                    "homepage": "https://royduineveld.nl",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Rapidez Compare",
+            "homepage": "https://rapidez.io",
+            "keywords": [
+                "rapidez"
+            ],
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
             "name": "rapidez/core",
             "version": "dev-master",
             "dist": {
@@ -2935,7 +2980,7 @@
             "dist": {
                 "type": "path",
                 "url": "../image-resizer",
-                "reference": "5f85deae8b12c76cceda4b79614f3744114923f4"
+                "reference": "5b47462f24fe24184c71999e21e73fa6e7866930"
             },
             "require": {
                 "illuminate/http": "^8.0",
@@ -8637,6 +8682,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "rapidez/compare": 20,
         "rapidez/core": 20,
         "rapidez/image-resizer": 20,
         "rapidez/menu": 20

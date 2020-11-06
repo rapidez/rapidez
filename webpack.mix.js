@@ -19,7 +19,7 @@ mix
     .webpackConfig({
         resolve: {
             alias: {
-                'Extensions': path.resolve(__dirname, 'extensions'),
+                'Vendor': path.resolve(__dirname, 'vendor'),
             },
         }
     })
