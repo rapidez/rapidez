@@ -166,7 +166,6 @@ return [
          * Package Service Providers...
          */
         Extensions\Compare\CompareExtensionServiceProvider::class,
-        Extensions\ImageResizer\ImageResizerExtensionServiceProvider::class,
 
         /*
          * Application Service Providers...

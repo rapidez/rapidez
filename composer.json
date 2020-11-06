@@ -21,6 +21,13 @@
             "options": {
                 "symlink": true
             }
+        },
+        {
+            "type": "path",
+            "url":  "../image-resizer",
+            "options": {
+                "symlink": true
+            }
         }
     ],
     "require": {
@@ -33,8 +40,8 @@
         "laravel/tinker": "^2.0",
         "predis/predis": "^1.1",
         "rapidez/core": "@dev",
-        "rapidez/menu": "@dev",
-        "spatie/image": "^1.7"
+        "rapidez/image-resizer": "@dev",
+        "rapidez/menu": "@dev"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",

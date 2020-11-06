@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "173f5c0625a6ccacfd7f4bc844d2108c",
+    "content-hash": "21f50b490ff97872ab5873571a30f7b9",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2887,7 +2887,7 @@
             "dist": {
                 "type": "path",
                 "url": "../core",
-                "reference": "f54f1f69bf92921d6459160f8743c53d5228a24a"
+                "reference": "681101b5df11b0104c8d6e5b45e05e6a1b797109"
             },
             "require": {
                 "cviebrock/laravel-elasticsearch": "^8.0",
@@ -2930,12 +2930,59 @@
             }
         },
         {
+            "name": "rapidez/image-resizer",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../image-resizer",
+                "reference": "5f85deae8b12c76cceda4b79614f3744114923f4"
+            },
+            "require": {
+                "illuminate/http": "^8.0",
+                "illuminate/routing": "^8.0",
+                "illuminate/support": "^8.0",
+                "php": "^7.4",
+                "rapidez/core": "dev-master",
+                "spatie/image": "^1.7"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Rapidez\\ImageResizer\\ImageResizerServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Rapidez\\ImageResizer\\": "src"
+                }
+            },
+            "authors": [
+                {
+                    "name": "Roy Duineveld",
+                    "email": "royduineveld@gmail.com",
+                    "homepage": "https://royduineveld.nl",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Rapidez Image Resizer",
+            "homepage": "https://rapidez.io",
+            "keywords": [
+                "rapidez"
+            ],
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
             "name": "rapidez/menu",
             "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "../menu",
-                "reference": "68fde606305abb8c2189fa86d20034d3077a7247"
+                "reference": "ce0c1e1224c3b34cb62ccf2c1c4a31d0b6e6027d"
             },
             "require": {
                 "illuminate/support": "^8.0",
@@ -8591,6 +8638,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "rapidez/core": 20,
+        "rapidez/image-resizer": 20,
         "rapidez/menu": 20
     },
     "prefer-stable": true,
