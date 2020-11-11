@@ -13,7 +13,10 @@ The idea behind Rapidez is to have a blazing fast headless frontend for your Mag
 - [Packages](#packages)
     - [Create your own package](#create-your-own-package)
     - [Events](#events)
-- [Themes](#themes)
+- [Theming](#theming)
+    - [Views](#views)
+    - [CSS](#css)
+    - [JS](#js)
 - [FAQ](#faq)
 - [Deploying on a server](#deploying-on-a-server)
     - [Elasticsearch](#secure-elasticsearch)
@@ -35,7 +38,7 @@ The idea behind Rapidez is to have a blazing fast headless frontend for your Mag
 
 ### Demo Magento 2 shop
 
-If you do not have a Magento 2 installation yet, you want to test Rapidez or like to develop with a fresh Magento 2 installation we provide a Magento 2 and Elasticsearch installation in a Docker container.
+If you do not have a Magento 2 installation yet, you want to test Rapidez or like to develop with a fresh Magento 2 installation you can use a Magento 2 and Elasticsearch installation in a Docker container.
 
 - `docker-compose up -d`
 - `docker exec magento ./change-base-url http://localhost:1234/`
@@ -75,9 +78,24 @@ Filter | Explanation
 `index.product.data` | Manipulate the product data before it's getting indexed 
 `index.product.attributes` | Index additional product attributes
 
-## Themes
+## Theming
 
-...
+The base theming is located within `rapidez/core` but you can create your own package with all the views, css and js.
+
+### Views
+
+To change the views you can publish them with:
+```
+php artisan vendor:publish --provider="Rapidez\Core\RapidezServiceProvider" --tag=views
+```
+
+### CSS
+
+Use TailwindCSS as we've done with the base styling or change the `webpack.mix.js` file and use whatever you want. Have a look at the [Laravel Mix docs](https://laravel.com/docs/8.x/mix) for all the available options.
+
+### JS
+
+In `resources/js/app.js` you'll find some requirements like Vue and Reactive Search but everything else can be changed, overwrite or extend.
 
 ## FAQ
 
@@ -103,7 +121,7 @@ Filter | Explanation
 
 **Is it production ready?**
 
-> If it fits your needs; yes. But most likely something is missing for you, please let us know what so we can work in it.
+> If it fits your needs; yes. But most likely something is missing for you, please let us know what so we can work on it.
 
 ## Deploying on a server
 
