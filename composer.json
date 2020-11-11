@@ -9,32 +9,20 @@
     "license": "MIT",
     "repositories": [
         {
-            "type": "path",
-            "url":  "../core",
-            "options": {
-                "symlink": true
-            }
+            "type": "vcs",
+            "url":  "git@github.com:rapidez/core.git"
         },
         {
-            "type": "path",
-            "url":  "../menu",
-            "options": {
-                "symlink": true
-            }
+            "type": "vcs",
+            "url":  "git@github.com:rapidez/menu.git"
         },
         {
-            "type": "path",
-            "url":  "../image-resizer",
-            "options": {
-                "symlink": true
-            }
+            "type": "vcs",
+            "url":  "git@github.com:rapidez/image-resizer.git"
         },
         {
-            "type": "path",
-            "url":  "../compare",
-            "options": {
-                "symlink": true
-            }
+            "type": "vcs",
+            "url":  "git@github.com:rapidez/compare.git"
         }
     ],
     "require": {
@@ -53,7 +41,6 @@
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",
-        "beyondcode/dusk-dashboard": "^2.0",
         "facade/ignition": "^2.5",
         "fzaninotto/faker": "^1.9.1",
         "laravel/dusk": "^6.6",
