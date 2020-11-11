@@ -1,10 +1,9 @@
 {
-    "name": "laravel/laravel",
+    "name": "rapidez/rapidez",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "Headless Magento with Laravel, Vue and Reactive Search",
     "keywords": [
-        "framework",
-        "laravel"
+        "rapidez"
     ],
     "license": "MIT",
     "repositories": [
