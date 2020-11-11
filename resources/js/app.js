@@ -1,41 +1,22 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
+window._ = require('lodash')
+window.axios = require('axios')
+window.Vue = require('vue')
 
-require('./bootstrap');
-
-window.Vue = require('vue');
-
-import ReactiveSearch from '@appbaseio/reactivesearch-vue';
-Vue.use(ReactiveSearch);
-
-import AsyncComputed from 'vue-async-computed';
-Vue.use(AsyncComputed);
-
-require('./filters');
-require('./mixins');
-
-var Turbolinks = require('turbolinks')
+window.Turbolinks = require('turbolinks')
 Turbolinks.start()
-import TurbolinksAdapter from 'vue-turbolinks';
+import TurbolinksAdapter from 'vue-turbolinks'
 Vue.use(TurbolinksAdapter)
 
-// Monkey patch Turbolinks to render 404 normally
-// See: https://github.com/turbolinks/turbolinks/issues/179
-window.Turbolinks.HttpRequest.prototype.requestLoaded = function() {
-    return this.endRequest(function() {
-        var code = this.xhr.status;
-        if (code >= 200 && code < 300 || code === 404) {
-            var redirectedToLocation = this.xhr.getResponseHeader("Turbolinks-Location");
-            this.delegate.requestCompletedWithResponse(this.xhr.responseText, redirectedToLocation);
-        } else {
-            this.failed = true;
-            this.delegate.requestFailedWithStatusCode(code, this.xhr.responseText);
-        }
-    }.bind(this));
-};
+import ReactiveSearch from '@appbaseio/reactivesearch-vue'
+Vue.use(ReactiveSearch)
+
+import AsyncComputed from 'vue-async-computed'
+Vue.use(AsyncComputed)
+
+require('Vendor/rapidez/core/resources/js/axios')
+require('Vendor/rapidez/core/resources/js/filters')
+require('Vendor/rapidez/core/resources/js/mixins')
+require('Vendor/rapidez/core/resources/js/turbolinks')
 
 /**
  * The following block of code may be used to automatically register your
@@ -48,9 +29,20 @@ window.Turbolinks.HttpRequest.prototype.requestLoaded = function() {
 const files = require.context('./', true, /\.vue$/i)
 files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('product-compare-widget', require('Vendor/Rapidez/Compare/src/components/Widget.vue').default);
-Vue.component('product-compare-checkbox', require('Vendor/Rapidez/Compare/src/components/Checkbox.vue').default);
-Vue.component('product-compare-overview', require('Vendor/Rapidez/Compare/src/components/Overview.vue').default);
+Vue.component('cart', require('Vendor/rapidez/core/resources/js/components/Cart/Cart.vue').default)
+Vue.component('category', require('Vendor/rapidez/core/resources/js/components/Category/Category.vue').default)
+Vue.component('category-filter', require('Vendor/rapidez/core/resources/js/components/Category/Filters/CategoryFilter.vue').default)
+Vue.component('swatch-filter', require('Vendor/rapidez/core/resources/js/components/Category/Filters/SwatchFilter.vue').default)
+Vue.component('checkout', require('Vendor/rapidez/core/resources/js/components/Checkout/Checkout.vue').default)
+Vue.component('login', require('Vendor/rapidez/core/resources/js/components/Checkout/Login.vue').default)
+Vue.component('coupon', require('Vendor/rapidez/core/resources/js/components/Coupon/Coupon.vue').default)
+Vue.component('toggler', require('Vendor/rapidez/core/resources/js/components/Elements/Toggler.vue').default)
+Vue.component('add-to-cart', require('Vendor/rapidez/core/resources/js/components/Product/AddToCart.vue').default)
+Vue.component('user', require('Vendor/rapidez/core/resources/js/components/User/User.vue').default)
+
+Vue.component('product-compare-widget', require('Vendor/rapidez/compare/src/components/Widget.vue').default)
+Vue.component('product-compare-checkbox', require('Vendor/rapidez/compare/src/components/Checkbox.vue').default)
+Vue.component('product-compare-overview', require('Vendor/rapidez/compare/src/components/Overview.vue').default)
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -59,7 +51,7 @@ Vue.component('product-compare-overview', require('Vendor/Rapidez/Compare/src/co
  */
 
 document.addEventListener('turbolinks:load', () => {
-    Vue.prototype.config = window.config;
+    Vue.prototype.config = window.config
     window.app = new Vue({
         el: '#app',
         data: {
@@ -88,5 +80,5 @@ document.addEventListener('turbolinks:load', () => {
                 payment_methods: [],
             }
         },
-    });
-});
+    })
+})

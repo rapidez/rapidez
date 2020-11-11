@@ -1,50 +1,71 @@
 # Rapidez - Headless Magento 🚀
 
-With Laravel, Vue and Reactive Search 🤘🏻 Demo: https://test.rapidez.io 🏎
-
-## Background
+With Laravel, Vue and Reactive Search 🤘🏻 [Demo](https://test.rapidez.io) 🏎
 
 The idea behind Rapidez is to have a blazing fast headless frontend for your Magento 2 webshop which should be very easy to customize. The frontend is seperated from the Magento installation and communication between them is done via the Magento API. To speed things up we're also querying the Magento database to get catalog information for example. For category pages and the filters we're using Reactive Search which uses ElasticSearch as database. Indexation is also taken care of and is pretty fast.
 
-## Setup
+## Table of Contents
 
-- `cp .env.example .env`
-- Add the url and database credentials from your Magento 2 installation (or use the demo installation which will be running on `http://localhost:1234` after the Docker steps).
-- `composer install`
-- `php artisan key:generate`
+- [Requirements](#requirements)
+- [Installation](#installation)
+    - [Demo Magento 2 shop](#demo-magento-2-shop)
+    - [CORS](#cors)
+- [Packages](#packages)
+    - [Create your own package](#create-your-own-package)
+    - [Events](#events)
+- [Themes](#themes)
+- [FAQ](#faq)
+- [Deploying on a server](#deploying-on-a-server)
+    - [Elasticsearch](#secure-elasticsearch)
+
+## Requirements
+
+- [Laravel requirements](https://laravel.com/docs/8.x/installation#server-requirements)
+- PHP >= 7.4
+- Elasticsearch >= 7.6
+
+## Installation
+
+- `composer create-project rapidez/rapidez rapidez`
+- Add the url and database credentials from your Magento 2 installation to the `.env`
 - `yarn`
 - `yarn run prod`
-- `docker-compose up -d` (or bring your own Elasticsearch and Magento 2 installation)
-- If you're using the Magento 2 Docker installation some additional steps are required:
-    - `docker exec magento ./change-base-url http://localhost:1234/`
-    - `docker exec magento ./install-sample-data`
-    - `docker exec magento ./enable-flat-catalog`
-    - `docker exec magento magerun2 indexer:reindex`
 - `php artisan index:products`
 - See it in the browser 🚀
+
+### Demo Magento 2 shop
+
+If you do not have a Magento 2 installation yet, you want to test Rapidez or like to develop with a fresh Magento 2 installation we provide a Magento 2 and Elasticsearch installation in a Docker container.
+
+- `docker-compose up -d`
+- `docker exec magento ./change-base-url http://localhost:1234/`
+- `docker exec magento ./install-sample-data`
+- `docker exec magento ./enable-flat-catalog`
+- `docker exec magento magerun2 indexer:reindex`
+- Edit the `.env`:
+```
+MAGENTO_URL=http://localhost:1234
+DB_PORT=3307
+DB_DATABASE=magento
+DB_USERNAME=magento
+DB_PASSWORD=password
+```
 
 ### CORS
 
 Because we're making Ajax request to the Magento API; CORS need to be opened. If you're using Valet Plus this can easily done, [see here](https://github.com/weprovide/valet-plus/issues/493). With the Docker Magento installation it's already opened [with a patch](https://github.com/michielgerritsen/magento2-extension-integration-test/blob/master/magento/patches/cors.patch). For production you've to restrict this to your domain.
 
-## Extensions
+## Packages
 
-The idea is to have a base application which can be extended with extensions. Those extensions currently house within the `extensions` directory. Later on this should be moved to Composer packages. Until then these extensions can be enabled/disabled by their service providers in `config/app.php`.
+We provide some packages, see: https://github.com/rapidez. Did you create a package? Let us know!
 
-To keep everything as flexible as possible when a extension is enabled only the functional part of it will be active. The visual part needs to be registered manually so it can be customized however, and placed wherever wanted. Read for example the "Compare extension" readme at `extensions/Compare/README.md`. So a developer does have multiple options:
-
-- Use the Vue components from the extension (and optionally customize it with props and/or slots)
-- Create a new Vue component (and optionally use the extension mixins)
-
-So when developing extensions make sure the Vue components are as flexible as possible and the functional part is seperated from the visual part. Styling should be project independent in the extensions!
-
-### Create your own extension
+### Create your own package
 
 This works just like any Laravel package, read their documentation to get started: https://laravel.com/docs/master/packages
 
 ### Events
 
-[Eventy](https://github.com/tormjens/eventy) is used to have Wordpress style filters which can be used within extensions.
+[Eventy](https://github.com/tormjens/eventy) is used to have Wordpress style filters which can be used within packages.
 
 Filter | Explanation
 --- | ---
@@ -56,7 +77,7 @@ Filter | Explanation
 
 ## Themes
 
-Currently you just have to change the Blade files but this will change when we've created packages of everything. Then you can publish the Blade files you'd like to change. Themes can be packages just like the extensions and there will be a fallback system.
+...
 
 ## FAQ
 
@@ -80,11 +101,14 @@ Currently you just have to change the Blade files but this will change when we'v
 
 > No, you do not need te use it. You are completely free to use whatever you want. We like it so we used it for basic styling.
 
-## Running on a server / going live
+**Is it production ready?**
 
-### Magento 2 Docker installation
+> If it fits your needs; yes. But most likely something is missing for you, please let us know what so we can work in it.
 
-This is only needed if you're using the Magento 2 Docker image with sample data for testing. Otherwise you're using your own Magento 2 installation. But keep in mind; you've to open CORS for the API calls.
+## Deploying on a server
+
+<details>
+<summary>Do you want to run the Magento 2 Docker image?</summary>
 
 Just proxy everything to a subdomain and use that domain as `MAGENTO_URL` in the `.env`. With Laravel Forge this is really easy; just create another website on your server, setup SSL and edit the Nginx config:
 ```
@@ -113,8 +137,9 @@ DB_DATABASE=magento
 DB_USERNAME=magento
 DB_PASSWORD=password
 ```
+</details>
 
-### Elasticsearch
+### Secure Elasticsearch
 
 You've to secure your Elasticsearch instance so other people cannot manipulate the data in it as it need to be exposed.
 
@@ -122,13 +147,13 @@ You've to secure your Elasticsearch instance so other people cannot manipulate t
 - Enable security in `config/elasticsearch.yml` with: `xpack.security.enabled: true`
 - Change `http.cors.allow-origin` to your domain.
 - Setup a password with `bin/elasticsearch-setup-passwords auto` (or use `interactive` to choose the passwords yourself)
-- Restart Elasticsearch, with Docker: `docker restart elasticsearch`
+- Restart Elasticsearch (with Docker: `docker restart elasticsearch`)
 - Edit your `.env` and add the credentials:
 ```
 ELASTICSEARCH_USER=elastic
 ELASTICSEARCH_PASS=YOUR-PASSWORD
 ```
-- Create a proxy (with SSL) on a subdomain (as mentioned earlier this is really easy with Laravel Forge):
+- Create a proxy (with SSL) on a subdomain:
 ```
 location / {
     proxy_pass http://localhost:9200;
