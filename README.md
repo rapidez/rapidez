@@ -33,6 +33,7 @@ The idea behind Rapidez is to have a blazing fast headless frontend for your Mag
 - Add the url and database credentials from your Magento 2 installation to the `.env`
 - `yarn`
 - `yarn run prod`
+- `php artisan storage:link`
 - `php artisan index:products`
 - See it in the browser 🚀
 

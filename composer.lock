@@ -2940,12 +2940,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:rapidez/core.git",
-                "reference": "9dbc71c1eb5bf9cccbd0e31dc00ea41dbb141ad7"
+                "reference": "b660a3b0ee836c7582c1d58ee413dfcdabab152a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rapidez/core/zipball/9dbc71c1eb5bf9cccbd0e31dc00ea41dbb141ad7",
-                "reference": "9dbc71c1eb5bf9cccbd0e31dc00ea41dbb141ad7",
+                "url": "https://api.github.com/repos/rapidez/core/zipball/b660a3b0ee836c7582c1d58ee413dfcdabab152a",
+                "reference": "b660a3b0ee836c7582c1d58ee413dfcdabab152a",
                 "shasum": ""
             },
             "require": {
@@ -2988,7 +2988,7 @@
                 "source": "https://github.com/rapidez/core/tree/master",
                 "issues": "https://github.com/rapidez/core/issues"
             },
-            "time": "2020-11-11T13:36:24+00:00"
+            "time": "2020-11-11T14:38:37+00:00"
         },
         {
             "name": "rapidez/image-resizer",
@@ -2996,12 +2996,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:rapidez/image-resizer.git",
-                "reference": "5b47462f24fe24184c71999e21e73fa6e7866930"
+                "reference": "107a094a26173c4356937262ab25fe2087142ca7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rapidez/image-resizer/zipball/5b47462f24fe24184c71999e21e73fa6e7866930",
-                "reference": "5b47462f24fe24184c71999e21e73fa6e7866930",
+                "url": "https://api.github.com/repos/rapidez/image-resizer/zipball/107a094a26173c4356937262ab25fe2087142ca7",
+                "reference": "107a094a26173c4356937262ab25fe2087142ca7",
                 "shasum": ""
             },
             "require": {
@@ -3043,7 +3043,7 @@
                 "source": "https://github.com/rapidez/image-resizer/tree/master",
                 "issues": "https://github.com/rapidez/image-resizer/issues"
             },
-            "time": "2020-11-06T09:26:30+00:00"
+            "time": "2020-11-11T14:38:05+00:00"
         },
         {
             "name": "rapidez/menu",
@@ -3051,12 +3051,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:rapidez/menu.git",
-                "reference": "ce0c1e1224c3b34cb62ccf2c1c4a31d0b6e6027d"
+                "reference": "43953162b88f0f7a60d62cf8a524ea0ecfbec852"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rapidez/menu/zipball/ce0c1e1224c3b34cb62ccf2c1c4a31d0b6e6027d",
-                "reference": "ce0c1e1224c3b34cb62ccf2c1c4a31d0b6e6027d",
+                "url": "https://api.github.com/repos/rapidez/menu/zipball/43953162b88f0f7a60d62cf8a524ea0ecfbec852",
+                "reference": "43953162b88f0f7a60d62cf8a524ea0ecfbec852",
                 "shasum": ""
             },
             "require": {
@@ -3096,7 +3096,7 @@
                 "source": "https://github.com/rapidez/menu/tree/master",
                 "issues": "https://github.com/rapidez/menu/issues"
             },
-            "time": "2020-11-05T16:15:00+00:00"
+            "time": "2020-11-11T13:49:39+00:00"
         },
         {
             "name": "react/promise",
