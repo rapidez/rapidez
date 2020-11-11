@@ -3,9 +3,12 @@ module.exports = {
         './resources/views/**/*.blade.php',
         './resources/css/**/*.css',
         './resources/js/**/*.vue',
-        './extensions/**/*.vue',
-        './extensions/**/*.blade.php',
-        './extensions/Menu/config/menu-extension.php',
+
+        './vendor/rapidez/core/resources/views/**/*.blade.php',
+        './vendor/rapidez/core/resources/css/**/*.css',
+        './vendor/rapidez/core/resources/js/**/*.vue',
+
+        './vendor/rapidez/menu/src/config/menu.php',
     ],
     theme: {
         extend: {
