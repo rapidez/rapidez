@@ -10,6 +10,7 @@ The idea behind Rapidez is to have a blazing fast headless frontend for your Mag
 - [Installation](#installation)
     - [Demo Magento 2 shop](#demo-magento-2-shop)
     - [CORS](#cors)
+    - [Multistore](#multistore)
 - [Packages](#packages)
     - [Create your own package](#create-your-own-package)
     - [Events](#events)
@@ -26,6 +27,7 @@ The idea behind Rapidez is to have a blazing fast headless frontend for your Mag
 - [Laravel requirements](https://laravel.com/docs/8.x/installation#server-requirements)
 - PHP >= 7.4
 - Elasticsearch >= 7.6
+- Magento 2 installation ([or use a demo shop](#demo-magento-2-shop)) with flat tables enabled
 
 ## Installation
 
@@ -58,6 +60,10 @@ DB_PASSWORD=password
 ### CORS
 
 Because we're making Ajax request to the Magento API; CORS need to be opened. If you're using Valet Plus this can easily done, [see here](https://github.com/weprovide/valet-plus/issues/493). With the Docker Magento installation it's already opened [with a patch](https://github.com/michielgerritsen/magento2-extension-integration-test/blob/master/magento/patches/cors.patch). For production you've to restrict this to your domain.
+
+### Multistore
+
+When you've setup multiple stores in Magento than Rapidez needs to know which store to show. Rapidez listens to the `MAGE_RUN_CODE` like Magento does. So just set that variable from your webserver.
 
 ## Packages
 
