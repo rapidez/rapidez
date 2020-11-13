@@ -2941,12 +2941,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:rapidez/core.git",
-                "reference": "2eb0384b7b981cd3f2c7684af7c3f4d735d934c3"
+                "reference": "1038310e7ad12fa63aeb6cb0aea4b410a88c844e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rapidez/core/zipball/2eb0384b7b981cd3f2c7684af7c3f4d735d934c3",
-                "reference": "2eb0384b7b981cd3f2c7684af7c3f4d735d934c3",
+                "url": "https://api.github.com/repos/rapidez/core/zipball/1038310e7ad12fa63aeb6cb0aea4b410a88c844e",
+                "reference": "1038310e7ad12fa63aeb6cb0aea4b410a88c844e",
                 "shasum": ""
             },
             "require": {
@@ -2989,7 +2989,7 @@
                 "source": "https://github.com/rapidez/core/tree/master",
                 "issues": "https://github.com/rapidez/core/issues"
             },
-            "time": "2020-11-13T14:53:43+00:00"
+            "time": "2020-11-13T15:46:35+00:00"
         },
         {
             "name": "rapidez/image-resizer",
@@ -3105,12 +3105,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:rapidez/mollie.git",
-                "reference": "d23e042fba9ae2765461bc488cabd6059ae29d88"
+                "reference": "dd44323a71f858bd3a2f12ffb8bfc1142ef9ed35"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rapidez/mollie/zipball/d23e042fba9ae2765461bc488cabd6059ae29d88",
-                "reference": "d23e042fba9ae2765461bc488cabd6059ae29d88",
+                "url": "https://api.github.com/repos/rapidez/mollie/zipball/dd44323a71f858bd3a2f12ffb8bfc1142ef9ed35",
+                "reference": "dd44323a71f858bd3a2f12ffb8bfc1142ef9ed35",
                 "shasum": ""
             },
             "require": {
@@ -3150,7 +3150,7 @@
                 "source": "https://github.com/rapidez/mollie/tree/master",
                 "issues": "https://github.com/rapidez/mollie/issues"
             },
-            "time": "2020-11-13T14:54:04+00:00"
+            "time": "2020-11-13T15:34:14+00:00"
         },
         {
             "name": "react/promise",

@@ -1,3 +1,5 @@
+<p align="center"><a href="https://rapidez.io" target="_blank"><img src="https://raw.githubusercontent.com/rapidez/art/master/logos.svg" width="400"></a></p>
+
 # Rapidez - Headless Magento 🚀
 
 With Laravel, Vue and Reactive Search 🤘🏻 [Demo](https://test.rapidez.io) 🏎
