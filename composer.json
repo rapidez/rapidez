@@ -22,6 +22,10 @@
         {
             "type": "vcs",
             "url":  "git@github.com:rapidez/compare.git"
+        },
+        {
+            "type": "vcs",
+            "url":  "git@github.com:rapidez/mollie.git"
         }
     ],
     "require": {
@@ -36,7 +40,8 @@
         "rapidez/compare": "@dev",
         "rapidez/core": "@dev",
         "rapidez/image-resizer": "@dev",
-        "rapidez/menu": "@dev"
+        "rapidez/menu": "@dev",
+        "rapidez/mollie": "@dev"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",

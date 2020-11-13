@@ -78,7 +78,15 @@ document.addEventListener('turbolinks:load', () => {
 
                 payment_method: null,
                 payment_methods: [],
+
+                // This can be used to prevent the checkout from going
+                // to the next step which is useful in combination
+                // with the "CheckoutPaymentSaved" event to
+                // implement payment providers.
+                doNotGoToTheNextStep: false,
             }
         },
     })
 })
+
+require('Vendor/rapidez/mollie/resources/js/mollie')
