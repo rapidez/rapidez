@@ -6,28 +6,28 @@
         "rapidez"
     ],
     "license": "MIT",
-    "repositories": [
-        {
+    "repositories": {
+        "core": {
             "type": "vcs",
-            "url":  "git@github.com:rapidez/core.git"
+            "url": "git@github.com:rapidez/core.git"
         },
-        {
+        "menu": {
             "type": "vcs",
-            "url":  "git@github.com:rapidez/menu.git"
+            "url": "git@github.com:rapidez/menu.git"
         },
-        {
+        "image-resizer": {
             "type": "vcs",
-            "url":  "git@github.com:rapidez/image-resizer.git"
+            "url": "git@github.com:rapidez/image-resizer.git"
         },
-        {
+        "compare": {
             "type": "vcs",
-            "url":  "git@github.com:rapidez/compare.git"
+            "url": "git@github.com:rapidez/compare.git"
         },
-        {
+        "mollie": {
             "type": "vcs",
-            "url":  "git@github.com:rapidez/mollie.git"
+            "url": "git@github.com:rapidez/mollie.git"
         }
-    ],
+    },
     "require": {
         "php": "^7.4|^8.0",
         "fideloper/proxy": "^4.2",
