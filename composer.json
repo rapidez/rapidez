@@ -85,6 +85,22 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "remote-repositories": [
+            "composer config repositories.mollie vcs git@github.com:rapidez/mollie.git",
+            "composer config repositories.compare vcs git@github.com:rapidez/compare.git",
+            "composer config repositories.image-resizer vcs git@github.com:rapidez/image-resizer.git",
+            "composer config repositories.menu vcs git@github.com:rapidez/menu.git",
+            "composer config repositories.core vcs git@github.com:rapidez/core.git",
+            "composer update rapidez/*"
+        ],
+        "local-repositories": [
+            "composer config repositories.mollie path ../mollie",
+            "composer config repositories.compare path ../compare",
+            "composer config repositories.image-resizer path ../image-resizer",
+            "composer config repositories.menu path ../menu",
+            "composer config repositories.core path ../core",
+            "composer update rapidez/*"
         ]
     }
 }
