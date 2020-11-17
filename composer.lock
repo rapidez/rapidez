@@ -2941,12 +2941,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:rapidez/core.git",
-                "reference": "15f3fa1263895f8427cf111456268d351a261832"
+                "reference": "95e42c3f603f293497daabf36bf9249eab3fb43b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rapidez/core/zipball/15f3fa1263895f8427cf111456268d351a261832",
-                "reference": "15f3fa1263895f8427cf111456268d351a261832",
+                "url": "https://api.github.com/repos/rapidez/core/zipball/95e42c3f603f293497daabf36bf9249eab3fb43b",
+                "reference": "95e42c3f603f293497daabf36bf9249eab3fb43b",
                 "shasum": ""
             },
             "require": {
@@ -2989,7 +2989,7 @@
                 "source": "https://github.com/rapidez/core/tree/master",
                 "issues": "https://github.com/rapidez/core/issues"
             },
-            "time": "2020-11-14T13:07:51+00:00"
+            "time": "2020-11-17T11:07:35+00:00"
         },
         {
             "name": "rapidez/image-resizer",
