@@ -88,5 +88,3 @@ document.addEventListener('turbolinks:load', () => {
         },
     })
 })
-
-require('Vendor/rapidez/mollie/resources/js/mollie')

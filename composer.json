@@ -22,10 +22,6 @@
         "compare": {
             "type": "vcs",
             "url": "git@github.com:rapidez/compare.git"
-        },
-        "mollie": {
-            "type": "vcs",
-            "url": "git@github.com:rapidez/mollie.git"
         }
     },
     "require": {
@@ -40,8 +36,7 @@
         "rapidez/compare": "@dev",
         "rapidez/core": "@dev",
         "rapidez/image-resizer": "@dev",
-        "rapidez/menu": "@dev",
-        "rapidez/mollie": "@dev"
+        "rapidez/menu": "@dev"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",
@@ -87,7 +82,6 @@
             "@php artisan key:generate --ansi"
         ],
         "remote-repositories": [
-            "composer config repositories.mollie vcs git@github.com:rapidez/mollie.git",
             "composer config repositories.compare vcs git@github.com:rapidez/compare.git",
             "composer config repositories.image-resizer vcs git@github.com:rapidez/image-resizer.git",
             "composer config repositories.menu vcs git@github.com:rapidez/menu.git",
@@ -95,7 +89,6 @@
             "composer update rapidez/*"
         ],
         "local-repositories": [
-            "composer config repositories.mollie path ../mollie",
             "composer config repositories.compare path ../compare",
             "composer config repositories.image-resizer path ../image-resizer",
             "composer config repositories.menu path ../menu",

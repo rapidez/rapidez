@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cc0a32a1fe4191d8a8a9911763a4c3e8",
+    "content-hash": "f50350a7338845c42bc2638ae446cf1d",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3098,59 +3098,6 @@
                 "issues": "https://github.com/rapidez/menu/issues"
             },
             "time": "2020-11-18T09:53:51+00:00"
-        },
-        {
-            "name": "rapidez/mollie",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "git@github.com:rapidez/mollie.git",
-                "reference": "dd44323a71f858bd3a2f12ffb8bfc1142ef9ed35"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/rapidez/mollie/zipball/dd44323a71f858bd3a2f12ffb8bfc1142ef9ed35",
-                "reference": "dd44323a71f858bd3a2f12ffb8bfc1142ef9ed35",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": "^7.2",
-                "illuminate/support": "^8.0",
-                "php": "^7.4",
-                "rapidez/core": "dev-master"
-            },
-            "default-branch": true,
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Rapidez\\Mollie\\MollieServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Rapidez\\Mollie\\": "src"
-                }
-            },
-            "authors": [
-                {
-                    "name": "Roy Duineveld",
-                    "email": "royduineveld@gmail.com",
-                    "homepage": "https://royduineveld.nl",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Rapidez Mollie",
-            "homepage": "https://rapidez.io",
-            "keywords": [
-                "rapidez"
-            ],
-            "support": {
-                "source": "https://github.com/rapidez/mollie/tree/master",
-                "issues": "https://github.com/rapidez/mollie/issues"
-            },
-            "time": "2020-11-13T15:34:14+00:00"
         },
         {
             "name": "react/promise",
@@ -8776,8 +8723,7 @@
         "rapidez/compare": 20,
         "rapidez/core": 20,
         "rapidez/image-resizer": 20,
-        "rapidez/menu": 20,
-        "rapidez/mollie": 20
+        "rapidez/menu": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
