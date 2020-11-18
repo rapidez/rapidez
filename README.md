@@ -45,6 +45,7 @@ The idea behind Rapidez is to have a blazing fast headless frontend for your Mag
 
 If you do not have a Magento 2 installation yet, you want to test Rapidez or like to develop with a fresh Magento 2 installation you can use a Magento 2 and Elasticsearch installation in a Docker container.
 
+- Make sure Docker can use at least 4GB of memory
 - `docker-compose up -d`
 - `docker exec magento ./change-base-url http://localhost:1234/`
 - `docker exec magento ./install-sample-data`
@@ -61,7 +62,13 @@ DB_PASSWORD=password
 
 ### CORS
 
+#### Magento
+
 Because we're making Ajax request to the Magento API; CORS need to be opened. If you're using Valet Plus this can easily done, [see here](https://github.com/weprovide/valet-plus/issues/493). With the Docker Magento installation it's already opened [with a patch](https://github.com/michielgerritsen/magento2-extension-integration-test/blob/master/magento/patches/cors.patch). For production you've to restrict this to your domain.
+
+#### Elasticsearch
+
+If you're using your own Elasticsearch installation you've to open CORS in `elasticsearch.yml` and restart Elasticsearch. An example can be found in the root of this project. That configuration is used when you're using Elasticsearch from our Docker Compose config.
 
 ### Multistore
 
