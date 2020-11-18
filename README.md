@@ -72,7 +72,7 @@ If you're using your own Elasticsearch installation you've to open CORS in `elas
 
 ### Multistore
 
-When you've setup multiple stores in Magento than Rapidez needs to know which store to show. Rapidez listens to the `MAGE_RUN_CODE` like Magento does. So just set that variable from your webserver.
+When you've setup multiple stores in Magento then Rapidez needs to know which store to show. Rapidez listens to the `MAGE_RUN_CODE` like Magento does. So just set that variable from your webserver.
 
 ## Packages
 
@@ -125,7 +125,7 @@ In `resources/js/app.js` you'll find some requirements like Vue and Reactive Sea
 
 **Why headless and not a PWA?**
 
-> Do you really need a offline experience on your webshop? PWA makes things more complicated than necessary.
+> Do you really need a offline experience on your webshop? PWA makes things more complicated then necessary.
 
 **Do I need to know Vue?**
 
