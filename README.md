@@ -28,6 +28,7 @@ The idea behind Rapidez is to have a blazing fast headless frontend for your Mag
 
 - [Laravel requirements](https://laravel.com/docs/8.x/installation#server-requirements)
 - PHP >= 7.4
+- MySQL >= 5.7.13
 - Elasticsearch >= 7.6
 - Magento 2 installation ([or use a demo shop](#demo-magento-2-shop)) with flat tables enabled
 
