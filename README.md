@@ -21,6 +21,7 @@ The idea behind Rapidez is to have a blazing fast headless frontend for your Mag
     - [CSS](#css)
     - [JS](#js)
 - [FAQ](#faq)
+- [Troubleshooting](#troubleshooting)
 - [Deploying on a server](#deploying-on-a-server)
     - [Elasticsearch](#secure-elasticsearch)
 
@@ -139,6 +140,13 @@ In `resources/js/app.js` you'll find some requirements like Vue and Reactive Sea
 **Is it production ready?**
 
 > If it fits your needs; yes. But most likely something is missing for you, please let us know what so we can work on it.
+
+## Troubleshooting
+
+- Make sure Magento is working
+- Clear the cache with `php artisan cache:clear`
+- Reindex the products with `php artisan index:products --force`, the parameter `--force` recreates the whole index
+- Clear the browser cache, in Google Chrome with the "Clear site data" button on the application tab in DevTools
 
 ## Deploying on a server
 
