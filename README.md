@@ -31,7 +31,7 @@ The idea behind Rapidez is to have a blazing fast headless frontend for your Mag
 - PHP >= 7.4
 - MySQL >= 5.7.13
 - Elasticsearch >= 7.6
-- Magento 2 installation ([or use a demo shop](#demo-magento-2-shop)) with flat tables enabled
+- Magento >= 2.3 installation ([or use a demo shop](#demo-magento-2-shop)) with flat tables enabled
 
 ## Installation
 
@@ -40,7 +40,7 @@ The idea behind Rapidez is to have a blazing fast headless frontend for your Mag
 - `yarn`
 - `yarn run prod`
 - `php artisan storage:link`
-- `php artisan index:products`
+- `php artisan rapidez:index`
 - See it in the browser 🚀
 
 ### Demo Magento 2 shop
@@ -145,7 +145,7 @@ In `resources/js/app.js` you'll find some requirements like Vue and Reactive Sea
 
 - Make sure Magento is working
 - Clear the cache with `php artisan cache:clear`
-- Reindex the products with `php artisan index:products --force`, the parameter `--force` recreates the whole index
+- Reindex the products with `php artisan rapidez:index --force`, the parameter `--force` recreates the whole index
 - Clear the browser cache, in Google Chrome with the "Clear site data" button on the application tab in DevTools
 
 ## Deploying on a server

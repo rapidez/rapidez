@@ -1,8 +1,0 @@
-<?php
-
-return [
-    'product' => env('TESTING_PRODUCT', '24-WB02'),
-    'guest' => env('TESTING_GUEST', 'guest@test.nl'),
-    'user' => env('TESTING_USER', 'user@test.nl'),
-    'pass' => env('TESTING_PASS'),
-];
