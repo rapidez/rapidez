@@ -36,6 +36,7 @@ The idea behind Rapidez is to have a blazing fast headless frontend for your Mag
 ## Installation
 
 - `composer create-project rapidez/rapidez rapidez`
+- `php artisan rapidez:install`
 - Add the url and database credentials from your Magento 2 installation to the `.env`
 - `yarn`
 - `yarn run prod`
