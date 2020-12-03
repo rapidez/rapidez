@@ -106,7 +106,7 @@ The base theming is located within `rapidez/core` but you can create your own pa
 To change the views you can publish them with:
 ```
 php artisan vendor:publish --provider="Rapidez\Core\RapidezServiceProvider" --tag=views
-```
+``` 
 
 ### CSS
 
@@ -114,7 +114,7 @@ Use TailwindCSS as we've done with the base styling or change the `webpack.mix.j
 
 ### JS
 
-In `resources/js/app.js` you'll find some requirements like Vue and Reactive Search but everything else can be changed, overwrite or extend.
+In `resources/js/app.js` there is just a `require` so you can extend easily. If you'd like to change or overwrite something you can copy the content of the required file and change the parts you'd like.
 
 ## FAQ
 
