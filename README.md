@@ -24,7 +24,7 @@ The idea behind Rapidez is to have a blazing fast headless frontend for your Mag
 - [Troubleshooting](#troubleshooting)
 - [Deploying on a server](#deploying-on-a-server)
     - [Running the indexer](#running-the-indexer)
-    - [Cache cleaning](cache-cleaning)
+    - [Cache cleaning](#cache-cleaning)
     - [Elasticsearch](#secure-elasticsearch)
 
 ## Requirements
