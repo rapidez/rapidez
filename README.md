@@ -23,6 +23,8 @@ The idea behind Rapidez is to have a blazing fast headless frontend for your Mag
 - [FAQ](#faq)
 - [Troubleshooting](#troubleshooting)
 - [Deploying on a server](#deploying-on-a-server)
+    - [Running the indexer](#running-the-indexer)
+    - [Cache cleaning](cache-cleaning)
     - [Elasticsearch](#secure-elasticsearch)
 
 ## Requirements
@@ -186,6 +188,20 @@ DB_USERNAME=magento
 DB_PASSWORD=password
 ```
 </details>
+
+### Running the indexer
+
+The easiest way is to schedule the `rapidez:index` command in `app/Console/Kernel.php`, for example:
+```
+$schedule->command('rapidez:index')->hourly();
+```
+For more information see [Task Scheduling](https://laravel.com/docs/master/scheduling).
+
+Another option is to visit `/api/admin/index/products?token=` and append your `RAPIDEZ_TOKEN` from the `.env`. You can automate this however you want by sending GET requests.
+
+### Cache cleaning
+
+Rapidez caches a lot to speed things up. This means that after you've changed some Magento configuration you've to clear the cache. This can be done easily with `php artisan cache:clear` but you can automate this just like the indexer above with `/api/admin/cache/clear?token=` and also append your token.
 
 ### Secure Elasticsearch
 
