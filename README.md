@@ -134,6 +134,10 @@ In `resources/js/app.js` there is just a `require` so you can extend easily. If 
 
 > No, Vue is only used for some functional frontend components like the cart. All Vue components are "renderless" so most likely you never need to touch them because all the HTML is in the Blade files. But some basic knowledge of Vue could be useful.
 
+**Why query the Magento database instead of using GraphQL?**
+
+> Speed. The Magento database stucture isn't changed much over the years and we're just using it to get data. So, why not? To insert data we use the REST API. Maybe we switch to GraphQL in the future.
+
 **TailwindCSS is used, do I need to use it?**
 
 > No, you do not need te use it. You are completely free to use whatever you want. We like it so we used it for basic styling.
