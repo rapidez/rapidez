@@ -33,7 +33,7 @@ The idea behind Rapidez is to have a blazing fast headless frontend for your Mag
 - PHP >= 7.4
 - MySQL >= 5.7.13
 - Elasticsearch >= 7.6
-- Magento >= 2.3 installation ([or use a demo shop](#demo-magento-2-shop)) with flat tables enabled
+- Magento >= 2.4.1 installation ([or use a demo shop](#demo-magento-2-shop)) with flat tables enabled
 
 ## Installation
 
