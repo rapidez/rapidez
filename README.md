@@ -4,7 +4,7 @@
 
 With Laravel, Vue and Reactive Search 🤘🏻 [Demo](https://test.rapidez.io) 🏎
 
-The idea behind Rapidez is to have a blazing fast headless frontend for your Magento 2 webshop which should be very easy to customize. The frontend is seperated from the Magento installation and communication between them is done via the Magento API. To speed things up we're also querying the Magento database to get catalog information for example. For category pages and the filters we're using Reactive Search which uses ElasticSearch as database. Indexation is also taken care of and is pretty fast.
+The idea behind Rapidez is to have a blazing fast headless frontend for your Magento 2 webshop which should be very easy to customize. The frontend is seperated from the Magento installation and communication between them is done via the Magento REST API and GraphQL. To speed things up we're also querying the Magento database to get catalog information for example. For category pages and the filters we're using Reactive Search which uses ElasticSearch as database. Indexation is also taken care of and is pretty fast.
 
 ## Table of Contents
 
@@ -122,11 +122,11 @@ In `resources/js/app.js` there is just a `require` so you can extend easily. If 
 
 **Why is it so fast?**
 
-> Because we do not use the whole frontend stack from Magento. Just Laravel which queries the Magento database directly and the Magento API for the cart and checkout. Category filters are so fast because of Reactive Search which uses Elasticsearch as database. For the smooth page transitions we use Turbolinks.
+> Because we do not use the whole frontend stack from Magento. Just Laravel which queries the Magento database directly and the Magento REST API / GraphQL for other parts like the cart and checkout. Category filters are so fast because of Reactive Search which uses Elasticsearch as database. For the smooth page transitions we use Turbolinks.
 
 **How is this different from Vue Storefront?**
 
-> Vue Storefront does support multiple backends where the focus of Rapidez is Magento 2. The learning curve of Vue Storefront can be steep because it's totally different from Magento which uses a PHP stack. Rapidez combines best of both worlds by using PHP and Vue.
+> Vue Storefront does support multiple platforms where the focus of Rapidez is Magento 2. The learning curve of Vue Storefront can be steep because it's totally different from Magento which uses a PHP stack. Rapidez combines best of both worlds by using PHP and Vue.
 
 **Why headless and not a PWA?**
 
@@ -138,7 +138,7 @@ In `resources/js/app.js` there is just a `require` so you can extend easily. If 
 
 **Why query the Magento database instead of using GraphQL?**
 
-> Speed. The Magento database stucture isn't changed much over the years and we're just using it to get data. So, why not? To insert data we use the REST API. Maybe we switch to GraphQL in the future.
+> Speed; and not all data is available through GraphQL. The Magento database stucture isn't changed much over the years and we're just using it to get data. For inserting and updating we use the REST API or GraphQL.
 
 **TailwindCSS is used, do I need to use it?**
 
@@ -146,7 +146,7 @@ In `resources/js/app.js` there is just a `require` so you can extend easily. If 
 
 **Is it production ready?**
 
-> If it fits your needs; yes. But most likely something is missing for you, please let us know what so we can work on it.
+> If it fits your needs; yes. Please let us know if you're missing something.
 
 ## Troubleshooting
 
