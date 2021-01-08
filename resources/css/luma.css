@@ -1,0 +1,65 @@
+/*
+This file contains some basic styling for the
+Magento Luma theme sample content to look ok
+ */
+
+.block-promo {
+    @apply relative block;
+}
+
+.block-promo .bg-white {
+    @apply bg-gray-50;
+}
+
+.block-promo .content {
+    @apply absolute top-5 right-5 p-5;
+}
+
+.block-promo .info {
+    @apply block text-xl;
+}
+
+.block-promo .title {
+    @apply block text-3xl;
+}
+
+.block-promo .button {
+    /**/
+}
+
+.block-promo-wrapper {
+    @apply grid grid-cols-3 gap-6 my-6;
+}
+
+.block-promo-wrapper .block-promo.home-pants {
+    @apply row-span-2;
+}
+
+.block-promo-wrapper .block-promo.home-t-shirts {
+    @apply col-span-2;
+    background: #ffdd16;
+}
+
+.block-promo-wrapper .block-promo.home-erin {
+    /**/
+}
+
+.block-promo-wrapper .block-promo.home-performance {
+    @apply row-span-2;
+}
+
+.block-promo-wrapper .block-promo.home-eco {
+    @apply col-span-2;
+}
+
+.content-heading {
+    @apply text-center;
+}
+
+.content-heading .title {
+    @apply text-4xl;
+}
+
+.content-heading .info {
+    @apply text-lg;
+}
