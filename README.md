@@ -52,9 +52,6 @@ If you do not have a Magento 2 installation yet, you want to test Rapidez or lik
 
 - Make sure Docker can use at least 4GB of memory
 - `docker-compose up -d`
-- `docker exec rapidez_magento ./change-base-url http://localhost:1234/`
-- `docker exec rapidez_magento ./install-sample-data`
-- `docker exec rapidez_magento ./enable-flat-catalog`
 - `docker exec rapidez_magento magerun2 indexer:reindex`
 - Edit the `.env`:
 ```
