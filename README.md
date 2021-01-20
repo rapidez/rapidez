@@ -204,11 +204,10 @@ Rapidez caches a lot to speed things up. This means that after you've changed so
 
 You've to secure your Elasticsearch instance so other people cannot manipulate the data in it as it need to be exposed.
 
-- If you're using a Docker container, jump into it: `docker exec -it elasticsearch /bin/bash`
-- Enable security in `config/elasticsearch.yml` with: `xpack.security.enabled: true`
-- Change `http.cors.allow-origin` to your domain.
-- Setup a password with `bin/elasticsearch-setup-passwords auto` (or use `interactive` to choose the passwords yourself)
-- Restart Elasticsearch (with Docker: `docker restart elasticsearch`)
+- Enable security in `elasticsearch.yml` with: `xpack.security.enabled: true`
+- Change `http.cors.allow-origin` to your domain
+- Restart Elasticsearch (with Docker: `docker restart rapidez_elasticsearch`)
+- Setup a password with `bin/elasticsearch-setup-passwords auto` (or use `interactive` to choose the passwords yourself, with Docker prepend `docker exec rapidez_elasticsearch `)
 - Edit your `.env` and add the credentials:
 ```
 ELASTICSEARCH_USER=elastic
@@ -221,7 +220,7 @@ location / {
 }
 ```
 - Repeat this step for Kibana which should be running on port 5601
-- Set the credentials in `config/kibana.yml`:
+- Set the credentials in `kibana.yml`:
 ```
 elasticsearch.username: "elastic"
 elasticsearch.password: "YOUR-PASSWORD"
