@@ -13,7 +13,7 @@
         image="https://images.unsplash.com/photo-1486401899868-0e435ed85128?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
         link="/men/tops-men"
         button="Shop Men Tops"
-        class="md:w-1/2 md:mx-2"
+        class="mt-4 md:w-1/2 md:mx-2 md:mt-0"
     />
 </div>
 <x-category-block
