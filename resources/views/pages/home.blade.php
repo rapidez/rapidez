@@ -27,7 +27,7 @@
 
 <div class="bg-white w-full py-20">
     <p class="text-center text-base font-semibold uppercase text-gray-600 tracking-wider">
-        @lang('Build with / supported by')
+        @lang('Built with / supported by')
     </p>
     <div class="mt-6 lg:mt-8 flex flex-wrap text-gray-400 sm:text-lg">
         <div class="flex justify-center items-center py-8 px-8 lg:px-24 bg-gray-100 w-1/2 md:w-1/3 border-solid border-white border-2">
