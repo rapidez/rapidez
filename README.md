@@ -97,6 +97,7 @@ Filter | Explanation
 `index.product.scopes` | Add product scopes to the product query when indexing
 `index.product.data` | Manipulate the product data before it's getting indexed 
 `index.product.attributes` | Index additional product attributes
+`index.product.mapping` | Manipulate the index mapping
 
 ## Theming
 
