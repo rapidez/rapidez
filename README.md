@@ -152,7 +152,7 @@ In `resources/js/app.js` there is just a `require` so you can extend easily. If 
 
 - Make sure Magento is working
 - Clear the cache with `php artisan cache:clear`
-- Reindex the products with `php artisan rapidez:index --force`, the parameter `--force` recreates the whole index
+- Reindex the products with `php artisan rapidez:index`
 - Clear the browser cache, in Google Chrome with the "Clear site data" button on the application tab in DevTools
 
 ## Deploying on a server
