@@ -99,6 +99,7 @@ Filter | Explanation
 `index.product.data` | Manipulate the product data before it's getting indexed 
 `index.product.attributes` | Index additional product attributes
 `index.product.mapping` | Manipulate the index mapping
+`category.scopes` | Add additional global category scopes
 
 ## Theming
 
