@@ -38,7 +38,6 @@
         "laravel/tinker": "^2.0",
         "predis/predis": "^1.1",
         "rapidez/account": "@dev",
-        "rapidez/compare": "@dev",
         "rapidez/core": "@dev",
         "rapidez/image-resizer": "@dev",
         "rapidez/menu": "@dev"
