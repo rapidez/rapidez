@@ -7,6 +7,10 @@
     ],
     "license": "MIT",
     "repositories": {
+        "reviews": {
+            "type": "vcs",
+            "url": "git@github.com:rapidez/reviews.git"
+        },
         "core": {
             "type": "vcs",
             "url": "git@github.com:rapidez/core.git"
@@ -85,6 +89,7 @@
             "@php artisan key:generate --ansi"
         ],
         "remote-repositories": [
+            "composer config repositories.reviews vcs git@github.com:rapidez/reviews.git",
             "composer config repositories.compare vcs git@github.com:rapidez/compare.git",
             "composer config repositories.image-resizer vcs git@github.com:rapidez/image-resizer.git",
             "composer config repositories.account vcs git@github.com:rapidez/account.git",
@@ -93,6 +98,7 @@
             "composer update rapidez/*"
         ],
         "local-repositories": [
+            "composer config repositories.reviews path ../reviews",
             "composer config repositories.compare path ../compare",
             "composer config repositories.image-resizer path ../image-resizer",
             "composer config repositories.account path ../account",
