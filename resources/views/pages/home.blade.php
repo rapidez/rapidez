@@ -29,18 +29,18 @@
     <p class="text-center text-base font-semibold uppercase text-gray-600 tracking-wider">
         @lang('Built with / supported by')
     </p>
-    <div class="mt-6 lg:mt-8 flex flex-wrap text-gray-400 sm:text-lg">
+    <div class="mt-6 lg:mt-8 flex flex-wrap sm:text-lg">
         <div class="flex justify-center items-center py-8 px-8 lg:px-24 bg-gray-100 w-1/2 md:w-1/3 border-solid border-white border-2">
             <img class="h-12" src="https://rapidez.io/img/laravel.svg" alt="Laravel" loading="lazy">
         </div>
         <div class="flex justify-center items-center py-8 px-8 lg:px-24 bg-gray-100 w-1/2 md:w-1/3 border-solid border-white border-2">
-            <img class="h-12 mr-3" src="https://rapidez.io/img/vue.svg" alt="Vue" loading="lazy"> Vue.js
+            <img class="h-12 mr-3" src="https://rapidez.io/img/vue.svg" alt="Vue" loading="lazy">
         </div>
         <div class="flex justify-center items-center py-8 px-8 lg:px-24 bg-gray-100 w-1/2 md:w-1/3 border-solid border-white border-2">
             <img class="h-12" src="https://rapidez.io/img/tailwind-css.svg" alt="Tailwind CSS" loading="lazy">
         </div>
         <div class="flex justify-center items-center py-8 px-8 lg:px-24 bg-gray-100 w-1/2 md:w-1/3 border-solid border-white border-2">
-            <img class="h-12 mr-3" src="https://rapidez.io/img/reactive-search.svg" alt="Reactive Search" loading="lazy"> Reactive Search
+            <img class="h-12 mr-3" src="https://rapidez.io/img/reactive-search.svg" alt="Reactive Search" loading="lazy">
         </div>
         <div class="flex justify-center items-center py-8 px-8 lg:px-24 bg-gray-100 w-1/2 md:w-1/3 border-solid border-white border-2">
             <img class="h-12" src="https://rapidez.io/img/justbetter.svg" alt="JustBetter" loading="lazy">
