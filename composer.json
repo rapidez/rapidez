@@ -5,33 +5,7 @@
     "keywords": [
         "rapidez"
     ],
-    "license": "MIT",
-    "repositories": {
-        "reviews": {
-            "type": "vcs",
-            "url": "git@github.com:rapidez/reviews.git"
-        },
-        "core": {
-            "type": "vcs",
-            "url": "git@github.com:rapidez/core.git"
-        },
-        "menu": {
-            "type": "vcs",
-            "url": "git@github.com:rapidez/menu.git"
-        },
-        "account": {
-            "type": "vcs",
-            "url": "git@github.com:rapidez/account.git"
-        },
-        "image-resizer": {
-            "type": "vcs",
-            "url": "git@github.com:rapidez/image-resizer.git"
-        },
-        "compare": {
-            "type": "vcs",
-            "url": "git@github.com:rapidez/compare.git"
-        }
-    },
+    "license": "GPL-3.0",
     "require": {
         "php": "^7.4|^8.0",
         "fideloper/proxy": "^4.2",
@@ -40,10 +14,10 @@
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.0",
         "predis/predis": "^1.1",
-        "rapidez/account": "@dev",
-        "rapidez/core": "@dev",
-        "rapidez/image-resizer": "@dev",
-        "rapidez/menu": "@dev"
+        "rapidez/account": "^0.1",
+        "rapidez/core": "^0.1",
+        "rapidez/image-resizer": "^0.1",
+        "rapidez/menu": "^0.1"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",
@@ -85,24 +59,6 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
-        ],
-        "remote-repositories": [
-            "composer config repositories.reviews vcs git@github.com:rapidez/reviews.git",
-            "composer config repositories.compare vcs git@github.com:rapidez/compare.git",
-            "composer config repositories.image-resizer vcs git@github.com:rapidez/image-resizer.git",
-            "composer config repositories.account vcs git@github.com:rapidez/account.git",
-            "composer config repositories.menu vcs git@github.com:rapidez/menu.git",
-            "composer config repositories.core vcs git@github.com:rapidez/core.git",
-            "composer update rapidez/*"
-        ],
-        "local-repositories": [
-            "composer config repositories.reviews path ../reviews",
-            "composer config repositories.compare path ../compare",
-            "composer config repositories.image-resizer path ../image-resizer",
-            "composer config repositories.account path ../account",
-            "composer config repositories.menu path ../menu",
-            "composer config repositories.core path ../core",
-            "composer update rapidez/*"
         ]
     }
 }
