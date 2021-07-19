@@ -59,6 +59,13 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "local-repos": [
+            "composer config repositories.core path ../core",
+            "composer config repositories.account path ../account",
+            "composer config repositories.image-resizer path ../image-resizer",
+            "composer config repositories.menu path ../menu",
+            "composer require rapidez/core:'dev-master as 0.1' rapidez/account:'dev-master as 0.2' rapidez/image-resizer:'dev-master as 0.1' rapidez/menu:'dev-master as 0.1'"
         ]
     }
 }
