@@ -1,0 +1,50 @@
+name: Copy Laravel source code
+on:
+  schedule:
+    - cron:  '30 0 * * 1'
+jobs:
+  copy-laravel-source:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+        with:
+          path: "rapidez"
+
+      - name: Checkout the Laravel code
+        uses: actions/checkout@v2
+        with:
+          repository: "laravel/laravel"
+          path: "laravel"
+
+      - name: Copy the Laravel code over the Rapidez code
+        run: |
+          cp rapidez/composer.json . &&
+          cp -rfv laravel/* rapidez/
+
+      - name: Check if there are changes
+        id: has-changes
+        run: |
+          cd rapidez &&
+          if [[ -z $(cd rapidez && git status -s) ]]; then OUTPUT=1; else OUTPUT=0; fi
+          echo "::set-output name=RESULT::$OUTPUT"
+
+#      - name: Merge composer.json from Laravel
+#        if: steps.has-changes.outputs.RESULT == 1
+#        run: |
+#          jq -s '.[0] * .[1]' rapidez/composer.json laravel/composer.json > composer.json && \
+#          mv composer.json rapidez/composer.json
+
+      - name: Keep Rapidez specific files
+        run: cd rapidez && git checkout README.md resources/css/app.css resources/js/app.js
+
+      - name: Create Pull Request
+        if: steps.has-changes.outputs.RESULT == 1
+        uses: peter-evans/create-pull-request@v3
+        with:
+          path: rapidez
+          title: Sync with Laravel source
+          body: Merge Laravel source code to the Rapidez source
+          commit-message: Merge Laravel source code to the Rapidez source
+          branch: feature/sync-with-laravel-base
+          base: master
