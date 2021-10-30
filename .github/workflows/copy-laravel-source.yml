@@ -1,5 +1,6 @@
 name: Copy Laravel source code
 on:
+  workflow_dispatch:
   schedule:
     - cron:  '30 0 * * 1'
 jobs:
