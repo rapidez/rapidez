@@ -24,8 +24,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        // To make sure the new or expired special prices are indexed.
+        $schedule->command('rapidez:index')->daily();
     }
 
     /**
