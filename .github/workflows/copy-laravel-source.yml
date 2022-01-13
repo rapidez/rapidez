@@ -19,9 +19,29 @@ jobs:
           path: "laravel"
 
       - name: Copy the Laravel code over the Rapidez code
-        run: |
-          cp rapidez/composer.json . &&
-          cp -rfv laravel/* rapidez/
+        run: cp -rfv laravel/* rapidez/
+
+      - name: Keep Rapidez specific files
+        run: >
+          cd rapidez && git checkout
+          composer.json
+          README.md
+          routes/web.php
+          routes/api.php
+          resources/css/app.css
+          resources/js/app.js
+          public/favicon.ico
+
+      - name: Remove unneeded files
+        run: >
+          cd rapidez && rm -rf
+          CHANGELOG.md
+          package.json
+          webpack.mix.js
+          resources/js/bootstrap.js
+          resources/views/welcome.blade.php
+          app/Models
+          database/
 
       - name: Check if there are changes
         id: has-changes
@@ -30,22 +50,13 @@ jobs:
           if [[ -z $(cd rapidez && git status -s) ]]; then OUTPUT=1; else OUTPUT=0; fi
           echo "::set-output name=RESULT::$OUTPUT"
 
-#      - name: Merge composer.json from Laravel
-#        if: steps.has-changes.outputs.RESULT == 1
-#        run: |
-#          jq -s '.[0] * .[1]' rapidez/composer.json laravel/composer.json > composer.json && \
-#          mv composer.json rapidez/composer.json
-
-      - name: Keep Rapidez specific files
-        run: cd rapidez && git checkout README.md resources/css/app.css resources/js/app.js
-
       - name: Create Pull Request
         if: steps.has-changes.outputs.RESULT == 1
         uses: peter-evans/create-pull-request@v3
         with:
           path: rapidez
           title: Sync with Laravel source
-          body: Merge Laravel source code to the Rapidez source
-          commit-message: Merge Laravel source code to the Rapidez source
+          body: Merge `laravel/laravel` with `rapidez/rapidez`, check for `composer.json` changes manually!
+          commit-message: Sync with Laravel source
           branch: feature/sync-with-laravel-base
           base: master
