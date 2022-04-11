@@ -26,6 +26,7 @@ jobs:
           cd rapidez && git checkout
           composer.json
           README.md
+          CHANGELOG.md
           routes/web.php
           routes/api.php
           resources/css/app.css
@@ -35,7 +36,6 @@ jobs:
       - name: Remove unneeded files
         run: >
           cd rapidez && rm -rf
-          CHANGELOG.md
           package.json
           webpack.mix.js
           resources/js/bootstrap.js
