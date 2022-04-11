@@ -1,6 +1,12 @@
 # Changelog
 
-## [Unreleased](https://github.com/org/repo/compare/0.3.0...master)
+## [Unreleased](https://github.com/org/repo/compare/0.4.0...master)
+
+## [0.4.0](https://github.com/org/repo/compare/0.3.0...0.4.0) - 2022-04-11
+
+### Changed
+
+- Laravel 9 upgrade (c83e626, 15d595f)
 
 ## [0.3.0](https://github.com/org/repo/compare/0.2.0...0.3.0) - 2022-03-21
 
@@ -38,7 +44,6 @@
 
 - Updated rapidez/account (5399669)
 
-
 ## [0.1.1](https://github.com/org/repo/compare/0.1.0...0.1.1) - 2021-07-19
 
 ### Added
@@ -52,5 +57,3 @@ Public beta release!
 ## [0.0.1](https://github.com/org/repo/compare/8a682db6476a7c60c0487375ee8708aaeed4ab15...0.0.1) - 2021-06-30
 
 Experimental release
-
-
