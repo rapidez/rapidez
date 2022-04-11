@@ -14,11 +14,10 @@
         "laravel/framework": "^8.75",
         "laravel/tinker": "^2.5",
         "predis/predis": "^1.1",
-        "rapidez/account": "dev-master as 0.2",
-        "rapidez/core": "dev-master as 0.18",
-        "rapidez/image-resizer": "dev-master as 0.1",
-        "rapidez/menu": "dev-master as 0.1",
-        "rapidez/reviews": "dev-master"
+        "rapidez/account": "~0.9",
+        "rapidez/core": "~0.49.2",
+        "rapidez/image-resizer": "~0.4.5",
+        "rapidez/menu": "~0.1.1"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",
