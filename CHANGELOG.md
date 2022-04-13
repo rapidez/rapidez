@@ -1,6 +1,12 @@
 # Changelog
 
-## [Unreleased](https://github.com/org/repo/compare/0.4.0...master)
+## [Unreleased](https://github.com/org/repo/compare/0.4.1...master)
+
+## [0.4.1](https://github.com/org/repo/compare/0.4.0...0.4.1) - 2022-04-13
+
+### Fixed
+
+- Removed the Sanctum config (685d4ec)
 
 ## [0.4.0](https://github.com/org/repo/compare/0.3.0...0.4.0) - 2022-04-11
 
