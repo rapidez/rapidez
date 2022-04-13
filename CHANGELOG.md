@@ -1,6 +1,12 @@
 # Changelog
 
-## [Unreleased](https://github.com/org/repo/compare/0.4.1...master)
+## [Unreleased](https://github.com/org/repo/compare/0.4.2...master)
+
+## [0.4.2](https://github.com/org/repo/compare/0.4.1...0.4.2) - 2022-04-13
+
+### Fixed
+
+- Updated the Rapidez dependencies for Laravel 9 (392f3fe)
 
 ## [0.4.1](https://github.com/org/repo/compare/0.4.0...0.4.1) - 2022-04-13
 
