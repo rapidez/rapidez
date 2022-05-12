@@ -42,6 +42,7 @@ jobs:
           resources/views/welcome.blade.php
           app/Models
           database/
+          config/sanctum.php
 
       - name: Check if there are changes
         id: has-changes
