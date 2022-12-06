@@ -1,29 +1,66 @@
 version: '3'
 services:
+  # Traefik enables us to isolate every container in this file behind a single port
+  traefik:
+    image: traefik:v2.9
+    command: --providers.docker
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  magento:
+    container_name: rapidez_magento
+    image: michielgerritsen/magento-project-community-edition:php81-fpm-magento2.4.5-p1-sample-data
+    restart: unless-stopped
+    # Disable JWT as it interferes with Rapidez currently
+    entrypoint: [ "bash", "-c", "magerun2 module:disable Magento_JwtUserToken Magento_AdobeStockAdminUi Magento_AdminAdobeIms Magento_TwoFactorAuth && bash entrypoint.sh" ]
+    ports:
+      # Exposed by Traefik on MAGENTO_HOST
+      # - 127.0.0.1:1234:80
+      - 127.0.0.1:${DB_PORT}:3306
+    environment:
+      - URL=http://${MAGENTO_HOST}/
+      - FLAT_TABLES=true
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.magento.rule=Host(`${MAGENTO_HOST}`)"
+      - "traefik.http.services.magento.loadbalancer.server.port=80"
+
   elasticsearch:
     container_name: rapidez_elasticsearch
     image: docker.elastic.co/elasticsearch/elasticsearch:7.6.0
     restart: unless-stopped
     volumes:
       - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      # - ./elasticsearch/data:/usr/share/elasticsearch/data
     environment:
       - discovery.type=single-node
-    ports:
-      - 127.0.0.1:9200:9200
-  magento:
-    container_name: rapidez_magento
-    image: michielgerritsen/magento-project-community-edition:php74-fpm-magento2.4.1-sample-data
-    restart: unless-stopped
-    ports:
-      - 127.0.0.1:1234:80
-      - 127.0.0.1:3307:3306
-    environment:
-      - URL=http://localhost:1234/
-      - FLAT_TABLES=true
-  kibana:
-    container_name: rapidez_kibana
-    image: docker.elastic.co/kibana/kibana:7.6.0
-    ports:
-      - 127.0.0.1:5601:5601
-    volumes:
-      - ./kibana.yml:/usr/share/kibana/config/kibana.yml
+      - network.host=0.0.0.0
+      - http.port=80
+      - xpack.security.enabled=true
+      - ELASTIC_PASSWORD=${ELASTICSEARCH_PASS}
+    # Exposed by Traefik on ELASTICSEARCH_HOST
+    # ports:
+    #   - 127.0.0.1:9200:80
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.elasticsearch.rule=Host(`${ELASTICSEARCH_HOST}`)"
+      - "traefik.http.services.elasticsearch.loadbalancer.server.port=80"
+    # Automatically set the elasticsearch passwords
+    command: >
+      bash -c '
+        (/usr/local/bin/docker-entrypoint.sh) & ES_PID=$$!;
+        if [ x${ELASTICSEARCH_PASS} == x ]; then
+          echo "Set the ELASTICSEARCH_PASS environment variable in the .env file";
+          exit 1;
+        elif [ x${ELASTICSEARCH_RAPIDEZ_PASS} == x ]; then
+          echo "Set the ELASTICSEARCH_RAPIDEZ_PASS environment variable in the .env file";
+          exit 1;
+        fi;
+        echo "Setting passwords";
+        until curl -s -X POST "localhost:80/_security/role/web?pretty" -u "elastic:${ELASTICSEARCH_PASS}" -H "Content-Type: application/json" -d'\''{"indices": [{"names": [ "rapidez_*" ],"privileges": ["read"]}]}'\'' | grep "^{"; do sleep 10; done;
+        until curl -s -X POST "localhost:80/_security/user/web?pretty" -u "elastic:${ELASTICSEARCH_PASS}" -H "Content-Type: application/json" -d'\''{"password" : "${ELASTICSEARCH_RAPIDEZ_PASS}","roles" : [ "web" ]}'\'' | grep "^{"; do sleep 10; done;
+        echo "All done!";
+        wait $$ES_PID;
+      '
