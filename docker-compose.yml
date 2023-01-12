@@ -1,16 +1,44 @@
 version: '3'
 services:
-  # Traefik enables us to isolate every container in this file behind a single port
   traefik:
-    image: traefik:v2.9
+    container_name: ${CONTAINER_PREFIX}traefik
+    image: traefik:latest
+    restart: unless-stopped
     command: --providers.docker
     ports:
-      - "80:80"
+      - "${TRAEFIK_PORT}:80"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
+  nginx:
+    container_name: ${CONTAINER_PREFIX}nginx
+    image: nginx:alpine
+    restart: unless-stopped
+    volumes:
+      - ./:/var/www/html
+      - ./.docker/nginx/conf.d:/etc/nginx/conf.d
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.rapidez.rule=Host(`${RAPIDEZ_HOST}`)"
+      - "traefik.http.services.rapidez.loadbalancer.server.port=80"
+
+  rapidez:
+    container_name: ${CONTAINER_PREFIX}rapidez
+    build: .
+    restart: unless-stopped
+    volumes:
+      - ./:/var/www/html
+    environment:
+      - DB_PORT=3306
+      - ELASTICSEARCH_HOST=elasticsearch
+      - ELASTICSEARCH_PORT=9200
+      - ELASTICSEARCH_USER=${ELASTICSEARCH_USER}
+      - ELASTICSEARCH_PASS=${ELASTICSEARCH_PASS}
+      - ELASTICSEARCH_RAPIDEZ_PASS=${ELASTICSEARCH_RAPIDEZ_PASS}
+      - ELASTICSEARCH_URL=${ELASTICSEARCH_URL}
+
   magento:
-    container_name: rapidez_magento
+    container_name: ${CONTAINER_PREFIX}magento
     image: michielgerritsen/magento-project-community-edition:php81-fpm-magento2.4.5-p1-sample-data
     restart: unless-stopped
     # Disable JWT as it interferes with Rapidez currently
@@ -22,35 +50,36 @@ services:
     environment:
       - URL=http://${MAGENTO_HOST}/
       - FLAT_TABLES=true
+    volumes:
+      - magento-www:/data
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.magento.rule=Host(`${MAGENTO_HOST}`)"
       - "traefik.http.services.magento.loadbalancer.server.port=80"
 
   elasticsearch:
-    container_name: rapidez_elasticsearch
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.0
+    container_name: ${CONTAINER_PREFIX}elasticsearch
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.8
     restart: unless-stopped
     volumes:
       - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
-      # - ./elasticsearch/data:/usr/share/elasticsearch/data
     environment:
       - discovery.type=single-node
       - network.host=0.0.0.0
-      - http.port=80
+      - http.port=9200
       - xpack.security.enabled=true
       - ELASTIC_PASSWORD=${ELASTICSEARCH_PASS}
     # Exposed by Traefik on ELASTICSEARCH_HOST
     # ports:
-    #   - 127.0.0.1:9200:80
+    #   - 127.0.0.1:9200:9200
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.elasticsearch.rule=Host(`${ELASTICSEARCH_HOST}`)"
-      - "traefik.http.services.elasticsearch.loadbalancer.server.port=80"
+      - "traefik.http.services.elasticsearch.loadbalancer.server.port=9200"
     # Automatically set the elasticsearch passwords
     command: >
       bash -c '
-        (/usr/local/bin/docker-entrypoint.sh) & ES_PID=$$!;
+        (/bin/tini -- /usr/local/bin/docker-entrypoint.sh) & ES_PID=$$!;
         if [ x${ELASTICSEARCH_PASS} == x ]; then
           echo "Set the ELASTICSEARCH_PASS environment variable in the .env file";
           exit 1;
@@ -59,8 +88,11 @@ services:
           exit 1;
         fi;
         echo "Setting passwords";
-        until curl -s -X POST "localhost:80/_security/role/web?pretty" -u "elastic:${ELASTICSEARCH_PASS}" -H "Content-Type: application/json" -d'\''{"indices": [{"names": [ "rapidez_*" ],"privileges": ["read"]}]}'\'' | grep "^{"; do sleep 10; done;
-        until curl -s -X POST "localhost:80/_security/user/web?pretty" -u "elastic:${ELASTICSEARCH_PASS}" -H "Content-Type: application/json" -d'\''{"password" : "${ELASTICSEARCH_RAPIDEZ_PASS}","roles" : [ "web" ]}'\'' | grep "^{"; do sleep 10; done;
+        until curl -s -X POST "localhost:9200/_security/role/web?pretty" -u "elastic:${ELASTICSEARCH_PASS}" -H "Content-Type: application/json" -d'\''{"indices": [{"names": [ "rapidez_*" ],"privileges": ["read"]}]}'\'' | grep "^{"; do sleep 10; done;
+        until curl -s -X POST "localhost:9200/_security/user/web?pretty" -u "elastic:${ELASTICSEARCH_PASS}" -H "Content-Type: application/json" -d'\''{"password" : "${ELASTICSEARCH_RAPIDEZ_PASS}","roles" : [ "web" ]}'\'' | grep "^{"; do sleep 10; done;
         echo "All done!";
         wait $$ES_PID;
       '
+
+volumes:
+  magento-www:
