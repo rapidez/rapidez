@@ -22,7 +22,7 @@
     />
 </div>
 
-<div class="my-6 bg-white">
+<div class="my-10 bg-white">
     <div class="grid grid-cols-2 gap-8 md:grid-cols-6">
         @foreach (['laravel', 'vue', 'tailwind-css', 'reactive-search', 'justbetter', 'magento'] as $brand)
             <div class="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
