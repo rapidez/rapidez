@@ -1,22 +1,22 @@
 @props(['title', 'description', 'image', 'link', 'button'])
 
-<div {{ $attributes->merge(['class' => 'w-full h-64 overflow-hidden bg-cover bg-center']) }} style="background-image: url('{{ $image }}')">
-    <div class="bg-gray-900 bg-opacity-25 flex items-end h-full">
-        <div class="max-w-md p-6 inline-block -mb-4">
-            <h2 class="text-3xl text-white font-semibold">@lang($title)</h2>
-            <p class="mt-2 text-white text-sm">@lang($description)</p>
-            <div class="-ml-1">
-                <div class="bg-white p-1 -mb-3 -ml-6 inline-block mt-5">
-                    <a href="{{ $link.Rapidez\Core\Models\Config::getCachedByPath('catalog/seo/category_url_suffix', '.html') }}" class="group inline-flex wrap bg-pink text-green-900 text-sm font-medium overflow-hidden cursor-pointer bg-green-400 hover:bg-gray-200 transition duration-100 ease-in-out">
-                        <span class="px-6 py-3 border-r border-solid border-green-300">@lang($button)</span>
-                        <span class="px-4 flex items-center">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                            </svg>
-                        </span>
-                    </a>
-                </div>
-            </div>
-        </div>
+<a
+    class="group relative h-72 w-full overflow-hidden rounded-xl sm:first:row-span-2 sm:first:h-full"
+    href="{{ $link . Rapidez\Core\Models\Config::getCachedByPath('catalog/seo/category_url_suffix', '.html') }}"
+>
+    <img
+        class="h-full w-full object-cover"
+        src="{{ $image }}"
+        alt=""
+    />
+    <div
+        class="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-50 transition group-hover:opacity-40">
     </div>
-</div>
+    <div class="absolute bottom-0 left-0 flex flex-col gap-1 p-5 text-white">
+        <div>
+            <h2 class="text-lg font-semibold">@lang($title)</h2>
+            <p class="text-md text-gray-200">@lang($description)</p>
+        </div>
+        <span>{{ $button }}</span>
+    </div>
+</a>
