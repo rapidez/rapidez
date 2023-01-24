@@ -16,7 +16,7 @@
         "rapidez/core": "~0.55",
         "rapidez/image-resizer": "~0.5",
         "rapidez/menu": "~0.2",
-        "rapidez/wishlist": "^0.3.0"
+        "rapidez/wishlist": "~0.3.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",
