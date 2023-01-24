@@ -15,7 +15,8 @@
         "rapidez/account": "~0.10",
         "rapidez/core": "~0.55",
         "rapidez/image-resizer": "~0.5",
-        "rapidez/menu": "~0.2"
+        "rapidez/menu": "~0.2",
+        "rapidez/wishlist": "^0.3.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",
@@ -64,7 +65,8 @@
             "composer config repositories.account path ../account",
             "composer config repositories.image-resizer path ../image-resizer",
             "composer config repositories.menu path ../menu",
-            "composer require rapidez/core:'dev-master as 0.1' rapidez/account:'dev-master as 0.2' rapidez/image-resizer:'dev-master as 0.1' rapidez/menu:'dev-master as 0.1'"
+            "composer config repositories.wishlist path ../wishlist",
+            "composer require rapidez/core:'dev-master as 0.1' rapidez/account:'dev-master as 0.2' rapidez/image-resizer:'dev-master as 0.1' rapidez/menu:'dev-master as 0.1' rapidez/wishlist:'dev-master as 0.1'"
         ]
     }
 }
