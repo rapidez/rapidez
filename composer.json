@@ -66,7 +66,7 @@
             "composer config repositories.image-resizer path ../image-resizer",
             "composer config repositories.menu path ../menu",
             "composer config repositories.wishlist path ../wishlist",
-            "composer require rapidez/core:'dev-master as 0.1' rapidez/account:'dev-master as 0.2' rapidez/image-resizer:'dev-master as 0.1' rapidez/menu:'dev-master as 0.1' rapidez/wishlist:'dev-master as 0.1'"
+            "composer require rapidez/core:'dev-master as 0.1' rapidez/account:'dev-master as 0.2' rapidez/image-resizer:'dev-master as 0.1' rapidez/menu:'dev-master as 0.1' rapidez/wishlist:'dev-master as 0.3'"
         ]
     }
 }
