@@ -1,7 +1,7 @@
 @props(['title', 'description', 'image', 'link', 'button'])
 
 <a
-    class="group relative h-72 w-full overflow-hidden rounded-xl sm:first:row-span-2 sm:first:h-full"
+    class="group relative h-72 w-full overflow-hidden sm:rounded-xl sm:first:row-span-2 sm:first:h-full"
     href="{{ $link . Rapidez\Core\Models\Config::getCachedByPath('catalog/seo/category_url_suffix', '.html') }}"
 >
     <img
