@@ -1,6 +1,15 @@
 # Changelog
 
-## [Unreleased](https://github.com/org/repo/compare/0.4.2...master)
+## [Unreleased](https://github.com/org/repo/compare/0.5.0...master)
+
+## [0.5.0](https://github.com/org/repo/compare/0.4.2...0.5.0) - 2022-12-16
+
+### Changed
+
+- Migrated from Laravel Mix to Vite (#35, 018c05c)
+- Sync with Laravel source (e5ee248, #7, #8, #9, #10)
+- Autoload dev core tests (a0c8411)
+- Docker setup update (#36, #38)
 
 ## [0.4.2](https://github.com/org/repo/compare/0.4.1...0.4.2) - 2022-04-13
 
