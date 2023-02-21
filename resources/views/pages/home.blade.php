@@ -2,7 +2,7 @@
     <x-category-block
         title="New Luma Yoga Collection"
         description="Get fit and look fab in new seasonal styles"
-        image="https://images.unsplash.com/photo-1547949003-9792a18a2601?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
+        image="/storage/resizes/750/home1.jpg.webp"
         link="/collections/yoga-new"
         button="Shop New Yoga"
         class="md:w-1/2 md:mx-2"
@@ -10,7 +10,7 @@
     <x-category-block
         title="Men Tops Collection"
         description="Find conscientious, comfy clothing"
-        image="https://images.unsplash.com/photo-1486401899868-0e435ed85128?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
+        image="/storage/resizes/750/home2.jpg.webp"
         link="/men/tops-men"
         button="Shop Men Tops"
         class="mt-4 md:w-1/2 md:mx-2 md:mt-0"
@@ -19,7 +19,7 @@
 <x-category-block
     title="Even more ways to mix and match"
     description="Buy 3 Luma tees get a 4th free"
-    image="https://images.unsplash.com/photo-1577655197620-704858b270ac?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1280&q=144"
+    image="/storage/resizes/1500/home3.jpg.webp"
     link="/promotions/tees-all"
     button="Shop Tees"
     class="mt-4"
