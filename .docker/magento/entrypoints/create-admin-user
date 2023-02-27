@@ -1,0 +1,19 @@
+#! /bin/bash
+
+if [[ x${MAGENTO_ADMIN_USER} == x ]]; then
+    echo "MAGENTO_ADMIN_USER missing, skipping admin creation. You can login as exampleuser examplepassword123";
+    exit 0;
+elif [[ x${MAGENTO_ADMIN_PASSWORD} == x ]]; then
+    echo "MAGENTO_ADMIN_PASSWORD missing, skipping admin creation. You can login as exampleuser examplepassword123";
+    exit 0;
+fi;
+for i in {1..60}; do
+    [[ `ps -aux | grep 'mysqld' | wc -l` -ge 3 ]] && break || sleep 5;
+done;
+sleep 10;
+# Delete exampleuser
+magerun2 admin:user:delete exampleuser -f;
+# Create admin password
+magerun2 admin:user:create --admin-user='${MAGENTO_ADMIN_USER}' --admin-password='${MAGENTO_ADMIN_PASSWORD}' --admin-email='${MAGENTO_ADMIN_EMAIL:-admin@example.com}' --admin-firstname='${MAGENTO_ADMIN_FIRSTNAME:-admin}' --admin-lastname='${MAGENTO_ADMIN_LASTNAME:-admin}';
+# Change admin password in case of password change.
+magerun2 admin:user:change-password '${MAGENTO_ADMIN_USER}' '${MAGENTO_ADMIN_PASSWORD}';

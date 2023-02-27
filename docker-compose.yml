@@ -41,8 +41,6 @@ services:
     container_name: ${CONTAINER_PREFIX}magento
     image: michielgerritsen/magento-project-community-edition:php81-fpm-magento2.4.5-p1-sample-data
     restart: unless-stopped
-    # Disable JWT as it interferes with Rapidez currently
-    entrypoint: [ "bash", "-c", "magerun2 module:disable Magento_JwtUserToken Magento_AdobeStockAdminUi Magento_AdminAdobeIms Magento_TwoFactorAuth && bash entrypoint.sh" ]
     ports:
       # Exposed by Traefik on MAGENTO_HOST
       # - 127.0.0.1:1234:80
@@ -52,6 +50,9 @@ services:
       - FLAT_TABLES=true
     volumes:
       - magento-www:/data
+      - ./.docker/magento/entrypoints/:/entrypoints/
+      - ./.docker/entrypoint:/entrypoint
+    entrypoint: ['/entrypoint', 'bash /data/entrypoint.sh']
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.magento.rule=Host(`${MAGENTO_HOST}`)"
@@ -63,36 +64,23 @@ services:
     restart: unless-stopped
     volumes:
       - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./.docker/elasticsearch/entrypoints/:/entrypoints/
+      - ./.docker/entrypoint:/entrypoint
     environment:
       - discovery.type=single-node
       - network.host=0.0.0.0
       - http.port=9200
       - xpack.security.enabled=true
       - ELASTIC_PASSWORD=${ELASTICSEARCH_PASS}
-    # Exposed by Traefik on ELASTICSEARCH_HOST
+      - ELASTICSEARCH_RAPIDEZ_PASS=${ELASTICSEARCH_RAPIDEZ_PASS}
+    command: ['/entrypoint', 'bash /usr/local/bin/docker-entrypoint.sh']
+    # Exposed by Traefik on ELASTICSEARCH_HOST:80
     # ports:
     #   - 127.0.0.1:9200:9200
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.elasticsearch.rule=Host(`${ELASTICSEARCH_HOST}`)"
       - "traefik.http.services.elasticsearch.loadbalancer.server.port=9200"
-    # Automatically set the elasticsearch passwords
-    command: >
-      bash -c '
-        (/bin/tini -- /usr/local/bin/docker-entrypoint.sh) & ES_PID=$$!;
-        if [ x${ELASTICSEARCH_PASS} == x ]; then
-          echo "Set the ELASTICSEARCH_PASS environment variable in the .env file";
-          exit 1;
-        elif [ x${ELASTICSEARCH_RAPIDEZ_PASS} == x ]; then
-          echo "Set the ELASTICSEARCH_RAPIDEZ_PASS environment variable in the .env file";
-          exit 1;
-        fi;
-        echo "Setting passwords";
-        until curl -s -X POST "localhost:9200/_security/role/web?pretty" -u "elastic:${ELASTICSEARCH_PASS}" -H "Content-Type: application/json" -d'\''{"indices": [{"names": [ "rapidez_*" ],"privileges": ["read"]}]}'\'' | grep "^{"; do sleep 10; done;
-        until curl -s -X POST "localhost:9200/_security/user/web?pretty" -u "elastic:${ELASTICSEARCH_PASS}" -H "Content-Type: application/json" -d'\''{"password" : "${ELASTICSEARCH_RAPIDEZ_PASS}","roles" : [ "web" ]}'\'' | grep "^{"; do sleep 10; done;
-        echo "All done!";
-        wait $$ES_PID;
-      '
 
 volumes:
   magento-www:
