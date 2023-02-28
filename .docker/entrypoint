@@ -1,0 +1,30 @@
+#! /bin/bash
+# In the docker container any script within the /entrypoints folder will be executed
+# Just make sure your script does not run blocking.
+# Ff it does, make sure you watch $ENTRYPOINT_PID if it exits the container should shut down, and so should your script
+
+($@) &
+export ENTRYPOINT_PID=$!;
+ENTRYPOINT_PIDS=();
+
+shopt -s nullglob;
+for entrypoint in /entrypoints/*; do
+    chmod +x $entrypoint;
+    $entrypoint &
+    ENTRYPOINT_PIDS+=($!);
+done;
+shopt -u nullglob;
+
+ENTRYPOINT_PIDS+=($ENTRYPOINT_PID);
+
+for pid in ${ENTRYPOINT_PIDS[@]}; do
+    wait ${pid};
+    exitcode=$?;
+    if [[ $exitcode != 0 ]]; then
+        # Exit when any process fails
+        exit $exitcode;
+    fi;
+done;
+
+# Exit with the last exit code (entrypoint)
+exit $exitcode;
