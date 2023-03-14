@@ -2,7 +2,7 @@
     <x-category.block
         title="New Luma Yoga Collection"
         description="Get fit and look fab in new seasonal styles"
-        image="https://images.unsplash.com/photo-1547949003-9792a18a2601?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
+        image="/storage/resizes/750/home1.jpg.webp"
         link="/collections/yoga-new"
         button="Shop New Yoga"
     />
