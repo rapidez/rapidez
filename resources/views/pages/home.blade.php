@@ -13,15 +13,14 @@
         link="/men/tops-men"
         button="Shop Men Tops"
     />
+    <x-category.block
+        title="Even more ways to mix and match"
+        description="Buy 3 Luma tees get a 4th free"
+        image="/storage/resizes/1500/home3.jpg.webp"
+        link="/promotions/tees-all"
+        button="Shop Tees"
+    />
 </div>
-<x-category-block
-    title="Even more ways to mix and match"
-    description="Buy 3 Luma tees get a 4th free"
-    image="/storage/resizes/1500/home3.jpg.webp"
-    link="/promotions/tees-all"
-    button="Shop Tees"
-    class="mt-4"
-/>
 
 <div class="bg-white w-full py-20">
     <p class="text-center text-base font-semibold uppercase text-gray-600 tracking-wider">
