@@ -1,0 +1,3 @@
+#! /bin/sh
+
+magerun2 module:disable Magento_JwtUserToken Magento_AdobeStockAdminUi Magento_AdminAdobeIms Magento_TwoFactorAuth
