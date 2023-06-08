@@ -23,6 +23,8 @@ RUN apk add --update libpng-dev jpeg-dev libwebp-dev freetype-dev libmcrypt-dev 
 
 COPY . /var/www/html/
 RUN composer install \
+    && php -r "file_exists('.env') || copy('.env.example', '.env');" \
+    && sed -i -E 's/((APP|MAGENTO|ELASTICSEARCH)_(URL|HOST)=.*)/# \1/g' .env \
     && echo "* * * * * cd /var/www/html && php artisan schedule:run" >> /etc/crontabs/root \
     && sed -i 's/protected $proxies;/protected $proxies = ["127.0.0.1\/8","172.17.0.0\/14"];/g' app/Http/Middleware/TrustProxies.php \
     && php artisan rapidez:install \
