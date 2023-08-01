@@ -9,7 +9,7 @@
         let componentName = path
             .split('/').pop() // Remove directories
             .split('.').shift() // Remove extension
-            .replace(/[A-Z]/g, letter => `-${letter.toLowerCase()}`) // PascalCase to snake_case
+            .replace(/^.|[A-Z]/g, letter => `-${letter.toLowerCase()}`) // PascalCase to snake_case
             .substr(1) // Remove the starting dash
 
         // Register component using their filename.
