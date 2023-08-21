@@ -12,11 +12,11 @@
         "laravel/framework": "^9.2",
         "laravel/tinker": "^2.7",
         "predis/predis": "^1.1",
-        "rapidez/account": "~0.10",
+        "rapidez/account": "dev-improve-frontend as 0.13.6",
         "rapidez/core": "~0.55",
         "rapidez/image-resizer": "~0.5",
         "rapidez/menu": "~0.2",
-        "rapidez/reviews": "~0.5",
+        "rapidez/reviews": "dev-improve-frontend as 0.6.0",
         "rapidez/wishlist": "~0.3"
     },
     "require-dev": {
