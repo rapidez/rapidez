@@ -38,6 +38,7 @@ jobs:
           cd rapidez && rm -rf
           package.json
           webpack.mix.js
+          vite.config.js
           resources/js/bootstrap.js
           resources/views/welcome.blade.php
           app/Models
