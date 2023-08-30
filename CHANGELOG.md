@@ -1,6 +1,24 @@
 # Changelog
 
-## [Unreleased](https://github.com/org/repo/compare/0.5.0...master)
+## [Unreleased](https://github.com/org/repo/compare/0.6.0...master)
+
+## [0.6.0](https://github.com/org/repo/compare/0.5.0...0.6.0) - 2023-08-30
+
+### Added
+
+- Laravel 10 support (6864552)
+- Docker images
+- Auto import all installed Rapidez packages and Vue files (#45)
+
+### Changed
+
+- Sync with Laravel source
+- Moved the remote homepage images to the repo through the resizer (b44a373)
+- Also load Vue components in directories automatically (#56)
+
+### Fixed
+
+- Ignore all JS and CSS files (c80eed9)
 
 ## [0.5.0](https://github.com/org/repo/compare/0.4.2...0.5.0) - 2022-12-16
 
