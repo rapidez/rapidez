@@ -32,12 +32,14 @@ jobs:
           resources/css/app.css
           resources/js/app.js
           public/favicon.ico
+          storage/app/public/.gitignore
 
       - name: Remove unneeded files
         run: >
           cd rapidez && rm -rf
           package.json
           webpack.mix.js
+          vite.config.js
           resources/js/bootstrap.js
           resources/views/welcome.blade.php
           app/Models
