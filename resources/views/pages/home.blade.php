@@ -2,21 +2,21 @@
     <x-category.block
         title="New Luma Yoga Collection"
         description="Get fit and look fab in new seasonal styles"
-        image="/storage/1/resizes/750/local/home1.jpg.webp"
+        image="/storage/{{ config('rapidez.store') }}/resizes/750/local/home1.jpg.webp"
         link="/collections/yoga-new"
         button="Shop New Yoga"
     />
     <x-category.block
         title="Men Tops Collection"
         description="Find conscientious, comfy clothing"
-        image="/storage/1/resizes/750/local/home2.jpg.webp"
+        image="/storage/{{ config('rapidez.store') }}/resizes/750/local/home2.jpg.webp"
         link="/men/tops-men"
         button="Shop Men Tops"
     />
     <x-category.block
         title="Even more ways to mix and match"
         description="Buy 3 Luma tees get a 4th free"
-        image="/storage/1/resizes/1500/local/home3.jpg.webp"
+        image="/storage/{{ config('rapidez.store') }}/resizes/1500/local/home3.jpg.webp"
         link="/promotions/tees-all"
         button="Shop Tees"
     />
