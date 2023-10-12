@@ -14,9 +14,7 @@
         "rapidez/account": "~0.14",
         "rapidez/core": "~0.93",
         "rapidez/image-resizer": "~0.11",
-        "rapidez/menu": "~0.2",
-        "rapidez/reviews": "~0.5",
-        "rapidez/wishlist": "~0.3"
+        "rapidez/menu": "~0.2"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.9",
