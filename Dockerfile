@@ -12,11 +12,12 @@ ARG WWWGROUP
 
 WORKDIR /var/www/html
 
-RUN apk add --update libpng-dev jpeg-dev libwebp-dev freetype-dev libmcrypt-dev gd-dev jpegoptim optipng pngquant gifsicle \
+RUN apk add --update libpng-dev jpeg-dev libwebp-dev freetype-dev libmcrypt-dev gd-dev jpegoptim optipng pngquant gifsicle vim icu-dev \
  && docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg --with-webp \
  && docker-php-ext-configure opcache --enable-opcache \
+ && docker-php-ext-configure intl \
  && docker-php-ext-enable sodium \
- && docker-php-ext-install exif pdo pdo_mysql gd opcache \
+ && docker-php-ext-install exif pdo pdo_mysql gd opcache intl \
  && php -r "readfile('https://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer \
  && apk add --update nodejs npm yarn \
  && echo "* * * * * cd /var/www/html && php artisan schedule:run" > /etc/crontabs/www-data
