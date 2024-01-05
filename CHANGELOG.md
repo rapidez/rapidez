@@ -1,6 +1,13 @@
 # Changelog
 
-## [Unreleased](https://github.com/org/repo/compare/0.6.0...master)
+## [Unreleased](https://github.com/org/repo/compare/1.0.0...master)
+
+## [1.0.0](https://github.com/org/repo/compare/0.6.0...1.0.0) - 2024-01-05
+
+### Changed
+
+- Rapidez v1 (a12da5c)
+- Improve frontend (#51)
 
 ## [0.6.0](https://github.com/org/repo/compare/0.5.0...0.6.0) - 2023-08-30
 
