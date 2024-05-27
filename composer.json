@@ -65,27 +65,5 @@
             "composer config repositories.menu path ../menu",
             "composer require rapidez/core:'dev-master as 1.7.0' rapidez/account:'dev-master as 0.4' rapidez/image-resizer:'dev-master as 0.14' rapidez/menu:'dev-master as 0.4'"
         ]
-    },
-    "repositories": {
-        "blade-directives": {
-            "type": "path",
-            "url": "../blade-directives"
-        },
-        "core": {
-            "type": "path",
-            "url": "../core"
-        },
-        "menu": {
-            "type": "path",
-            "url": "../menu"
-        },
-        "image-resizer": {
-            "type": "path",
-            "url": "../image-resizer"
-        },
-        "account": {
-            "type": "path",
-            "url": "../account"
-        }
     }
 }
