@@ -1,6 +1,12 @@
 # Changelog
 
-## [Unreleased](https://github.com/org/repo/compare/1.0.0...master)
+## [Unreleased](https://github.com/org/repo/compare/2.0.0...master)
+
+## [2.0.0](https://github.com/org/repo/compare/1.0.0...2.0.0) - 2024-06-04
+
+### Changed
+
+- Laravel 11 and Rapidez v2 (#73)
 
 ## [1.0.0](https://github.com/org/repo/compare/0.6.0...1.0.0) - 2024-01-05
 
