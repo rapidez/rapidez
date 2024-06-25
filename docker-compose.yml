@@ -50,7 +50,7 @@ services:
   # The full Magento installation including Nginx, php-fpm, mysql, elasticsearch.
   magento:
     container_name: magento
-    image: michielgerritsen/magento-project-community-edition:php81-fpm-magento2.4.5-p1-sample-data
+    image: michielgerritsen/magento-project-community-edition:php82-fpm-magento2.4.7-p1-sample-data
     restart: unless-stopped
     ports:
       # Exposed by Traefik on MAGENTO_HOST
