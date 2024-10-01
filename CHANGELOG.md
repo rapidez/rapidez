@@ -1,6 +1,19 @@
 # Changelog
 
-## [Unreleased](https://github.com/org/repo/compare/2.0.0...master)
+## [Unreleased](https://github.com/org/repo/compare/2.1.0...master)
+
+## [2.1.0](https://github.com/org/repo/compare/2.0.0...2.1.0) - 2024-10-01
+
+### Added
+
+- Auto import styles from Rapidez composer packages (#80)
+
+### Changed
+
+- Sync with Laravel source (#74, #75, #77)
+- Update Docker PHP and Magento versions (#76)
+- Disable Magento_AdminAdobeImsTwoFactorAuth as well (#79)
+- License change GPL-3.0 > GPL-3.0-or-later (ebb94c9)
 
 ## [2.0.0](https://github.com/org/repo/compare/1.0.0...2.0.0) - 2024-06-04
 
