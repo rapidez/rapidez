@@ -1,6 +1,12 @@
 # Changelog
 
-## [Unreleased](https://github.com/org/repo/compare/2.1.0...master)
+## [Unreleased](https://github.com/org/repo/compare/2.1.1...master)
+
+## [2.1.1](https://github.com/org/repo/compare/2.1.0...2.1.1) - 2024-10-04
+
+### Fixed
+
+- Docker; disable modules without interaction (e99f44d)
 
 ## [2.1.0](https://github.com/org/repo/compare/2.0.0...2.1.0) - 2024-10-01
 
