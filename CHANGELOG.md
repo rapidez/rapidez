@@ -1,6 +1,12 @@
 # Changelog
 
-## [Unreleased](https://github.com/org/repo/compare/2.1.1...master)
+## [Unreleased](https://github.com/org/repo/compare/2.2.0...master)
+
+## [2.2.0](https://github.com/org/repo/compare/2.1.1...2.2.0) - 2024-10-17
+
+### Changed
+
+- Slim down to be inline with Laravel 11 (#83)
 
 ## [2.1.1](https://github.com/org/repo/compare/2.1.0...2.1.1) - 2024-10-04
 
