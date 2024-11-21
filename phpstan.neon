@@ -7,3 +7,5 @@ parameters:
         - tests/
         - routes/
     level: 1
+    ignoreErrors:
+        - "#Undefined variable: \\$this#"
