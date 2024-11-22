@@ -63,7 +63,12 @@
             "composer config repositories.account path ../account",
             "composer config repositories.image-resizer path ../image-resizer",
             "composer config repositories.menu path ../menu",
-            "composer require rapidez/core:'dev-master as 1.7.0' rapidez/account:'dev-master as 0.4' rapidez/image-resizer:'dev-master as 0.14' rapidez/menu:'dev-master as 0.4'"
+            "composer require rapidez/core:'dev-master as 2.17.0' rapidez/account:'dev-master as 2.1.3' rapidez/image-resizer:'dev-master as 2.0.1' rapidez/menu:'dev-master as 2.0.0'"
+        ],
+        "symlink-frontend": [
+            "ln -s ../core/package.json package.json",
+            "ln -s ../core/tailwind.config.js tailwind.config.js",
+            "ln -s ../core/vite.config.js vite.config.js"
         ]
     }
 }
