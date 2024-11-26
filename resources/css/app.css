@@ -8,10 +8,13 @@
     --secondary: #202f60;
     --secondary-text: #ffffff;
 
+    --conversion: #22c55e;
+    --conversion-text: #ffffff;
+
     /*
     --foreground: #334155;
     --border: #e7ebef;
     --background: #f1f5f9;
-    etc
+    etc, see the tailwind.config.js
     */
 }
