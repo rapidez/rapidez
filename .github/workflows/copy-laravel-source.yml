@@ -27,6 +27,7 @@ jobs:
           composer.json
           README.md
           CHANGELOG.md
+          routes/web.php
           resources/css/app.css
           resources/js/app.js
           public/favicon.ico
