@@ -2,7 +2,7 @@ services:
   # Set up the elasticsearch installation.
   elasticsearch:
     extends:
-      file: .docker/compose/docker-compose-elasticsearch.yml
+      file: .docker/compose/elasticsearch.yml
       service: elasticsearch
     ports:
       - 127.0.0.1:9200:9200
@@ -12,7 +12,7 @@ services:
   # and replace it with a real Mysql and Magento installation
   magento:
     extends:
-      file: .docker/compose/docker-compose-magento-sample.yml
+      file: .docker/compose/magento-sample.yml
       service: magento
     ports:
       - 127.0.0.1:${MAGENTO_PORT:-1234}:80
@@ -21,13 +21,13 @@ services:
   # Send rapidez requests to the php-fpm installation within the Rapidez container.
   rapidez:
     extends:
-      file: .docker/compose/docker-compose-rapidez.yml
+      file: .docker/compose/rapidez.yml
       service: rapidez
 
   # The actual Rapidez installation + php-fpm.
   nginx:
     extends:
-      file: .docker/compose/docker-compose-rapidez.yml
+      file: .docker/compose/rapidez.yml
       service: nginx
     ports:
       - 127.0.0.1:${RAPIDEZ_PORT:-1235}:80
