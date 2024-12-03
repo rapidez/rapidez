@@ -31,5 +31,5 @@ RUN composer install \
     && php -r "file_exists('.env') || copy('.env.example', '.env');" \
     && sed -i -E 's/((APP|MAGENTO|ELASTICSEARCH)_(URL|HOST)=.*)/# \1/g' .env \
     && sed -i '/->withMiddleware(function \((Middleware \$middleware)\) {/a\'$'\n''        $middleware->trustProxies(["127.0.0.1/8","172.17.0.0/14"]);' bootstrap/app.php \
-    && php artisan rapidez:install \
+    && php artisan rapidez:install --frontendonly \
     && yarn && yarn run prod
