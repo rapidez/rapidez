@@ -1,0 +1,33 @@
+services:
+  # Send rapidez requests to the php-fpm installation within the Rapidez container.
+  nginx:
+    container_name: nginx
+    image: nginx:alpine
+    restart: unless-stopped
+    volumes:
+      - ../../:/var/www/html
+      - ../../.docker/nginx/conf.d:/etc/nginx/templates
+    networks:
+      - default
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.rapidez.rule=Host(`${RAPIDEZ_HOST}`)"
+      - "traefik.http.services.rapidez.loadbalancer.server.port=80"
+
+  # The actual Rapidez installation + php-fpm.
+  rapidez:
+    container_name: rapidez
+    build: ../../
+    restart: unless-stopped
+    volumes:
+      - ../../:/var/www/html
+    networks:
+      - default
+    environment:
+      - DB_PORT=3306
+      - ELASTICSEARCH_HOST=elasticsearch
+      - ELASTICSEARCH_PORT=9200
+      - ELASTICSEARCH_USER=${ELASTICSEARCH_USER}
+      - ELASTICSEARCH_PASS=${ELASTICSEARCH_PASS}
+      - ELASTICSEARCH_RAPIDEZ_PASS=${ELASTICSEARCH_RAPIDEZ_PASS}
+      - ELASTICSEARCH_URL=${ELASTICSEARCH_URL}
