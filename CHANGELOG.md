@@ -1,6 +1,15 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/rapidez/rapidez/compare/2.3.0...master)
+[Unreleased changes](https://github.com/rapidez/rapidez/compare/3.0.0...3.0.0)
+## [3.0.0](https://github.com/rapidez/rapidez/releases/tag/3.0.0) - 2024-12-13
+
+### Changed
+
+- CSS variable colors (5f99142)
+- Dockerfile for Rapidez v3 (#81)
+- Robots.txt defaults (#89)
+- Changed versions to 3.0 (341b271)
+
 ## [2.3.0](https://github.com/rapidez/rapidez/releases/tag/2.3.0) - 2024-11-22
 
 ### Changed
