@@ -1,7 +1,2 @@
 User-agent: *
-Crawl-delay: 1
-Disallow: /*?
-Disallow: /account
-Disallow: /cart
-Disallow: /checkout
-Disallow: /search
+Disallow:
