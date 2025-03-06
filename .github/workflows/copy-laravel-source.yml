@@ -31,6 +31,7 @@ jobs:
           resources/css/app.css
           resources/js/app.js
           public/favicon.ico
+          public/robots.txt
           storage/app/public/.gitignore
 
       - name: Remove unneeded files
