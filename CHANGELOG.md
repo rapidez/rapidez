@@ -1,6 +1,14 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/rapidez/rapidez/compare/3.0.0...3.0.0)
+[Unreleased changes](https://github.com/rapidez/rapidez/compare/3.1.0...3.1.0)
+## [3.1.0](https://github.com/rapidez/rapidez/releases/tag/3.1.0) - 2025-04-11
+
+### Changed
+
+- Laravel 12 base (#93)
+- Sync with Laravel source (#91)
+- Use fakerphp/faker instead of fzaninotto/faker (#94)
+
 ## [3.0.0](https://github.com/rapidez/rapidez/releases/tag/3.0.0) - 2024-12-13
 
 ### Changed
