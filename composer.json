@@ -18,7 +18,7 @@
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.9",
-        "fzaninotto/faker": "^1.0",
+        "fakerphp/faker": "^1.23",
         "larastan/larastan": "^3.0",
         "laravel/pint": "^1.18",
         "mockery/mockery": "^1.6",
