@@ -2,11 +2,11 @@
 
 # Rapidez - Headless Magento 🚀
 
-### With Laravel, Vue and Reactive Search 🤘🏻 
+### With Laravel, Tailwind CSS, Vue and InstantSearch 🤘🏻 
 
 ---
 
-The idea behind Rapidez is to have a blazing fast headless frontend for your Magento 2 webshop which should be very easy to customize. The frontend is seperated from the Magento installation and communication between them is done via the Magento REST API and GraphQL. To speed things up we're also querying the Magento database to get catalog information for example. For category pages and the filters we're using Reactive Search which uses ElasticSearch as database. Indexation is also taken care of and is pretty fast.
+A blazing fast headless frontend for your Magento 2 webshop! Easy customisations from Laravel Blade templates with renderless Vue components. Catalog data comes from the Magento database through Laravel Eloquent for speed, everything else is using GraphQL. For filters and searching we're using InstantSearch and indexation is handled with Laravel Scout.
 
 ### [&rarr; Website](https://rapidez.io)
 ### [&rarr; Demo](https://demo.rapidez.io)
