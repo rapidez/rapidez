@@ -1,6 +1,17 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/rapidez/rapidez/compare/3.1.0...3.1.0)
+[Unreleased changes](https://github.com/rapidez/rapidez/compare/4.0.0...4.0.0)
+## [4.0.0](https://github.com/rapidez/rapidez/releases/tag/4.0.0) - 2025-06-05
+
+### Added
+
+- Scout prefix in the dotenv example (#96)
+
+### Changed
+
+- Sync with Laravel source (#95)
+- Changed versions to 4.0 (835530b)
+
 ## [3.1.0](https://github.com/rapidez/rapidez/releases/tag/3.1.0) - 2025-04-11
 
 ### Changed
