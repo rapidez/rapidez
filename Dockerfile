@@ -5,7 +5,7 @@ LABEL org.opencontainers.image.source=https://github.com/rapidez/rapidez
 LABEL org.opencontainers.image.url=https://rapidez.io
 LABEL org.opencontainers.image.documentation=https://docs.rapidez.io
 LABEL org.opencontainers.image.vendor="Rapidez"
-LABEL org.opencontainers.image.description="Headless Magento - with Laravel, Vue and Reactive Search"
+LABEL org.opencontainers.image.description="Headless Magento - with Laravel, Tailwind CSS, Vue and InstantSearch"
 LABEL org.opencontainers.image.licenses="GPL-3.0"
 
 ARG WWWGROUP
