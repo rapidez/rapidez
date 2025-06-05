@@ -1,7 +1,7 @@
 {
     "name": "rapidez/rapidez",
     "type": "project",
-    "description": "Headless Magento with Laravel, Vue and Reactive Search",
+    "description": "Headless Magento with Laravel, Tailwind CSS, Vue and InstantSearch",
     "keywords": [
         "rapidez"
     ],
