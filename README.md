@@ -12,6 +12,7 @@ A blazing fast headless frontend for your Magento 2 webshop! Easy customisations
 ### [&rarr; Demo](https://demo.rapidez.io)
 ### [&rarr; Docs](https://docs.rapidez.io)
 ### [&rarr; Support](https://github.com/rapidez/rapidez/discussions)
+### [&rarr; Core code](https://github.com/rapidez/core)
 
 ## License
 
