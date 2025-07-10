@@ -1,0 +1,9 @@
+#! /bin/sh
+
+composer require rapidez/magento2-compadre
+magerun2 module:enable -n Rapidez_Compadre
+for i in {1..60}; do
+    [[ `ps -aux | grep 'mysqld' | wc -l` -ge 3 ]] && break || sleep 5;
+done;
+sleep 10;
+magerun2 setup:upgrade --keep-generated -n
