@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /bin/bash
 
 composer require rapidez/magento2-compadre
 magerun2 module:enable -n Rapidez_Compadre
