@@ -1,0 +1,27 @@
+services:
+  # The full Magento installation including Nginx, php-fpm, mysql, elasticsearch.
+  magento:
+    container_name: magento
+    image: michielgerritsen/magento-project-community-edition:php83-fpm-magento2.4.7-p3-sample-data
+    restart: unless-stopped
+    ports:
+      # - 127.0.0.1:1234:80
+      - 127.0.0.1:${DB_PORT}:3306
+    environment:
+      - ES_JAVA_OPTS=-Xmx1G # We need this es for indexing, but dont use it further.
+      - URL=http://${MAGENTO_HOST}/
+      - FLAT_TABLES=true
+    volumes:
+      - magento-www:/data
+      - ../../.docker/magento/entrypoints/:/entrypoints/
+      - ../../.docker/entrypoint:/entrypoint
+    entrypoint: ['/entrypoint', 'bash /data/entrypoint.sh']
+    networks:
+      - default
+    # labels:
+    #   - "traefik.enable=true"
+    #   - "traefik.http.routers.magento.rule=Host(`${MAGENTO_HOST}`)"
+    #   - "traefik.http.services.magento.loadbalancer.server.port=80"
+
+volumes:
+  magento-www:

@@ -1,103 +1,36 @@
-version: '3'
 services:
-  # Automatically route incoming requests based on their labels.
-  # Remove this and the labels if you want to route the requests manually.
-  traefik:
-    container_name: traefik
-    image: traefik:latest
-    restart: unless-stopped
-    command: --providers.docker
-    networks:
-      - default
-    ports:
-      - "${TRAEFIK_PORT:-80}:80"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-
-  # Send rapidez requests to the php-fpm installation within the Rapidez container.
-  nginx:
-    container_name: nginx
-    image: nginx:alpine
-    restart: unless-stopped
-    volumes:
-      - ./:/var/www/html
-      - ./.docker/nginx/conf.d:/etc/nginx/templates
-    networks:
-      - default
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.rapidez.rule=Host(`${RAPIDEZ_HOST}`)"
-      - "traefik.http.services.rapidez.loadbalancer.server.port=80"
-
-  # The actual Rapidez installation + php-fpm.
-  rapidez:
-    container_name: rapidez
-    build: .
-    restart: unless-stopped
-    volumes:
-      - ./:/var/www/html
-    networks:
-      - default
-    environment:
-      - DB_PORT=3306
-      - ELASTICSEARCH_HOST=elasticsearch
-      - ELASTICSEARCH_PORT=9200
-      - ELASTICSEARCH_USER=${ELASTICSEARCH_USER}
-      - ELASTICSEARCH_PASS=${ELASTICSEARCH_PASS}
-      - ELASTICSEARCH_RAPIDEZ_PASS=${ELASTICSEARCH_RAPIDEZ_PASS}
-      - ELASTICSEARCH_URL=${ELASTICSEARCH_URL}
-
-  # The full Magento installation including Nginx, php-fpm, mysql, elasticsearch.
-  magento:
-    container_name: magento
-    image: michielgerritsen/magento-project-community-edition:php82-fpm-magento2.4.7-p1-sample-data
-    restart: unless-stopped
-    ports:
-      # Exposed by Traefik on MAGENTO_HOST
-      # - 127.0.0.1:1234:80
-      - 127.0.0.1:${DB_PORT}:3306
-    environment:
-      - ES_JAVA_OPTS=-Xmx1G # We need this es for indexing, but dont use it further.
-      - URL=http://${MAGENTO_HOST}/
-      - FLAT_TABLES=true
-    volumes:
-      - magento-www:/data
-      - ./.docker/magento/entrypoints/:/entrypoints/
-      - ./.docker/entrypoint:/entrypoint
-    entrypoint: ['/entrypoint', 'bash /data/entrypoint.sh']
-    networks:
-      - default
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.magento.rule=Host(`${MAGENTO_HOST}`)"
-      - "traefik.http.services.magento.loadbalancer.server.port=80"
-
   # Set up the elasticsearch installation.
   elasticsearch:
-    container_name: elasticsearch
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.8
-    restart: unless-stopped
-    volumes:
-      - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
-      - ./.docker/elasticsearch/entrypoints/:/entrypoints/
-      - ./.docker/entrypoint:/entrypoint
-    environment:
-      - discovery.type=single-node
-      - network.host=0.0.0.0
-      - http.port=9200
-      - xpack.security.enabled=true
-      - ELASTIC_PASSWORD=${ELASTICSEARCH_PASS}
-      - ELASTICSEARCH_RAPIDEZ_PASS=${ELASTICSEARCH_RAPIDEZ_PASS}
-    command: ['/entrypoint', 'bash /usr/local/bin/docker-entrypoint.sh']
-    networks:
-      - default
-    # Exposed by Traefik on ELASTICSEARCH_HOST:80
-    # ports:
-    #   - 127.0.0.1:9200:9200
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.elasticsearch.rule=Host(`${ELASTICSEARCH_HOST}`)"
-      - "traefik.http.services.elasticsearch.loadbalancer.server.port=9200"
+    extends:
+      file: .docker/compose/elasticsearch.yml
+      service: elasticsearch
+    ports:
+      - 127.0.0.1:9200:9200
+
+  # The full Magento installation for demo purposes including Nginx, php-fpm, mysql, elasticsearch.
+  # Once you start linking your own installation you should probably comment this out
+  # and replace it with a real Mysql and Magento installation
+  magento:
+    extends:
+      file: .docker/compose/magento-sample.yml
+      service: magento
+    ports:
+      - 127.0.0.1:${MAGENTO_PORT:-1234}:80
+      - 127.0.0.1:${DB_PORT}:3306
+
+  # Send rapidez requests to the php-fpm installation within the Rapidez container.
+  rapidez:
+    extends:
+      file: .docker/compose/rapidez.yml
+      service: rapidez
+
+  # The actual Rapidez installation + php-fpm.
+  nginx:
+    extends:
+      file: .docker/compose/rapidez.yml
+      service: nginx
+    ports:
+      - 127.0.0.1:${RAPIDEZ_PORT:-1235}:80
 
 volumes:
   magento-www:

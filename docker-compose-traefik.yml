@@ -1,0 +1,53 @@
+# This docker compose file sets up all hosting for a demo rapidez installation
+# This includes routing, Rapidez hosting, Magento hosting
+
+services:
+  # Automatically route incoming requests based on their labels.
+  # Remove this and the labels if you want to route the requests manually.
+  traefik:
+    extends:
+      file: .docker/compose/traefik.yml
+      service: traefik
+
+  # Set up the elasticsearch installation.
+  elasticsearch:
+    extends:
+      file: .docker/compose/elasticsearch.yml
+      service: elasticsearch
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.elasticsearch.rule=Host(`${ELASTICSEARCH_HOST}`)"
+      - "traefik.http.services.elasticsearch.loadbalancer.server.port=9200"
+
+  # The full Magento installation for demo purposes including Nginx, php-fpm, mysql, elasticsearch.
+  # Once you start linking your own installation you should probably comment this out
+  # and replace it with a real Mysql and Magento installation
+  magento:
+    extends:
+      file: .docker/compose/magento-sample.yml
+      service: magento
+    ports:
+      - 127.0.0.1:${DB_PORT}:3306
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.magento.rule=Host(`${MAGENTO_HOST}`)"
+      - "traefik.http.services.magento.loadbalancer.server.port=80"
+
+  # Send rapidez requests to the php-fpm installation within the Rapidez container.
+  nginx:
+    extends:
+      file: .docker/compose/rapidez.yml
+      service: nginx
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.rapidez.rule=Host(`${RAPIDEZ_HOST}`)"
+      - "traefik.http.services.rapidez.loadbalancer.server.port=80"
+
+  # The actual Rapidez installation + php-fpm.
+  rapidez:
+    extends:
+      file: .docker/compose/rapidez.yml
+      service: rapidez
+
+volumes:
+  magento-www:
