@@ -1,14 +1,53 @@
-# Changelog
+# Changelog 
 
-## [Unreleased](https://github.com/org/repo/compare/2.1.1...master)
+[Unreleased changes](https://github.com/rapidez/rapidez/compare/4.0.0...4.0.0)
+## [4.0.0](https://github.com/rapidez/rapidez/releases/tag/4.0.0) - 2025-06-05
 
-## [2.1.1](https://github.com/org/repo/compare/2.1.0...2.1.1) - 2024-10-04
+### Added
+
+- Scout prefix in the dotenv example (#96)
+
+### Changed
+
+- Sync with Laravel source (#95)
+- Changed versions to 4.0 (835530b)
+
+## [3.1.0](https://github.com/rapidez/rapidez/releases/tag/3.1.0) - 2025-04-11
+
+### Changed
+
+- Laravel 12 base (#93)
+- Sync with Laravel source (#91)
+- Use fakerphp/faker instead of fzaninotto/faker (#94)
+
+## [3.0.0](https://github.com/rapidez/rapidez/releases/tag/3.0.0) - 2024-12-13
+
+### Changed
+
+- CSS variable colors (5f99142)
+- Dockerfile for Rapidez v3 (#81)
+- Robots.txt defaults (#89)
+- Changed versions to 3.0 (341b271)
+
+## [2.3.0](https://github.com/rapidez/rapidez/releases/tag/2.3.0) - 2024-11-22
+
+### Changed
+
+- Updated the Composer local-repos script + added symlink-frontend (83654b6)
+
+## [2.2.0](https://github.com/rapidez/rapidez/releases/tag/2.2.0) - 2024-10-17
+
+### Changed
+
+- Slim down to be inline with Laravel 11 (#83)
+
+## [2.1.1](https://github.com/rapidez/rapidez/releases/tag/2.1.1) - 2024-10-04
 
 ### Fixed
 
 - Docker; disable modules without interaction (e99f44d)
 
-## [2.1.0](https://github.com/org/repo/compare/2.0.0...2.1.0) - 2024-10-01
+## [2.1.0](https://github.com/rapidez/rapidez/releases/tag/2.1.0) - 2024-10-01
 
 ### Added
 
@@ -21,20 +60,20 @@
 - Disable Magento_AdminAdobeImsTwoFactorAuth as well (#79)
 - License change GPL-3.0 > GPL-3.0-or-later (ebb94c9)
 
-## [2.0.0](https://github.com/org/repo/compare/1.0.0...2.0.0) - 2024-06-04
+## [2.0.0](https://github.com/rapidez/rapidez/releases/tag/2.0.0) - 2024-06-04
 
 ### Changed
 
 - Laravel 11 and Rapidez v2 (#73)
 
-## [1.0.0](https://github.com/org/repo/compare/0.6.0...1.0.0) - 2024-01-05
+## [1.0.0](https://github.com/rapidez/rapidez/releases/tag/1.0.0) - 2024-01-05
 
 ### Changed
 
 - Rapidez v1 (a12da5c)
 - Improve frontend (#51)
 
-## [0.6.0](https://github.com/org/repo/compare/0.5.0...0.6.0) - 2023-08-30
+## [0.6.0](https://github.com/rapidez/rapidez/releases/tag/0.6.0) - 2023-08-30
 
 ### Added
 
@@ -52,7 +91,7 @@
 
 - Ignore all JS and CSS files (c80eed9)
 
-## [0.5.0](https://github.com/org/repo/compare/0.4.2...0.5.0) - 2022-12-16
+## [0.5.0](https://github.com/rapidez/rapidez/releases/tag/0.5.0) - 2022-12-16
 
 ### Changed
 
@@ -61,32 +100,32 @@
 - Autoload dev core tests (a0c8411)
 - Docker setup update (#36, #38)
 
-## [0.4.2](https://github.com/org/repo/compare/0.4.1...0.4.2) - 2022-04-13
+## [0.4.2](https://github.com/rapidez/rapidez/releases/tag/0.4.2) - 2022-04-13
 
 ### Fixed
 
 - Updated the Rapidez dependencies for Laravel 9 (392f3fe)
 
-## [0.4.1](https://github.com/org/repo/compare/0.4.0...0.4.1) - 2022-04-13
+## [0.4.1](https://github.com/rapidez/rapidez/releases/tag/0.4.1) - 2022-04-13
 
 ### Fixed
 
 - Removed the Sanctum config (685d4ec)
 
-## [0.4.0](https://github.com/org/repo/compare/0.3.0...0.4.0) - 2022-04-11
+## [0.4.0](https://github.com/rapidez/rapidez/releases/tag/0.4.0) - 2022-04-11
 
 ### Changed
 
 - Laravel 9 upgrade (c83e626, 15d595f)
 
-## [0.3.0](https://github.com/org/repo/compare/0.2.0...0.3.0) - 2022-03-21
+## [0.3.0](https://github.com/rapidez/rapidez/releases/tag/0.3.0) - 2022-03-21
 
 ### Changed
 
 - Sync with Laravel source (#4)
 - Updated all Rapidez packages (3eba41c)
 
-## [0.2.0](https://github.com/org/repo/compare/0.1.3...0.2.0) - 2022-01-13
+## [0.2.0](https://github.com/rapidez/rapidez/releases/tag/0.2.0) - 2022-01-13
 
 ### Added
 
@@ -103,28 +142,30 @@
 - Schedule the indexation at midnight (276c7ac)
 - Copy Laravel sources fix (f339baf)
 
-## [0.1.3](https://github.com/org/repo/compare/0.1.2...0.1.3) - 2021-08-04
+## [0.1.3](https://github.com/rapidez/rapidez/releases/tag/0.1.3) - 2021-08-04
 
 ### Changed
 
 - Changed the Rapidez packages version constraints (1d9d108)
 
-## [0.1.2](https://github.com/org/repo/compare/0.1.1...0.1.2) - 2021-07-19
+## [0.1.2](https://github.com/rapidez/rapidez/releases/tag/0.1.2) - 2021-07-19
 
 ### Changed
 
 - Updated rapidez/account (5399669)
 
-## [0.1.1](https://github.com/org/repo/compare/0.1.0...0.1.1) - 2021-07-19
+
+## [0.1.1](https://github.com/rapidez/rapidez/releases/tag/0.1.1) - 2021-07-19
 
 ### Added
 
 - Register the new account callbacks (321a8e8)
 
-## [0.1.0](https://github.com/org/repo/compare/0.0.1...0.1.0) - 2021-06-30
+## [0.1.0](https://github.com/rapidez/rapidez/releases/tag/0.1.0) - 2021-06-30
 
 Public beta release!
 
-## [0.0.1](https://github.com/org/repo/compare/8a682db6476a7c60c0487375ee8708aaeed4ab15...0.0.1) - 2021-06-30
+## [0.0.1](https://github.com/rapidez/rapidez/releases/tag/0.0.1) - 2021-06-30
 
 Experimental release
+

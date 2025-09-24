@@ -28,10 +28,10 @@ jobs:
           README.md
           CHANGELOG.md
           routes/web.php
-          routes/api.php
           resources/css/app.css
           resources/js/app.js
           public/favicon.ico
+          public/robots.txt
           storage/app/public/.gitignore
 
       - name: Remove unneeded files
@@ -39,6 +39,8 @@ jobs:
           cd rapidez && rm -rf
           package.json
           webpack.mix.js
+          postcss.config.js
+          tailwind.config.js
           vite.config.js
           resources/js/bootstrap.js
           resources/views/welcome.blade.php

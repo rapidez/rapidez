@@ -5,7 +5,7 @@ LABEL org.opencontainers.image.source=https://github.com/rapidez/rapidez
 LABEL org.opencontainers.image.url=https://rapidez.io
 LABEL org.opencontainers.image.documentation=https://docs.rapidez.io
 LABEL org.opencontainers.image.vendor="Rapidez"
-LABEL org.opencontainers.image.description="Headless Magento - with Laravel, Vue and Reactive Search"
+LABEL org.opencontainers.image.description="Headless Magento - with Laravel, Tailwind CSS, Vue and InstantSearch"
 LABEL org.opencontainers.image.licenses="GPL-3.0"
 
 ARG WWWGROUP
@@ -17,6 +17,8 @@ RUN apk add --update libpng-dev jpeg-dev libwebp-dev freetype-dev libmcrypt-dev 
  && docker-php-ext-configure opcache --enable-opcache \
  && docker-php-ext-configure intl \
  && docker-php-ext-enable sodium \
+ #  Unforunately compiling imagemagick for php8.3 is broken https://github.com/Imagick/imagick/issues/640
+ && apk add --update gcc make autoconf g++ imagemagick-dev && pecl install imagick && docker-php-ext-enable imagick \
  && docker-php-ext-install exif pdo pdo_mysql gd opcache intl \
  && php -r "readfile('https://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer \
  && apk add --update nodejs npm yarn \
