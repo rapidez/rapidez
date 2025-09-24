@@ -18,11 +18,3 @@ services:
     command: ['/entrypoint', 'bash /usr/local/bin/docker-entrypoint.sh']
     networks:
       - default
-    # Exposed by Traefik on ELASTICSEARCH_HOST:80
-    # ports:
-    #   - 127.0.0.1:9200:9200
-    # Enables Traefik
-    # labels:
-    #   - "traefik.enable=true"
-    #   - "traefik.http.routers.elasticsearch.rule=Host(`${ELASTICSEARCH_HOST}`)"
-    #   - "traefik.http.services.elasticsearch.loadbalancer.server.port=9200"
