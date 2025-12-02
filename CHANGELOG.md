@@ -1,6 +1,17 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/rapidez/rapidez/compare/4.0.0...4.0.0)
+[Unreleased changes](https://github.com/rapidez/rapidez/compare/4.1.0...4.1.0)
+## [4.1.0](https://github.com/rapidez/rapidez/releases/tag/4.1.0) - 2025-09-30
+
+### Changed
+
+- Docker setup improvements (#82)
+
+### Fixed
+
+- Docker: admin creation fix + compadre install (#100)
+- Conversion color change for WCAG (0386d97)
+
 ## [4.0.0](https://github.com/rapidez/rapidez/releases/tag/4.0.0) - 2025-06-05
 
 ### Added
