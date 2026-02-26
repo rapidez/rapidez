@@ -7,30 +7,33 @@
     ],
     "license": "GPL-3.0-or-later",
     "require": {
-        "php": "^8.2",
+        "php": "^8.3",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^12.0",
-        "laravel/tinker": "^2.9",
-        "rapidez/account": "^4.0",
-        "rapidez/core": "^4.0",
-        "rapidez/image-resizer": "^4.0",
-        "rapidez/menu": "^4.0"
+        "laravel/tinker": "^2.10",
+        "rapidez/account": "^5.0",
+        "rapidez/core": "^5.0",
+        "rapidez/image-resizer": "^5.0",
+        "rapidez/menu": "^5.0"
     },
     "require-dev": {
-        "barryvdh/laravel-debugbar": "^3.15",
+        "barryvdh/laravel-debugbar": "^3.16",
         "fakerphp/faker": "^1.23",
         "larastan/larastan": "^3.1",
-        "laravel/pint": "^1.21",
+        "laravel/pint": "^1.26",
         "mockery/mockery": "^1.6",
-        "nunomaduro/collision": "^8.0",
+        "nunomaduro/collision": "^8.8",
         "phpstan/phpstan": "^2.0",
-        "phpunit/phpunit": "^11.0",
+        "phpunit/phpunit": "^12.0",
         "spatie/laravel-ignition": "^2.9.1"
     },
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
     },
     "extra": {
         "laravel": {
