@@ -4,6 +4,10 @@
 
 @import 'tailwindcss' source(none);
 
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+@plugin 'tailwind-scrollbar-hide';
+
 @source '../../**/*.blade.php';
 @source '../../**/*.vue';
 
