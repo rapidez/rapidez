@@ -1,8 +1,7 @@
-@import "../../vendor/rapidez/core/resources/css/app.css";
-@import "./luma.css";
+@import 'tailwindcss' source(none);
 
-@source '../**/*.blade.php';
-@source '../**/*.vue';
+@source '../../**/*.blade.php';
+@source '../../**/*.vue';
 
 @source '../../vendor/rapidez/**/*.blade.php';
 @source '../../vendor/rapidez/**/*.vue';
@@ -15,6 +14,9 @@
 
 @source '../../storage/framework/views/*.php';
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+
+@import "../../vendor/rapidez/core/resources/css/app.css";
+@import "./luma.css";
 
 :root {
     --primary: #2fbc85;
