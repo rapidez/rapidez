@@ -1,42 +1,7 @@
-@import "../../vendor/rapidez/core/resources/css/app.css";
-@import "../../vendor/rapidez/blade-components/resources/css/package.css";
-@import "./luma.css";
+/*
+The app.css file will be published with the install command.
+php artisan rapidez:install
 
-@import 'tailwindcss' source(none);
-
-@plugin '@tailwindcss/forms';
-@plugin '@tailwindcss/typography';
-@plugin 'tailwind-scrollbar-hide';
-
-@source '../**/*.blade.php';
-@source '../**/*.vue';
-
-@source '../../vendor/rapidez/**/*.blade.php';
-@source '../../vendor/rapidez/**/*.vue';
-
-@source '../../config/rapidez/frontend.php';
-@source '../../vendor/rapidez/core/config/rapidez/frontend.php';
-
-@source '../../config/rapidez/menu.php';
-@source '../../vendor/rapidez/menu/config/rapidez/menu.php';
-
-@source '../../storage/framework/views/*.php';
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-
-:root {
-    --primary: #2fbc85;
-    --primary-text: #ffffff;
-
-    --secondary: #202f60;
-    --secondary-text: #ffffff;
-
-    --conversion: #15803d;
-    --conversion-text: #ffffff;
-
-    /*
-    --foreground: #334155;
-    --border: #e7ebef;
-    --background: #f1f5f9;
-    etc, see: https://docs.rapidez.io/5.x/theming.html#colors
-    */
-}
+If you only need to publish the frontend files:
+php artisan rapidez:install --frontendonly
+*/
