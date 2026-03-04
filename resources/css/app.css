@@ -8,8 +8,8 @@
 @plugin '@tailwindcss/typography';
 @plugin 'tailwind-scrollbar-hide';
 
-@source '../../**/*.blade.php';
-@source '../../**/*.vue';
+@source '../**/*.blade.php';
+@source '../**/*.vue';
 
 @source '../../vendor/rapidez/**/*.blade.php';
 @source '../../vendor/rapidez/**/*.vue';
