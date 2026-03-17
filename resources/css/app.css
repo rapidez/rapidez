@@ -1,20 +1,7 @@
-@import "../../vendor/rapidez/core/resources/css/app.css";
-@import "./luma.css";
+/*
+The app.css file will be published with the install command.
+php artisan rapidez:install
 
-:root {
-    --primary: #2fbc85;
-    --primary-text: #ffffff;
-
-    --secondary: #202f60;
-    --secondary-text: #ffffff;
-
-    --conversion: #15803d;
-    --conversion-text: #ffffff;
-
-    /*
-    --foreground: #334155;
-    --border: #e7ebef;
-    --background: #f1f5f9;
-    etc, see the tailwind.config.js
-    */
-}
+If you only need to publish the frontend files:
+php artisan rapidez:install --frontendonly
+*/
