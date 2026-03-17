@@ -1,6 +1,6 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/rapidez/rapidez/compare/5.0.0-alpha.1...5.0.0-alpha.1)
+[Unreleased changes](https://github.com/rapidez/rapidez/compare/5.0.0-alpha.1...5.0.0-beta.1)
 ## [5.0.0-alpha.1](https://github.com/rapidez/rapidez/releases/tag/5.0.0-alpha.1) - 2025-12-02
 
 ### Changed
