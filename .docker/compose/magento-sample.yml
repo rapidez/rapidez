@@ -2,7 +2,7 @@ services:
   # The full Magento installation including Nginx, php-fpm, mysql, elasticsearch.
   magento:
     container_name: magento
-    image: michielgerritsen/magento-project-community-edition:php83-fpm-magento2.4.7-p3-sample-data
+    image: michielgerritsen/magento-project-community-edition:php84-fpm-magento2.4.8-p4-sample-data
     restart: unless-stopped
     ports:
       - 127.0.0.1:${DB_PORT}:3306
