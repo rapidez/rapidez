@@ -5,7 +5,7 @@ document.addEventListener('vue:loaded', function (event) {
     const components = {
         // Eager load all components not ending with .lazy.vue
         ...import.meta.glob(['./components/**/*.vue', '!./components/**/*.lazy.vue'], { eager: true, import: 'default' }),
-        // Lazy load all components not ending with .lazy.vue
+        // Lazy load all components ending with .lazy.vue
         ...import.meta.glob(['./components/**/*.lazy.vue'], { eager: false, import: 'default' })
     };
     for (const path in components) {
