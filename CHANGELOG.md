@@ -1,6 +1,22 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/rapidez/rapidez/compare/5.0.0-alpha.1...5.0.0-beta.1)
+[Unreleased changes](https://github.com/rapidez/rapidez/compare/5.0.0...5.0.0)
+## [5.0.0](https://github.com/rapidez/rapidez/releases/tag/5.0.0) - 2026-05-18
+
+### Changed
+- Rapidez V5 support (#102)
+- Tailwind 4 support (#104)
+- Added exception to robots.txt for config.js (#105)
+- Improved robots.txt rules (#107)
+- Bump Magento version (#106)
+
+
+## [5.0.0-beta.1](https://github.com/rapidez/rapidez/releases/tag/5.0.0-beta.1) - 2026-03-17
+
+### Changed
+
+- Tailwind 4 base (#104)
+
 ## [5.0.0-alpha.1](https://github.com/rapidez/rapidez/releases/tag/5.0.0-alpha.1) - 2025-12-02
 
 ### Changed
