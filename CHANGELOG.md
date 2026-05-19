@@ -1,17 +1,16 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/rapidez/rapidez/compare/5.0.1...5.0.1)
-## [5.0.1](https://github.com/rapidez/rapidez/releases/tag/5.0.1) - 2026-05-18
-
-### Fixed
-- Fixed JSON formatting in user creation request (b7c7dc2)
-
+[Unreleased changes](https://github.com/rapidez/rapidez/compare/...5.0.0)
 ## [5.0.0](https://github.com/rapidez/rapidez/releases/tag/5.0.0) - 2026-05-18
 
-### Changed
-- Rapidez V5 support (#102)
+### Added
+
+- Rapidez v5 support (#102)
 - Tailwind 4 support (#104)
-- Added exception to robots.txt for config.js (#105)
+
+### Changed
+
+- Robots.txt allow config.js (#105)
 - Improved robots.txt rules (#107)
 - Bump Magento version (#106)
 
