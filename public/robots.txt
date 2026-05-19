@@ -3,7 +3,6 @@ Crawl-delay: 1
 Allow: /*.js?
 Allow: /*.css?
 Allow: /*?page=
-Disallow: /*?
 Disallow: /account$
 Disallow: /account/*
 Disallow: /cart$
