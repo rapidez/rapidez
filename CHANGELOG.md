@@ -1,6 +1,12 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/rapidez/rapidez/compare/...5.0.0)
+[Unreleased changes](https://github.com/rapidez/rapidez/compare/5.0.1...5.0.1)
+## [5.0.1](https://github.com/rapidez/rapidez/releases/tag/5.0.1) - 2026-05-18
+
+### Fixed
+
+- Fixed JSON formatting in user creation request (b7c7dc2)
+
 ## [5.0.0](https://github.com/rapidez/rapidez/releases/tag/5.0.0) - 2026-05-18
 
 ### Added
