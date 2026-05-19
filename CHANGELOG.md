@@ -1,6 +1,14 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/rapidez/rapidez/compare/5.0.1...5.0.1)
+[Unreleased changes](https://github.com/rapidez/rapidez/compare/5.0.2...5.0.2)
+## [5.0.2](https://github.com/rapidez/rapidez/releases/tag/5.0.2) - 2026-05-19
+
+### Fixed
+
+- Remove unnecessary disallow in robots.txt (#111)
+- Update Magento image to version 2.4.9 (#110)
+- Sync with Laravel source (#103)
+
 ## [5.0.1](https://github.com/rapidez/rapidez/releases/tag/5.0.1) - 2026-05-18
 
 ### Fixed
