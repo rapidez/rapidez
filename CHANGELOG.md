@@ -1,6 +1,12 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/rapidez/rapidez/compare/5.0.2...5.0.2)
+[Unreleased changes](https://github.com/rapidez/rapidez/compare/5.0.3...5.0.3)
+## [5.0.3](https://github.com/rapidez/rapidez/releases/tag/5.0.3) - 2026-06-02
+
+### Fixed
+
+- Temporarily disable serializable classes (#112)
+
 ## [5.0.2](https://github.com/rapidez/rapidez/releases/tag/5.0.2) - 2026-05-19
 
 ### Fixed
