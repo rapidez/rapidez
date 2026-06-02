@@ -48,6 +48,10 @@ jobs:
           database/
           config/sanctum.php
 
+      - name: Apply temporary customisations
+        run: >
+          cd rapidez && sed -i -e "s/'serializable_classes' => false,/'serializable_classes' => null,/g" ./config/cache.php
+
       - name: Check if there are changes
         id: has-changes
         run: |
