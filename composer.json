@@ -9,15 +9,15 @@
     "require": {
         "php": "^8.3",
         "guzzlehttp/guzzle": "^7.2",
-        "laravel/framework": "^12.0",
-        "laravel/tinker": "^2.10",
+        "laravel/framework": "^13.0",
+        "laravel/tinker": "^3.0",
         "rapidez/account": "^5.0",
         "rapidez/core": "^5.0",
         "rapidez/image-resizer": "^5.0",
         "rapidez/menu": "^5.0"
     },
     "require-dev": {
-        "barryvdh/laravel-debugbar": "^3.16",
+        "barryvdh/laravel-debugbar": "^4.3",
         "fakerphp/faker": "^1.23",
         "larastan/larastan": "^3.1",
         "laravel/pint": "^1.26",
