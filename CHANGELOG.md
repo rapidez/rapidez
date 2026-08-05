@@ -1,6 +1,22 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/rapidez/rapidez/compare/5.1.0...5.1.0)
+[Unreleased changes](https://github.com/rapidez/rapidez/compare/5.2.0...5.2.0)
+## [5.2.0](https://github.com/rapidez/rapidez/releases/tag/5.2.0) - 2026-08-05
+
+### Added
+
+- Default schedule for commands (#117)
+
+### Changed
+
+- Sync with Laravel source (#115)
+
+### Fixed
+
+- Use ELASTICSEARCH_PASSWORD instead of ELASTICSEARCH_PASS (#116)
+- Add SCOUT_PREFIX to .env.example.docker (63cfce4)
+- Add SCOUT_PREFIX to .env.example.traefik (ad07c35)
+
 ## [5.1.0](https://github.com/rapidez/rapidez/releases/tag/5.1.0) - 2026-06-16
 
 ### Changed
