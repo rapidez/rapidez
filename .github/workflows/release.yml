@@ -1,0 +1,14 @@
+name: Release
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: read
+
+jobs:
+  release:
+    uses: rapidez/workflows/.github/workflows/release.yml@master
+    with:
+      branch: ${{ github.ref_name }}
