@@ -21,7 +21,7 @@ RUN apk add --update libpng-dev jpeg-dev libwebp-dev freetype-dev libmcrypt-dev 
  && apk add --update gcc make autoconf g++ imagemagick-dev && pecl install imagick && docker-php-ext-enable imagick \
  && docker-php-ext-install exif pdo pdo_mysql gd opcache intl \
  && php -r "readfile('https://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer \
- && apk add --update nodejs npm \
+ && apk add --update git nodejs npm \
  && npm install -g pnpm@11 \
  && echo "* * * * * cd /var/www/html && php artisan schedule:run" > /etc/crontabs/www-data
 
