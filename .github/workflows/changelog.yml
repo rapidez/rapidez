@@ -7,26 +7,9 @@ on:
 
 jobs:
   generate:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-        with:
-          ref: ${{ github.event.release.target_commitish }}
-          token: ${{ secrets.RAPIDEZ_ACTIONS_ACCOUNT_PAT }}
-
-      - name: Generate changelog
-        uses: justbetter/generate-changelogs-action@main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          repository: ${{ github.repository }}
-          sha: ${{ github.head_ref || github.ref_name }}
-
-      - name: Commit CHANGELOG
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          branch: ${{ github.event.release.target_commitish }}
-          commit_message: Update CHANGELOG
-          file_pattern: CHANGELOG.md
+    uses: rapidez/workflows/.github/workflows/changelog.yml@master
+    with:
+      repository: ${{ github.repository }}
+      branch: ${{ github.event.release.target_commitish }}
+      ref: ${{ github.head_ref || github.ref_name }}
+    secrets: inherit
