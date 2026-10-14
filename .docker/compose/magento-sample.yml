@@ -8,8 +8,11 @@ services:
       - 127.0.0.1:${DB_PORT}:3306
     environment:
       - ES_JAVA_OPTS=-Xmx1G # We need this es for indexing, but dont use it further.
-      - URL=http://${MAGENTO_HOST}/
+      - URL=${MAGENTO_URL}/
       - FLAT_TABLES=true
+      # There is no mailserver, allow existing customers to login in the checkout and
+      # remove the head include of the sample data, Rapidez renders it on every page.
+      - "CUSTOM_ENTRYPOINT_COMMAND=magerun2 config:store:set system/smtp/disable 1; magerun2 config:store:set checkout/options/enable_guest_checkout_login 1; magerun2 config:store:delete design/head/includes"
     volumes:
       - magento-www:/data
       - ../../.docker/magento/entrypoints/:/entrypoints/

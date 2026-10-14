@@ -20,6 +20,7 @@ RUN apk add --update libpng-dev jpeg-dev libwebp-dev freetype-dev libmcrypt-dev 
  #  Unforunately compiling imagemagick for php8.3 is broken https://github.com/Imagick/imagick/issues/640
  && apk add --update gcc make autoconf g++ imagemagick-dev && pecl install imagick && docker-php-ext-enable imagick \
  && docker-php-ext-install exif pdo pdo_mysql gd opcache intl \
+ && echo "memory_limit=1G" > "$PHP_INI_DIR/conf.d/rapidez.ini" \
  && php -r "readfile('https://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer \
  && apk add --update git nodejs npm \
  && npm install -g pnpm@11 \
