@@ -1,6 +1,19 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/rapidez/rapidez/compare/5.2.0...5.2.0)
+[Unreleased changes](https://github.com/rapidez/rapidez/compare/5.2.1...5.2.1)
+## [5.2.1](https://github.com/rapidez/rapidez/releases/tag/5.2.1) - 2026-10-14
+
+### Fixed
+
+- Keep the routes/console.php when syncing with Laravel (2c022f7)
+- Release workflow (07b0ad5)
+- Use pnpm in Docker builds (1fb3d5c)
+- Docker build fix (952bf77)
+- Use the changelog workflow from rapidez/workflows (b80c90c)
+- Docker fixes for the installer (#120)
+
+
+
 ## [5.2.0](https://github.com/rapidez/rapidez/releases/tag/5.2.0) - 2026-08-05
 
 ### Added
