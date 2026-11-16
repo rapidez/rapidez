@@ -1,7 +1,7 @@
 services:
   # Set up the elasticsearch installation.
   elasticsearch:
-    container_name: elasticsearch
+    container_name: ${CONTAINER_PREFIX:-rapidez-}elasticsearch
     image: docker.elastic.co/elasticsearch/elasticsearch:7.17.8
     restart: unless-stopped
     volumes:
