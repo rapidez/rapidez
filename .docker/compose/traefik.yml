@@ -2,7 +2,7 @@ services:
   # Automatically route incoming requests based on their labels.
   # Remove this and the labels if you want to route the requests manually.
   traefik:
-    container_name: traefik
+    container_name: ${CONTAINER_PREFIX:-rapidez-}traefik
     image: traefik:v3
     restart: unless-stopped
     # Traefik listens on the same port within the Docker network so the URLs

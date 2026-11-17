@@ -1,7 +1,7 @@
 services:
   # The full Magento installation including Nginx, php-fpm, mysql, elasticsearch.
   magento:
-    container_name: magento
+    container_name: ${CONTAINER_PREFIX:-rapidez-}magento
     image: michielgerritsen/magento-project-community-edition:php85-fpm-magento2.4.9-sample-data
     restart: unless-stopped
     ports:

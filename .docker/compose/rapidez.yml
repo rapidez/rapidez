@@ -1,7 +1,7 @@
 services:
   # Send rapidez requests to the php-fpm installation within the Rapidez container.
   nginx:
-    container_name: nginx
+    container_name: ${CONTAINER_PREFIX:-rapidez-}nginx
     image: nginx:alpine
     restart: unless-stopped
     volumes:
